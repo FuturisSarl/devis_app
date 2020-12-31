@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Futuris</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="materiels">Matériels</string>
+    <string name="fondation">Fondation</string>
+    <string name="elevation">Elevation</string>
+    <string name="toiture">Toiture</string>
+    <string name="finition">Finition</string>
+    <string name="electricite">Electricité</string>
+    <string name="menuiserie">Menuiserie</string>
+    <string name="plomberie">Plomberie</string>
+</resources>
