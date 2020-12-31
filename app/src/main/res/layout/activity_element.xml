@@ -12,5 +12,5 @@
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/composant_list" tools:listitem="@layout/element_item"/>
+            android:id="@+id/element_list" tools:listitem="@layout/element_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

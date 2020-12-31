@@ -4,7 +4,7 @@ import androidx.core.graphics.drawable.toDrawable
 
 object DataManager {
 
-    val composants = HashMap<String, ComposantData>()
+    val composants = LinkedHashMap<String, ComposantData>()
     val elements = ArrayList<ElementData>()
 
     init {
@@ -14,7 +14,19 @@ object DataManager {
 
     private fun initializeComposants() {
         //TODO: Create a string array ressource for composant data and load it here
-        var composant = ComposantData("Materiel", "Description", R.drawable.electricite.toDrawable())
+        var composant = ComposantData("Electricite", "Description", R.drawable.electricite)
+        composants[composant.name] = composant
+
+        composant = ComposantData("Elevation", "Description", R.drawable.elevation)
+        composants[composant.name] = composant
+
+        composant = ComposantData("Finition", "Description", R.drawable.finition)
+        composants[composant.name] = composant
+
+        composant = ComposantData("Fondation", "Description", R.drawable.fondation)
+        composants[composant.name] = composant
+
+        composant = ComposantData("Materiel", "Description", R.drawable.materiel)
         composants[composant.name] = composant
     }
 

@@ -3,7 +3,6 @@ package com.itverse.futuris
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_element.*
 
 class ElementActivity : AppCompatActivity() {
@@ -12,7 +11,7 @@ class ElementActivity : AppCompatActivity() {
         setContentView(R.layout.activity_element)
 
         //composant_list.layoutManager = LinearLayoutManager(this)
-        composant_list.layoutManager = GridLayoutManager(this, 2)
-        composant_list.adapter = ElementRecyclerAdapter(this, DataManager.elements)
+        element_list.layoutManager = GridLayoutManager(this, 2)
+        element_list.adapter = ElementRecyclerAdapter(this, DataManager.elements)
     }
 }

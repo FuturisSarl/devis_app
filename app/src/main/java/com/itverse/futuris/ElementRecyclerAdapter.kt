@@ -28,8 +28,8 @@ class ElementRecyclerAdapter(private val context: Context, private val elements:
     override fun getItemCount() = elements.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val elementImg = itemView.findViewById<ImageView>(R.id.elementImg)
-        val elementName = itemView.findViewById<TextView?>(R.id.elementName)
-        val elementNumber = itemView.findViewById<TextView?>(R.id.elementNumber)
+        val elementImg: ImageView = itemView.findViewById<ImageView>(R.id.elementImg)
+        val elementName: TextView = itemView.findViewById<TextView?>(R.id.elementName)
+        val elementNumber: TextView = itemView.findViewById<TextView?>(R.id.elementNumber)
     }
 }
