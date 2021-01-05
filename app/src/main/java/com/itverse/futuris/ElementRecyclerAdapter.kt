@@ -23,13 +23,22 @@ class ElementRecyclerAdapter(private val context: Context, private val elements:
         holder.elementName.text = element.name
         holder.elementNumber.text = element.number.toString()
         holder.elementImg.setImageResource(element.imageResource)
+        holder.elementPosition = position
     }
 
     override fun getItemCount() = elements.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val elementImg: ImageView = itemView.findViewById<ImageView>(R.id.elementImg)
-        val elementName: TextView = itemView.findViewById<TextView?>(R.id.elementName)
-        val elementNumber: TextView = itemView.findViewById<TextView?>(R.id.elementNumber)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val elementImg: ImageView = itemView.findViewById(R.id.elementImg)
+        val elementName: TextView = itemView.findViewById(R.id.elementName)
+        val elementNumber: TextView = itemView.findViewById(R.id.elementNumber)
+        var elementPosition: Int = 0
+        init {
+            elementImg.setOnClickListener {
+                elements[elementPosition].number++
+                println("Element position: $elementPosition \n ${elements[elementPosition].number}")
+                notifyDataSetChanged()
+            }
+        }
     }
 }

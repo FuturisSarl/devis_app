@@ -1,21 +1,32 @@
 package com.itverse.futuris
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class ComposantRecyclerAdapter(context: Context, private val composants: LinkedHashMap<String, ComposantData>):
+class ComposantRecyclerAdapter(val context: Context, private val composants: LinkedHashMap<String, ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val composantImg: ImageView = itemView.findViewById<ImageView>(R.id.composantImg)
         val composantText: TextView = itemView.findViewById<TextView>(R.id.composantText)
+        var composantSelected = 0
+
+        init {
+            itemView.setOnClickListener{
+                val intent = Intent(context, ElementActivity::class.java)
+                intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +39,7 @@ class ComposantRecyclerAdapter(context: Context, private val composants: LinkedH
         val composant = composants[keys[position]]!!
         holder.composantImg.setImageResource(composant.imageResource)
         holder.composantText.text = composant.name
+        holder.composantSelected = position
 
     }
 

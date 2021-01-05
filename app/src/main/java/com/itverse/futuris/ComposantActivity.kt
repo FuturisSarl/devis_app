@@ -12,10 +12,6 @@ class ComposantActivity : AppCompatActivity() {
 
         composant_list.layoutManager = GridLayoutManager(this, 2)
         composant_list.adapter = ComposantRecyclerAdapter(this, DataManager.composants)
-        /*imgMateriel.setOnClickListener {
-            val activityIntent = Intent(this, ElementActivity::class.java)
-            //activityIntent.putExtra(EXTRA_NOTE_POSITION, position)
-            startActivity(activityIntent)
-        }*/
+
     }
 }
