@@ -7,17 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class ComposantRecyclerAdapter(val context: Context, private val composants: LinkedHashMap<String, ComposantData>):
+class ComposantRecyclerAdapter(private val context: Context, private val composants: LinkedHashMap<String, ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val composantImg: ImageView = itemView.findViewById<ImageView>(R.id.composantImg)
-        val composantText: TextView = itemView.findViewById<TextView>(R.id.composantText)
+        val composantImg: ImageView = itemView.findViewById(R.id.composantImg)
+        val composantText: TextView = itemView.findViewById(R.id.composantText)
         var composantSelected = 0
 
         init {
@@ -30,7 +29,7 @@ class ComposantRecyclerAdapter(val context: Context, private val composants: Lin
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.composant_item, parent,false)
+        val itemView = layoutInflater.inflate(R.layout.item_composant, parent,false)
         return  ViewHolder(itemView)
     }
 

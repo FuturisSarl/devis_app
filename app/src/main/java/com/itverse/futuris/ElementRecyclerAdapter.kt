@@ -8,13 +8,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ElementRecyclerAdapter(private val context: Context, private val elements: ArrayList<ElementData>):
+class ElementRecyclerAdapter(context: Context, private val elements: ArrayList<ElementData>):
     RecyclerView.Adapter<ElementRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val elementImg: ImageView = itemView.findViewById(R.id.elementImg)
+        val elementName: TextView = itemView.findViewById(R.id.elementName)
+        val elementNumber: TextView = itemView.findViewById(R.id.elementNumber)
+        var elementPosition: Int = 0
+        init {
+            itemView.setOnClickListener {
+                elements[elementPosition].number++
+                notifyDataSetChanged()
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.element_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.item_element, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -28,17 +41,5 @@ class ElementRecyclerAdapter(private val context: Context, private val elements:
 
     override fun getItemCount() = elements.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val elementImg: ImageView = itemView.findViewById(R.id.elementImg)
-        val elementName: TextView = itemView.findViewById(R.id.elementName)
-        val elementNumber: TextView = itemView.findViewById(R.id.elementNumber)
-        var elementPosition: Int = 0
-        init {
-            elementImg.setOnClickListener {
-                elements[elementPosition].number++
-                println("Element position: $elementPosition \n ${elements[elementPosition].number}")
-                notifyDataSetChanged()
-            }
-        }
-    }
+
 }

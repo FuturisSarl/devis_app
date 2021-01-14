@@ -18,5 +18,6 @@
     <string name="electricite">Electricité</string>
     <string name="menuiserie">Menuiserie</string>
     <string name="plomberie">Plomberie</string>
+    <string name="title_activity_project">Projet</string>
 
 </resources>

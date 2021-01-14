@@ -1,13 +1,13 @@
 package com.itverse.futuris
 
-import androidx.core.graphics.drawable.toDrawable
-
 object DataManager {
 
     val composants = LinkedHashMap<String, ComposantData>()
     val elements = ArrayList<ElementData>()
+    val projects = ArrayList<ProjectData>()
 
     init {
+        initializeProjects()
         initializeComposants()
         initializeElements()
     }
@@ -21,5 +21,9 @@ object DataManager {
 
     private fun initializeElements() {
         elements.addAll(LIST_MATERIEL_ELEMENTS)
+    }
+
+    private  fun initializeProjects() {
+        projects.addAll(LIST_PROJECTS)
     }
 }
