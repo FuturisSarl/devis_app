@@ -2,7 +2,7 @@ package com.itverse.futuris
 
 class ProjectData(
     var name: String,
-    //var composants: List<ComposantData>,
+    var composants: ArrayList<ComposantData>,
 )
 class ComposantData (
     var name: String,

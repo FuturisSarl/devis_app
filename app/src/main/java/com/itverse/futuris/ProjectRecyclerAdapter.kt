@@ -1,11 +1,13 @@
 package com.itverse.futuris
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
@@ -21,7 +23,9 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
         var projectPosition: Int = 0
         init {
             itemView.setOnClickListener {
-                //TODO: Open the component page for this project
+                val intent = Intent(context, ComposantActivity::class.java)
+                intent.putExtra(EXTRA_PROJECT_SELECTED, projectPosition)
+                context.startActivity(intent)
             }
         }
     }
@@ -33,8 +37,8 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
     override fun onBindViewHolder(holder: ProjectRecyclerAdapter.ViewHolder, position: Int) {
         val project = projects[position]
         holder.projectTitle.text = project.name
-        holder.projectImage.setImageResource(R.drawable.element_scie)
-        holder.projectPosition++
+        holder.projectImage.setImageResource(R.drawable.ic_project)
+        holder.projectPosition = position
     }
 
     override fun getItemCount(): Int {

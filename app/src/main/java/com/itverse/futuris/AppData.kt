@@ -1,6 +1,6 @@
 package com.itverse.futuris
 
-var LIST_COMPOSANT = listOf(
+var LIST_COMPOSANT = arrayListOf<ComposantData>(
     ComposantData("Matériel", "Description", R.drawable.composant_materiel),
     ComposantData("Fondation", "Description", R.drawable.composant_fondation),
     ComposantData("Elevation", "Description", R.drawable.composant_elevation),
@@ -29,8 +29,8 @@ var LIST_MATERIEL_ELEMENTS = listOf(
 )
 
 var LIST_PROJECTS = listOf(
-    ProjectData("Projet Maison DMC"),
-    ProjectData("Projet Maison Aime"),
-    ProjectData("Projet Maison Joel"),
-    ProjectData("Projet Maison Espe"),
+    ProjectData("Projet Maison DMC", LIST_COMPOSANT ),
+    ProjectData("Projet Maison Aime", LIST_COMPOSANT),
+    ProjectData("Projet Maison Joel", LIST_COMPOSANT),
+    ProjectData("Projet Maison Espe", LIST_COMPOSANT),
 )

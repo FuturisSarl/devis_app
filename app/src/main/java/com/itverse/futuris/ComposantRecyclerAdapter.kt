@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ComposantRecyclerAdapter(private val context: Context, private val composants: LinkedHashMap<String, ComposantData>):
+class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -34,8 +34,8 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val keys = composants.keys.toList()
-        val composant = composants[keys[position]]!!
+        val keys = composants
+        val composant = composants[position]
         holder.composantImg.setImageResource(composant.imageResource)
         holder.composantText.text = composant.name
         holder.composantSelected = position

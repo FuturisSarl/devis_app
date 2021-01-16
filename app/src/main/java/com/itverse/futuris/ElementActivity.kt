@@ -12,12 +12,10 @@ class ElementActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_element)
 
-        //composant_list.layoutManager = LinearLayoutManager(this)
         element_list.layoutManager = GridLayoutManager(this, 2)
-        element_list.adapter = ElementRecyclerAdapter(this, DataManager.elements)
 
         composantSelected = intent.getIntExtra(EXTRA_COMPOSANT_SELECTED, COMPOSANT_NOT_SELECTED)
-        //This activity should always have EXTRA_COMPOSANT_SELECTED to show the right elements
 
+        element_list.adapter = ElementRecyclerAdapter(this, DataManager.elements)
     }
 }
