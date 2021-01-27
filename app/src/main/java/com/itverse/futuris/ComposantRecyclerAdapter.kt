@@ -21,9 +21,14 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
 
         init {
             itemView.setOnClickListener{
-                val intent = Intent(context, ElementActivity::class.java)
-                intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
-                context.startActivity(intent)
+                if (composantSelected == 1){
+                    val intent = Intent(context, FondationActivity::class.java)
+                    context.startActivity(intent)
+                }
+                else{
+                    val intent = Intent(context, MaterielActivity::class.java)
+                    context.startActivity(intent)
+                }
             }
         }
     }

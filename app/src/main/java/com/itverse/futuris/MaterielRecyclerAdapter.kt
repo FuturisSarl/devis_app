@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ElementRecyclerAdapter(context: Context, private val elements: ArrayList<ElementData>):
-    RecyclerView.Adapter<ElementRecyclerAdapter.ViewHolder>() {
+class MaterielRecyclerAdapter(context: Context, private val elements: ArrayList<ElementData>):
+    RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
