@@ -120,7 +120,7 @@
                             android:id="@+id/editTextNumber6"/>
                 </TableRow>
                 <TableRow android:layout_width="match_parent" android:layout_height="match_parent"
-                          android:theme="@style/grid_input_detail">
+                >
                     <TextView
                             android:text="Hauteur du socle"
                             android:layout_width="wrap_content"
