@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.itverse.futuris.Composants.ElevationActivity
+import com.itverse.futuris.Composants.FondationActivity
+import com.itverse.futuris.Composants.MaterielActivity
 
 class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {

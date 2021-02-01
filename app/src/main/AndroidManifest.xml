@@ -9,9 +9,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ElevationActivity">
+        <activity android:name=".Composants.PlomberieActivity">
         </activity>
-        <activity android:name=".FondationActivity">
+        <activity android:name=".Composants.MenuiserieActivity">
+        </activity>
+        <activity android:name=".Composants.ElectriciteActivity">
+        </activity>
+        <activity android:name=".Composants.FinitionActivity">
+        </activity>
+        <activity android:name=".Composants.ToitureActivity">
+        </activity>
+        <activity android:name=".Composants.ElevationActivity">
+        </activity>
+        <activity android:name=".Composants.FondationActivity">
         </activity>
         <activity android:name=".EditNewProject">
         </activity>
@@ -25,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MaterielActivity">
+        <activity android:name=".Composants.MaterielActivity">
         </activity>
         <activity android:name=".ComposantActivity">
         </activity>

@@ -1,4 +1,4 @@
-package com.itverse.futuris
+package com.itverse.futuris.Composants
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.itverse.futuris.ElementData
+import com.itverse.futuris.R
 
 class MaterielRecyclerAdapter(context: Context, private val elements: ArrayList<ElementData>):
     RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
