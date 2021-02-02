@@ -1,4 +1,4 @@
-package com.itverse.futuris.Composants
+package com.itverse.futuris.composants
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

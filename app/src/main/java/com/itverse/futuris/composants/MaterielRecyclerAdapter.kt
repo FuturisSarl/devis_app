@@ -1,4 +1,4 @@
-package com.itverse.futuris.Composants
+package com.itverse.futuris.composants
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.ElementData
+import com.itverse.futuris.MaterielData
 import com.itverse.futuris.R
 
-class MaterielRecyclerAdapter(context: Context, private val elements: ArrayList<ElementData>):
+class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList<MaterielData>):
     RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -22,26 +22,26 @@ class MaterielRecyclerAdapter(context: Context, private val elements: ArrayList<
         var elementPosition: Int = 0
         init {
             itemView.setOnClickListener {
-                elements[elementPosition].number++
+                materiels[elementPosition].number++
                 notifyDataSetChanged()
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.item_element, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.item_materiel, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val element = elements[position]
+        val element = materiels[position]
         holder.elementName.text = element.name
         holder.elementNumber.text = element.number.toString()
         holder.elementImg.setImageResource(element.imageResource)
         holder.elementPosition = position
     }
 
-    override fun getItemCount() = elements.size
+    override fun getItemCount() = materiels.size
 
 
 }

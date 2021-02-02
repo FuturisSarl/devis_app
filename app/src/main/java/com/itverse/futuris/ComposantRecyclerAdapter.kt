@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.Composants.ElevationActivity
-import com.itverse.futuris.Composants.FondationActivity
-import com.itverse.futuris.Composants.MaterielActivity
+import com.itverse.futuris.composants.ElevationActivity
+import com.itverse.futuris.composants.FondationActivity
+import com.itverse.futuris.composants.MaterielActivity
 
 class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
@@ -24,19 +24,17 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
 
         init {
             itemView.setOnClickListener{
-                var intent: Intent
 
-                when (composantSelected){
-                    0 -> intent = Intent(context, MaterielActivity::class.java)
-                    1 -> intent = Intent(context, FondationActivity::class.java)
-                    2 -> intent = Intent(context, ElevationActivity::class.java)
+                var intent: Intent = when (composantSelected){
+                    0 -> Intent(context, MaterielActivity::class.java)
+                    1 -> Intent(context, FondationActivity::class.java)
+                    2 -> Intent(context, ElevationActivity::class.java)
                     //TODO: Implement all screens
                     //TODO: Handle error on unexpected composantSelected value
                     else -> {
-                        intent  = Intent(context, MaterielActivity::class.java)
+                        Intent(context, MaterielActivity::class.java)
                     }
                 }
-
                 context.startActivity(intent)
             }
         }
@@ -48,12 +46,10 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val keys = composants
         val composant = composants[position]
         holder.composantImg.setImageResource(composant.imageResource)
         holder.composantText.text = composant.name
         holder.composantSelected = position
-
     }
 
     override fun getItemCount() = composants.size

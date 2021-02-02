@@ -5,6 +5,257 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Composants.ElectriciteActivity">
+        tools:context=".composants.ElectriciteActivity">
 
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView
+                    android:text="Titre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView46"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Interrupteur encastrée simple direction"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView57"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber54"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Interrupteur encastrée double direction"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView58"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber44"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Socket"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView56"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber45"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Applique murale mirroir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView55"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber43"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Plafonnier encastré pour salle d'eau"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView63"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber42"/>
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView
+                            android:text="Lustre salon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView53"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber38"/>
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView
+                            android:text="Lustre salle à manger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView54"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber39"/>
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView
+                            android:text="Plafonnier encastré pour cuisine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView62"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber40"/>
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView
+                            android:text="Applique murale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView61"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber41"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView60"
+                            android:contentDescription="Interrupteur bipolaire encastrée simple direction"
+                            android:text="Interrupteur BESD"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber53"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Prises type poste de travail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView59"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber52"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Prises encastrée avec terre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView68"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber51"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Prises encastrée télé"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView66"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber50"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView67"
+                            android:text="R.A des climatiseurs"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber49"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Réseau d'alimentation des prises"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView64"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber48"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView65"
+                            android:contentDescription="Réseau d'alimentation des points limineux"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber47"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Tableau divisionaire et accessoire"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView69"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:ems="10"
+                            android:id="@+id/editTextNumber46"/>
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

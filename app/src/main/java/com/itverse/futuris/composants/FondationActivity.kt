@@ -1,12 +1,13 @@
-package com.itverse.futuris.Composants
+package com.itverse.futuris.composants
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.itverse.futuris.R
 
-class MenuiserieActivity : AppCompatActivity() {
+class FondationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_composants_menuiserie)
+
+        setContentView(R.layout.activity_composants_fondation)
     }
 }
