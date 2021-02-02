@@ -6,36 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".composants.ToitureActivity">
-
-    <ScrollView
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical">
-            <TextView
-                    android:text="Couverture"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView40"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
-            <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
-                    <TextView
-                            android:text="Surface à couvrir"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView41"/>
-                    <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:ems="10"
-                            android:id="@+id/editTextNumber32"/>
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" tools:listitem="@layout/item_grouped_elements"
+            android:id="@+id/list_grouped_elements" tools:layout_editor_absoluteY="15dp"
+            tools:layout_editor_absoluteX="15dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

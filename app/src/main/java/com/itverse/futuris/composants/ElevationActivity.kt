@@ -13,7 +13,6 @@ class ElevationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_composants_elevation)
-
         list_grouped_elements.layoutManager = LinearLayoutManager(this)
         list_grouped_elements.adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[0].composants[2].elements)
     }

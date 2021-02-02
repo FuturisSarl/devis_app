@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.composants.ElevationActivity
-import com.itverse.futuris.composants.FondationActivity
-import com.itverse.futuris.composants.MaterielActivity
+import com.itverse.futuris.composants.*
 
 class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
@@ -29,9 +27,13 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
                     0 -> Intent(context, MaterielActivity::class.java)
                     1 -> Intent(context, FondationActivity::class.java)
                     2 -> Intent(context, ElevationActivity::class.java)
-                    //TODO: Implement all screens
-                    //TODO: Handle error on unexpected composantSelected value
+                    3 -> Intent(context, ToitureActivity::class.java)
+                    4 -> Intent(context, FinitionActivity::class.java)
+                    5 -> Intent(context, ElectriciteActivity::class.java)
+                    6 -> Intent(context, MenuiserieActivity::class.java)
+                    7 -> Intent(context, PlomberieActivity::class.java)
                     else -> {
+                        //TODO: raise Error?
                         Intent(context, MaterielActivity::class.java)
                     }
                 }
