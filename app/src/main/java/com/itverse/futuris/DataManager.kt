@@ -5,7 +5,6 @@ object DataManager {
     val composants = LinkedHashMap<String, ComposantData>()
     val elements = ArrayList<ElementData>()
     val projects = ArrayList<ProjectData>()
-
     init {
         initializeProjects()
         initializeComposants()

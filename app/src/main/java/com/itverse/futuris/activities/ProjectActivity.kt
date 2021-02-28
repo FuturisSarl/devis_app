@@ -1,10 +1,13 @@
-package com.itverse.futuris
+package com.itverse.futuris.activities
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.itverse.futuris.adapters.ProjectRecyclerAdapter
+import com.itverse.futuris.DataManager
+import com.itverse.futuris.R
 import kotlinx.android.synthetic.main.content_activity_project.*
 
 class ProjectActivity : AppCompatActivity() {
@@ -15,7 +18,11 @@ class ProjectActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         project_list.layoutManager = GridLayoutManager(this,2)
-        project_list.adapter = ProjectRecyclerAdapter(this, DataManager.projects)
+        project_list.adapter =
+            ProjectRecyclerAdapter(
+                this,
+                DataManager.projects
+            )
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Add new project", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
