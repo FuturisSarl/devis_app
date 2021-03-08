@@ -1,4 +1,4 @@
-package com.itverse.futuris
+package com.itverse.futuris.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.itverse.futuris.activities.ComposantActivity
+import com.itverse.futuris.EXTRA_PROJECT_SELECTED
+import com.itverse.futuris.ProjectData
+import com.itverse.futuris.R
 
 class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayList<ProjectData>):
     RecyclerView.Adapter<ProjectRecyclerAdapter.ViewHolder>() {
@@ -29,12 +31,12 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
             }
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectRecyclerAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.item_project, parent,false)
         return  ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ProjectRecyclerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val project = projects[position]
         holder.projectTitle.text = project.name
         holder.projectImage.setImageResource(R.drawable.ic_project)

@@ -1,4 +1,4 @@
-package com.itverse.futuris
+package com.itverse.futuris.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+<<<<<<< HEAD:app/src/main/java/com/itverse/futuris/ComposantRecyclerAdapter.kt
 import com.itverse.futuris.composants.*
+=======
+import com.itverse.futuris.ComposantData
+import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
+import com.itverse.futuris.activities.ElementActivity
+import com.itverse.futuris.R
+>>>>>>> 62051a5b04897ddf2c045b9a7c2350c87561d62a:app/src/main/java/com/itverse/futuris/adapters/ComposantRecyclerAdapter.kt
 
 class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {

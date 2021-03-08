@@ -3,7 +3,6 @@ package com.itverse.futuris
 object DataManager {
 
     val projects = ArrayList<ProjectData>()
-
     init {
         initializeProjects()
     }
