@@ -10,7 +10,7 @@ import com.itverse.futuris.PROJECT_NOT_SELECTED
 import com.itverse.futuris.R
 import kotlinx.android.synthetic.main.activity_composant.*
 
-class ComposantActivity : AppCompatActivity() {
+class Composant : AppCompatActivity() {
     private  var projectSelected = PROJECT_NOT_SELECTED
 
     override fun onCreate(savedInstanceState: Bundle?) {

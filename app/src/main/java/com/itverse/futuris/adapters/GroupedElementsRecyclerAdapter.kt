@@ -1,4 +1,4 @@
-package com.itverse.futuris.composants
+package com.itverse.futuris.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -21,12 +21,12 @@ class GroupedElementsRecyclerAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupedElementsRecyclerAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.item_grouped_elements, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: GroupedElementsRecyclerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val element = elements?.get(position)
         holder.groupedElementTitle.text = element!!.title
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)

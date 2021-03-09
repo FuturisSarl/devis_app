@@ -8,12 +8,12 @@ import com.itverse.futuris.COMPOSANT_NOT_SELECTED
 import com.itverse.futuris.DataManager
 import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
 import com.itverse.futuris.R
-import kotlinx.android.synthetic.main.activity_element.*
+//import kotlinx.android.synthetic.main.activity_element.*
 
-class ElementActivity : AppCompatActivity() {
+class Element : AppCompatActivity() {
     private var composantSelected = COMPOSANT_NOT_SELECTED
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_element)
 
@@ -30,4 +30,6 @@ class ElementActivity : AppCompatActivity() {
                 DataManager.elements
             )
     }
+
+     */
 }

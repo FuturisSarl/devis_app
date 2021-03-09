@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:hapticFeedbackEnabled="false"
-    tools:context=".activities.ComposantActivity">
+    tools:context=".activities.Composant">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/composant_list"

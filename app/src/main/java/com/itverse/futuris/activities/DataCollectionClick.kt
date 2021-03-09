@@ -1,13 +1,13 @@
-package com.itverse.futuris.composants
+package com.itverse.futuris.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.itverse.futuris.*
-import kotlinx.android.synthetic.main.activity_composant.*
+import com.itverse.futuris.adapters.MaterielRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 
-class MaterielActivity : AppCompatActivity() {
+class DataCollectionClick : AppCompatActivity() {
     private  var composantSelected = COMPOSANT_NOT_SELECTED
 
     override fun onCreate(savedInstanceState: Bundle?) {

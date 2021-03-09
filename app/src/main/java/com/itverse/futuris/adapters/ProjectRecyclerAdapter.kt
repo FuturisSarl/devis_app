@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.activities.ComposantActivity
+import com.itverse.futuris.activities.Composant
 import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.ProjectData
 import com.itverse.futuris.R
@@ -25,7 +25,7 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
         var projectPosition: Int = 0
         init {
             itemView.setOnClickListener {
-                val intent = Intent(context, ComposantActivity::class.java)
+                val intent = Intent(context, Composant::class.java)
                 intent.putExtra(EXTRA_PROJECT_SELECTED, projectPosition)
                 context.startActivity(intent)
             }

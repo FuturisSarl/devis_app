@@ -9,21 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".composants.PlomberieActivity">
+
+        <activity android:name=".activities.DataCollectionForm">
         </activity>
-        <activity android:name=".composants.MenuiserieActivity">
-        </activity>
-        <activity android:name=".composants.ElectriciteActivity">
-        </activity>
-        <activity android:name=".composants.FinitionActivity">
-        </activity>
-        <activity android:name=".composants.ToitureActivity">
-        </activity>
-        <activity android:name=".composants.ElevationActivity">
-        </activity>
-        <activity android:name=".composants.FondationActivity">
-        </activity>
-        <activity android:name=".EditNewProject">
+        <activity android:name=".activities.EditNewProject">
         </activity>
         <activity
                 android:name=".activities.ProjectActivity"
@@ -35,13 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".composants.MaterielActivity">
-=======
-        <activity android:name=".activities.ElementActivity">
->>>>>>> 62051a5b04897ddf2c045b9a7c2350c87561d62a
+
+        <activity android:name=".activities.DataCollectionClick"></activity>
+
+        <activity android:name=".activities.Element">
         </activity>
-        <activity android:name=".activities.ComposantActivity">
+        <activity android:name=".activities.Composant">
         </activity>
         <activity
                 android:name=".activities.MainActivity"

@@ -1,8 +1,4 @@
-<<<<<<< HEAD:app/src/main/java/com/itverse/futuris/composants/MaterielRecyclerAdapter.kt
-package com.itverse.futuris.composants
-=======
 package com.itverse.futuris.adapters
->>>>>>> 62051a5b04897ddf2c045b9a7c2350c87561d62a:app/src/main/java/com/itverse/futuris/adapters/ElementRecyclerAdapter.kt
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,15 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD:app/src/main/java/com/itverse/futuris/composants/MaterielRecyclerAdapter.kt
 import com.itverse.futuris.MaterielData
-=======
-import com.itverse.futuris.ElementData
->>>>>>> 62051a5b04897ddf2c045b9a7c2350c87561d62a:app/src/main/java/com/itverse/futuris/adapters/ElementRecyclerAdapter.kt
+
 import com.itverse.futuris.R
 
-class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList<MaterielData>):
-    RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
+class ElementRecyclerAdapter(context: Context, private val materiels: ArrayList<MaterielData>):
+    RecyclerView.Adapter<ElementRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 

@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD:app/src/main/java/com/itverse/futuris/ComposantRecyclerAdapter.kt
-import com.itverse.futuris.composants.*
-=======
 import com.itverse.futuris.ComposantData
-import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
-import com.itverse.futuris.activities.ElementActivity
 import com.itverse.futuris.R
->>>>>>> 62051a5b04897ddf2c045b9a7c2350c87561d62a:app/src/main/java/com/itverse/futuris/adapters/ComposantRecyclerAdapter.kt
+import com.itverse.futuris.activities.DataCollectionClick
+import com.itverse.futuris.activities.DataCollectionForm
 
 class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
@@ -29,19 +25,12 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
 
         init {
             itemView.setOnClickListener{
-
+                //We have 2 possible display: The form like activity and the click/touch to increment activity
+                //TODO: Make these 2 options clear?
                 var intent: Intent = when (composantSelected){
-                    0 -> Intent(context, MaterielActivity::class.java)
-                    1 -> Intent(context, FondationActivity::class.java)
-                    2 -> Intent(context, ElevationActivity::class.java)
-                    3 -> Intent(context, ToitureActivity::class.java)
-                    4 -> Intent(context, FinitionActivity::class.java)
-                    5 -> Intent(context, ElectriciteActivity::class.java)
-                    6 -> Intent(context, MenuiserieActivity::class.java)
-                    7 -> Intent(context, PlomberieActivity::class.java)
+                    0 -> Intent(context, DataCollectionClick::class.java)
                     else -> {
-                        //TODO: raise Error?
-                        Intent(context, MaterielActivity::class.java)
+                        Intent(context, DataCollectionForm::class.java)
                     }
                 }
                 context.startActivity(intent)
