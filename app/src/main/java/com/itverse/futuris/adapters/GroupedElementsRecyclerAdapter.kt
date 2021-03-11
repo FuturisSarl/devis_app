@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.GroupedElementsData
 import com.itverse.futuris.R
 
+/**
+ *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
+ */
 class GroupedElementsRecyclerAdapter(
     var context: Context, private  val elements: ArrayList<GroupedElementsData>?): RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
 
@@ -30,8 +33,8 @@ class GroupedElementsRecyclerAdapter(
         val element = elements?.get(position)
         holder.groupedElementTitle.text = element!!.title
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
-        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.details)
 
+        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.details)
     }
 
     override fun getItemCount(): Int {

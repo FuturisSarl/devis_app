@@ -27,13 +27,12 @@ class Composant : AppCompatActivity() {
             composant_list.adapter =
                 ComposantRecyclerAdapter(
                     this,
-                    DataManager.projects[projectSelected].composants
+                    DataManager.projects[projectSelected].composants,
+                    projectSelected
                 )
         }
         else{
 
         }
-
-
     }
 }

@@ -10,6 +10,10 @@ import com.itverse.futuris.MaterielData
 
 import com.itverse.futuris.R
 
+/**
+ * This module implements MaterielRecyclerAdapter which allows collecting data from clicking on the item to increment or decrement its quantity
+ */
+
 class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList<MaterielData>):
     RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
 
@@ -21,9 +25,16 @@ class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList
         val elementNumber: TextView = itemView.findViewById(R.id.elementNumber)
         var elementPosition: Int = 0
         init {
+            //Increase the quantity of the material on click
             itemView.setOnClickListener {
                 materiels[elementPosition].number++
                 notifyDataSetChanged()
+            }
+            //TODO: Review UX of this approach
+            itemView.setOnLongClickListener {
+                materiels[elementPosition].number--
+                notifyDataSetChanged()
+                return@setOnLongClickListener true
             }
         }
     }

@@ -86,7 +86,7 @@ var LIST_GROUPED_ELEMENT_DATA_ELEVATION = arrayListOf(
             ),
         ),
         GroupedElementsData(
-            "Maconnerie(Entry, positive integer)",
+            "Maconnerie",
             arrayListOf(
                 ElementsDetailData("Mur"),
             ),

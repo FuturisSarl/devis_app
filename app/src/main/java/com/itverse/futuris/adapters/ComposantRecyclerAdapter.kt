@@ -9,11 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.ComposantData
+import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
+import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.R
-import com.itverse.futuris.activities.DataCollectionClick
 import com.itverse.futuris.activities.DataCollectionForm
 
-class ComposantRecyclerAdapter(private val context: Context, private val composants: ArrayList<ComposantData>):
+class ComposantRecyclerAdapter(
+    private val context: Context,
+    private val composants: ArrayList<ComposantData>,
+    private val projectSelected: Int
+):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -25,14 +30,9 @@ class ComposantRecyclerAdapter(private val context: Context, private val composa
 
         init {
             itemView.setOnClickListener{
-                //We have 2 possible display: The form like activity and the click/touch to increment activity
-                //TODO: Make these 2 options clear?
-                var intent: Intent = when (composantSelected){
-                    0 -> Intent(context, DataCollectionClick::class.java)
-                    else -> {
-                        Intent(context, DataCollectionForm::class.java)
-                    }
-                }
+                var intent: Intent = Intent(context, DataCollectionForm::class.java)
+                intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
+                intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
                 context.startActivity(intent)
             }
         }
