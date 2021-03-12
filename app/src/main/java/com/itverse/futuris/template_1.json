@@ -1,0 +1,220 @@
+{
+  "ProjectName": "",
+  "materials": [
+    "Brouette",
+    "Equerre",
+    "Ficelle",
+    "Fut",
+    "Gamatte",
+    "Machette",
+    "Marteau-tenail",
+    "Niveau d'eau",
+    "Pelle",
+    "Pioche",
+    "Scie",
+    "Tenaille",
+    "Truelle",
+    "Tyrolienne"
+  ],
+  "Composants": [
+    {
+      "name": "Fondation",
+      "description": "Description",
+      "groupedElements": [
+        {
+          "name": "Implantation",
+          "elements": [
+            {"name": "Chaise X", "unit": "Unit"},
+            {"name": "Chaise Y", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Beton de propreté",
+          "elements": [
+            {"name": "Volume total du béton", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Socle en BA",
+          "elements": [
+            {"name": "Nombre de socles", "unit": "Unit"},
+            {"name": "Section du socle", "unit": "Unit"},
+            {"name": "Perimètre de la section", "unit": "Unit"},
+            {"name": "Hauteur du socle", "unit": "Unit"},
+            {"name": "Nombre d'étrier/socles", "unit": "Unit"},
+            {"name": "Nombre de barre/socles", "unit": "Unit"},
+            {"name": "Volume total du béton", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Longrine en BQ",
+          "elements": [
+            {"name": "Mettre linéaire de la longrine", "unit": "Unit"},
+            {"name": "Section de la longrine", "unit": "Unit"},
+            {"name": "Perimètre de la section", "unit": "Unit"},
+            {"name": "Nombre d'étrier/poutre", "unit": "Unit"},
+            {"name": "Nombre de barre/longrine", "unit": "Unit"},
+            {"name": "Volume total du béton", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Maconnerie en moellon",
+          "elements": [
+            {"name": "Mettre linéaire de la fondation", "unit": "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Elevation",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Collones en B.A",
+          "elements": [
+            {"name": "Nombre de collones", "unit": "Unit"},
+            {"name": "Perimètre de la section", "unit": "Unit"},
+            {"name": "Hauteur de la colonne(moyenne)", "unit": "Unit"},
+            {"name": "Nombre de barre/colonnes", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Poutre en B.A",
+          "elements": [
+            {"name": "Mettre linéaire de la poutre", "unit": "Unit"},
+            {"name": "Section de la poutre", "unit": "Unit"},
+            {"name": "Perimètre de la section", "unit": "Unit"},
+            {"name": "Nombre d'étrier/poutre", "unit": "Unit"},
+            {"name": "Nombre de barre/poutre", "unit": "Unit"},
+            {"name": "Volume total du béton", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Maconnerie",
+          "elements": [
+            {"name": "Mur", "unit": "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Toiture",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Couverture",
+          "elements": [
+            {"name": "Surface à couvrir", "unit": "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Finition",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Carrelage",
+          "elements": [
+            {"name": "Carreaux (60*60)", "unit": "Unit"},
+            {"name": "Carreaux anti-dépadant(30cm*30cm)", "unit": "Unit"},
+            {"name": "Faiences(30cm*15cm)", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Peinture??",
+          "elements": []
+        },
+        {
+          "name": "Plafond",
+          "elements": [
+            {"name": "Faux plafond et accessoires", "unit": "Unit"}
+          ]
+        },
+        {
+          "name": "Enduit",
+          "elements": [
+            {"name": "Enduit", "unit": "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Electricité",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Carrelage",
+          "elements": [
+            {"name": "Lustre salon", "unit": "Unit"},
+            {"name": "Lustre salle à manger", "unit": "Unit"},
+            {"name": "Plafonnier encastré pour cuisine", "unit": "Unit"},
+            {"name": "Spots encastrés", "unit": "Unit"},
+            {"name": "Applique murale", "unit": "Unit"},
+            {"name": "Plafonnier encastré pour salle d'eau", "unit": "Unit"},
+            {"name": "Socket(generated)", "unit": "Unit"},
+            {"name": "Interrupteur encastrée simple direction", "unit": "Unit"},
+            {"name": "Interrupteur encastrée double direction", "unit": "Unit"},
+            {"name": "Interrupteur bipolaire encastrée double direction", "unit": "Unit"},
+            {"name": "Prises type poste de travail", "unit": "Unit"},
+            {"name": "Prise encastrée avec terre", "unit": "Unit"},
+            {"name": "Prises encastrée hermetique avec terre", "unit": "Unit"},
+            {"name": "Prises encastrée télé", "unit": "Unit"},
+            {"name": "Réseau d'alimentation des climatiseurs", "unit": "Unit"},
+            {"name": "Réseau d'alimentation des prises", "unit": "Unit"},
+            {"name": "Réseau d'alimentation des points limineux", "unit": "Unit"},
+            {"name": "Tableau divisionnaire et accessoire", "unit": "Unit"},
+            {"name": "Carreaux anti-dépadant(30cm*30cm)", "unit": "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Menuiserie",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Type portes",
+          "elements": [
+            {"name":  "80cm*250cm-Bois", "unit":  "Unit"},
+            {"name":  "90cm*250cm-Bois", "unit":  "Unit"},
+            {"name":  "300cm*250cm Métal", "unit":  "Unit"}
+          ]
+        },
+        {
+          "name": "Type fenetre",
+          "elements": [
+            {"name":  "Type1 150cm*200cm-Métal", "unit":  "Unit"},
+            {"name":  "Type2(200cm*200cm-Métal)", "unit":  "Unit"},
+            {"name":  "Salle à manger(1500cm*200cm)-Métal", "unit":  "Unit"}
+          ]
+        },
+        {
+          "name": "Type fenetre",
+          "elements": [
+            {"name": "60cm*60cm", "unit":  "Unit"}
+          ]
+        }
+      ]
+    },
+    {"name": "Plomberie",
+      "description": "description",
+      "groupedElements": [
+        {
+          "name": "Materiaux",
+          "elements": [
+            {"name": "Cuve", "unit":  "Unit"},
+            {"name": "Lave-main", "unit":  "Unit"},
+            {"name": "Evier", "unit":  "Unit"},
+            {"name": "Bac à douche", "unit":  "Unit"},
+            {"name": "Chambre de visites  pour eaux vannes", "unit":  "Unit"},
+            {"name": "Chambre de visites pour eaux usées", "unit":  "Unit"},
+            {"name": "Réseau d'évacuation pour eau vannes", "unit":  "Unit"},
+            {"name": "Réseau d'évacuation pour eau usées", "unit":  "Unit"},
+            {"name": "Réseau d'adduction pour eau pluviales", "unit":  "Unit"},
+            {"name": "Réseau d'évacuation pour eau potable", "unit":  "Unit"},
+            {"name": "Vanne d'isolement pour eau potables", "unit":  "Unit"},
+            {"name":  "Robinet équerre pour eaux potables", "unit":  "Unit"},
+            {"name": "Fosse sceptique", "unit":  "Unit"}
+
+          ]
+        }
+      ]
+    }
+  ]
+}

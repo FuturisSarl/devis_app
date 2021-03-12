@@ -1,5 +1,8 @@
 package com.itverse.futuris
 
+/**
+ * TODO: Load these data from a JSON file. These JSON file will be portable and will serve as a template of a given construction material requirements
+ */
 var LIST_MATERIEL_ELEMENTS = arrayListOf(
     MaterielData("Brouette", R.drawable.element_brouette),
     MaterielData("Equerre", R.drawable.element_equerre),
@@ -101,6 +104,7 @@ var LIST_GROUPED_ELEMENT_DATA_TOITURE= arrayListOf(
             ),
         ),
 )
+
 var LIST_GROUPED_ELEMENT_DATA_FINITION= arrayListOf(
         GroupedElementsData(
             "Carrelage",
@@ -120,11 +124,10 @@ var LIST_GROUPED_ELEMENT_DATA_FINITION= arrayListOf(
             "Plafond",
             arrayListOf(
                 ElementsDetailData("Faux plafond et accessoires"),
-
             ),
         ),
         GroupedElementsData(
-            "Enduit(Entry, positive integer)",
+            "Enduit",
             arrayListOf(
 
             ),
@@ -136,11 +139,11 @@ var LIST_GROUPED_ELEMENT_DATA_ELECTRICITE= arrayListOf(
             "Carrelage",
             arrayListOf(
                 ElementsDetailData("Lustre salon"),
-                ElementsDetailData("LUstre salle à manger"),
+                ElementsDetailData("Lustre salle à manger"),
                 ElementsDetailData("Plafonnier encastré pour cuisine"),
                 ElementsDetailData("Spots encastrés"),
                 ElementsDetailData("Applique murale"),
-                ElementsDetailData("PLafonnier encastré pour salle d'eau"),
+                ElementsDetailData("Plafonnier encastré pour salle d'eau"),
                 ElementsDetailData("Socket(generated)"),
                 ElementsDetailData("Interrupteur encastrée simple direction"),
                 ElementsDetailData("Interrupteur encastrée double direction"),
@@ -154,23 +157,20 @@ var LIST_GROUPED_ELEMENT_DATA_ELECTRICITE= arrayListOf(
                 ElementsDetailData("Réseau d'alimentation des points limineux"),
                 ElementsDetailData("Tableau divisionnaire et accessoire"),
                 ElementsDetailData("Carreaux anti-dépadant(30cm*30cm)"),
-
-
-
         ),
     ),
 )
 var LIST_GROUPED_ELEMENT_DATA_MENUISERIE= arrayListOf(
         GroupedElementsData(
-            "TYPES PORTES",
+            "Type portes",
             arrayListOf(
-                ElementsDetailData("Porte (80cm*250cm-Bois)"),
+                ElementsDetailData("80cm*250cm-Bois"),
                 ElementsDetailData("Porte (90cm*250cm-Bois)"),
                 ElementsDetailData("Porte d'entrée principale (300cm*250cm)-Métal"),
             ),
         ),
         GroupedElementsData(
-            "TYPE FENETRE",
+            "Type fenetre",
             arrayListOf(
 
                 ElementsDetailData("Fenêtre-type1(150cm*200cm-Métal)"),
@@ -180,7 +180,7 @@ var LIST_GROUPED_ELEMENT_DATA_MENUISERIE= arrayListOf(
             ),
         ),
         GroupedElementsData(
-            "TYPE IMPOSTES",
+            "Type impostes",
             arrayListOf(
                 ElementsDetailData("Imposte(60cm*60cm)"),
             ),
@@ -189,7 +189,7 @@ var LIST_GROUPED_ELEMENT_DATA_MENUISERIE= arrayListOf(
 
 var LIST_GROUPED_ELEMENT_DATA_PLOMBERIE= arrayListOf(
     GroupedElementsData(
-        "Plomberie de la maison de benjamin",
+        "Materiaux",
         arrayListOf(
             ElementsDetailData("Cuve"),
             ElementsDetailData("Lave-main"),
