@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.DataCollectionForm">
         </activity>
-        <activity android:name=".activities.EditNewProject">
+        <activity android:name=".activities.CreateNewProject" android:noHistory="true">
         </activity>
         <activity
             android:name=".activities.ProjectActivity"

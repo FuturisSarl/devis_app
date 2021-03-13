@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.ComposantData
+import com.itverse.futuris.Composant
 import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
 import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.R
@@ -16,7 +16,7 @@ import com.itverse.futuris.activities.DataCollectionForm
 
 class ComposantRecyclerAdapter(
     private val context: Context,
-    private val composants: ArrayList<ComposantData>,
+    private val composants: ArrayList<Composant>,
     private val projectSelected: Int
 ):
     RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
@@ -44,10 +44,18 @@ class ComposantRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val composant = composants[position]
-        holder.composantImg.setImageResource(composant.imageResource)
-        holder.composantText.text = composant.name
-        holder.composantSelected = position
+        if (position == 0){
+            //Load materials
+            holder.composantImg.setImageResource(R.drawable.composant_materiel)
+            holder.composantText.text = "Materiels"
+            holder.composantSelected = position
+        }
+        else{
+            val composant = composants[position]
+            holder.composantImg.setImageResource(composant.imageResource)
+            holder.composantText.text = composant.name
+            holder.composantSelected = position
+        }
     }
 
     override fun getItemCount() = composants.size

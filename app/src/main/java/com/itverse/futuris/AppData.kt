@@ -3,130 +3,130 @@ package com.itverse.futuris
 /**
  * TODO: Load these data from a JSON file. These JSON file will be portable and will serve as a template of a given construction material requirements
  */
-var LIST_MATERIEL_ELEMENTS = arrayListOf(
-    MaterielData("Brouette", R.drawable.element_brouette),
-    MaterielData("Equerre", R.drawable.element_equerre),
-    MaterielData( "Ficelle", R.drawable.element_ficelle),
-    MaterielData( "Fut", R.drawable.element_fut),
-    MaterielData( "Gamatte", R.drawable.element_gamatte),
-    MaterielData( "Machette", R.drawable.element_machette),
-    MaterielData( "Marteau-tenail", R.drawable.element_marteau_tenaille),
-    MaterielData( "Niveau d'eau", R.drawable.element_niveau_eau),
-    MaterielData( "Pelle", R.drawable.element_pelle),
-    MaterielData( "Pioche", R.drawable.element_pioche),
-    MaterielData( "Scie", R.drawable.element_scie),
-    MaterielData( "Tenaille", R.drawable.element_tenaille),
-    MaterielData( "Truelle", R.drawable.element_truelle, ),
-    MaterielData( "Tyrolienne", R.drawable.element_tyrolienne)
+var LIST_MATERIEL = arrayListOf(
+    Materiel("Brouette", R.drawable.element_brouette),
+    Materiel("Equerre", R.drawable.element_equerre),
+    Materiel( "Ficelle", R.drawable.element_ficelle),
+    Materiel( "Fut", R.drawable.element_fut),
+    Materiel( "Gamatte", R.drawable.element_gamatte),
+    Materiel( "Machette", R.drawable.element_machette),
+    Materiel( "Marteau-tenail", R.drawable.element_marteau_tenaille),
+    Materiel( "Niveau d'eau", R.drawable.element_niveau_eau),
+    Materiel( "Pelle", R.drawable.element_pelle),
+    Materiel( "Pioche", R.drawable.element_pioche),
+    Materiel( "Scie", R.drawable.element_scie),
+    Materiel( "Tenaille", R.drawable.element_tenaille),
+    Materiel( "Truelle", R.drawable.element_truelle, ),
+    Materiel( "Tyrolienne", R.drawable.element_tyrolienne)
 )
 
 
 var LIST_GROUPED_ELEMENT_DATA_FONDATION = arrayListOf(
-    GroupedElementsData(
+    GroupedElements(
         "Implantation",
         arrayListOf(
-            ElementsDetailData("Chaise X"),
-            ElementsDetailData("Chaise Y"),
+            ElementsDetail("Chaise X"),
+            ElementsDetail("Chaise Y"),
         ),
     ),
-    GroupedElementsData(
+    GroupedElements(
         "Beton de propreté",
         arrayListOf(
-            ElementsDetailData("Volume total du béton"),
+            ElementsDetail("Volume total du béton"),
         ),
     ),
-    GroupedElementsData(
+    GroupedElements(
         "Socle en BA",
         arrayListOf(
-            ElementsDetailData("Nombre de socles"),
-            ElementsDetailData("Section du socle"),
-            ElementsDetailData("Perimètre de la section"),
-            ElementsDetailData("Hauteur du socle"),
-            ElementsDetailData("Nombre d'étrier/socles"),
-            ElementsDetailData("Nombre de barre/socles"),
-            ElementsDetailData("Volume total du béton"),
+            ElementsDetail("Nombre de socles"),
+            ElementsDetail("Section du socle"),
+            ElementsDetail("Perimètre de la section"),
+            ElementsDetail("Hauteur du socle"),
+            ElementsDetail("Nombre d'étrier/socles"),
+            ElementsDetail("Nombre de barre/socles"),
+            ElementsDetail("Volume total du béton"),
 
         ),
     ),
-    GroupedElementsData(
+    GroupedElements(
         "Longrine en BQ",
         arrayListOf(
-            ElementsDetailData("Mettre linéaire de la longrine"),
-            ElementsDetailData("Section de la longrine"),
-            ElementsDetailData("Périmètre de la section"),
-            ElementsDetailData("Nombre d'étrier/poutre"),
-            ElementsDetailData("Nombre de barre/longrine"),
-            ElementsDetailData("Volume total du béton"),
+            ElementsDetail("Mettre linéaire de la longrine"),
+            ElementsDetail("Section de la longrine"),
+            ElementsDetail("Périmètre de la section"),
+            ElementsDetail("Nombre d'étrier/poutre"),
+            ElementsDetail("Nombre de barre/longrine"),
+            ElementsDetail("Volume total du béton"),
         ),
     ),
-    GroupedElementsData(
+    GroupedElements(
         title = "Maconnerie en moellon",
         arrayListOf(
-            ElementsDetailData("Mettre linéaire de la fondation"),
+            ElementsDetail("Mettre linéaire de la fondation"),
         ),
     ),
 )
 
 var LIST_GROUPED_ELEMENT_DATA_ELEVATION = arrayListOf(
-        GroupedElementsData(
+        GroupedElements(
             "Collones en B.A",
             arrayListOf(
-                ElementsDetailData("Nombre de collones"),
-                ElementsDetailData("Perimètre de la section"),
-                ElementsDetailData("Hauteur de la colonne(moyenne)"),
-                ElementsDetailData("Nombre de barre/colonnes"),
+                ElementsDetail("Nombre de collones"),
+                ElementsDetail("Perimètre de la section"),
+                ElementsDetail("Hauteur de la colonne(moyenne)"),
+                ElementsDetail("Nombre de barre/colonnes"),
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Poutre en B.A",
             arrayListOf(
-                ElementsDetailData("Mettre linéaire de la poutre"),
-                ElementsDetailData("Section de la poutre"),
-                ElementsDetailData("Perimètre de la section"),
-                ElementsDetailData("Nombre d'étrier/poutre"),
-                ElementsDetailData("Nombre de barre/poutre"),
-                ElementsDetailData("Volume total du béton"),
+                ElementsDetail("Mettre linéaire de la poutre"),
+                ElementsDetail("Section de la poutre"),
+                ElementsDetail("Perimètre de la section"),
+                ElementsDetail("Nombre d'étrier/poutre"),
+                ElementsDetail("Nombre de barre/poutre"),
+                ElementsDetail("Volume total du béton"),
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Maconnerie",
             arrayListOf(
-                ElementsDetailData("Mur"),
+                ElementsDetail("Mur"),
             ),
         ),
 )
 
 var LIST_GROUPED_ELEMENT_DATA_TOITURE= arrayListOf(
-        GroupedElementsData(
+        GroupedElements(
             "Couverture",
             arrayListOf(
-                ElementsDetailData("Surface à couvrir"),
+                ElementsDetail("Surface à couvrir"),
             ),
         ),
 )
 
 var LIST_GROUPED_ELEMENT_DATA_FINITION= arrayListOf(
-        GroupedElementsData(
+        GroupedElements(
             "Carrelage",
             arrayListOf(
-                ElementsDetailData("Carreaux (60*60)"),
-                ElementsDetailData("Carreaux anti-dépadant(30cm*30cm)"),
-                ElementsDetailData("Faiences(30cm*15cm)"),
+                ElementsDetail("Carreaux (60*60)"),
+                ElementsDetail("Carreaux anti-dépadant(30cm*30cm)"),
+                ElementsDetail("Faiences(30cm*15cm)"),
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Peinture",
             arrayListOf(
 
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Plafond",
             arrayListOf(
-                ElementsDetailData("Faux plafond et accessoires"),
+                ElementsDetail("Faux plafond et accessoires"),
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Enduit",
             arrayListOf(
 
@@ -135,94 +135,125 @@ var LIST_GROUPED_ELEMENT_DATA_FINITION= arrayListOf(
 )
 
 var LIST_GROUPED_ELEMENT_DATA_ELECTRICITE= arrayListOf(
-        GroupedElementsData(
+        GroupedElements(
             "Carrelage",
             arrayListOf(
-                ElementsDetailData("Lustre salon"),
-                ElementsDetailData("Lustre salle à manger"),
-                ElementsDetailData("Plafonnier encastré pour cuisine"),
-                ElementsDetailData("Spots encastrés"),
-                ElementsDetailData("Applique murale"),
-                ElementsDetailData("Plafonnier encastré pour salle d'eau"),
-                ElementsDetailData("Socket(generated)"),
-                ElementsDetailData("Interrupteur encastrée simple direction"),
-                ElementsDetailData("Interrupteur encastrée double direction"),
-                ElementsDetailData("Interrupteur bipolaire encastrée double direction"),
-                ElementsDetailData("Prises type poste de travail"),
-                ElementsDetailData("Prise encastrée avec terre"),
-                ElementsDetailData("Prises encastrée hermetique avec terre"),
-                ElementsDetailData("Prises encastrée télé"),
-                ElementsDetailData("Réseau d'alimentation des climatiseurs "),
-                ElementsDetailData("Réseau d'alimentation des prises"),
-                ElementsDetailData("Réseau d'alimentation des points limineux"),
-                ElementsDetailData("Tableau divisionnaire et accessoire"),
-                ElementsDetailData("Carreaux anti-dépadant(30cm*30cm)"),
+                ElementsDetail("Lustre salon"),
+                ElementsDetail("Lustre salle à manger"),
+                ElementsDetail("Plafonnier encastré pour cuisine"),
+                ElementsDetail("Spots encastrés"),
+                ElementsDetail("Applique murale"),
+                ElementsDetail("Plafonnier encastré pour salle d'eau"),
+                ElementsDetail("Socket(generated)"),
+                ElementsDetail("Interrupteur encastrée simple direction"),
+                ElementsDetail("Interrupteur encastrée double direction"),
+                ElementsDetail("Interrupteur bipolaire encastrée double direction"),
+                ElementsDetail("Prises type poste de travail"),
+                ElementsDetail("Prise encastrée avec terre"),
+                ElementsDetail("Prises encastrée hermetique avec terre"),
+                ElementsDetail("Prises encastrée télé"),
+                ElementsDetail("Réseau d'alimentation des climatiseurs "),
+                ElementsDetail("Réseau d'alimentation des prises"),
+                ElementsDetail("Réseau d'alimentation des points limineux"),
+                ElementsDetail("Tableau divisionnaire et accessoire"),
+                ElementsDetail("Carreaux anti-dépadant(30cm*30cm)"),
         ),
     ),
 )
 var LIST_GROUPED_ELEMENT_DATA_MENUISERIE= arrayListOf(
-        GroupedElementsData(
+        GroupedElements(
             "Type portes",
             arrayListOf(
-                ElementsDetailData("80cm*250cm-Bois"),
-                ElementsDetailData("Porte (90cm*250cm-Bois)"),
-                ElementsDetailData("Porte d'entrée principale (300cm*250cm)-Métal"),
+                ElementsDetail("80cm*250cm-Bois"),
+                ElementsDetail("Porte (90cm*250cm-Bois)"),
+                ElementsDetail("Porte d'entrée principale (300cm*250cm)-Métal"),
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Type fenetre",
             arrayListOf(
 
-                ElementsDetailData("Fenêtre-type1(150cm*200cm-Métal)"),
-                ElementsDetailData("Fenêtre-type2(200cm*200cm-Métal)"),
-                ElementsDetailData("Fenêtre-salle à manger(1500cm*200cm)-Métal"),
+                ElementsDetail("Fenêtre-type1(150cm*200cm-Métal)"),
+                ElementsDetail("Fenêtre-type2(200cm*200cm-Métal)"),
+                ElementsDetail("Fenêtre-salle à manger(1500cm*200cm)-Métal"),
 
             ),
         ),
-        GroupedElementsData(
+        GroupedElements(
             "Type impostes",
             arrayListOf(
-                ElementsDetailData("Imposte(60cm*60cm)"),
+                ElementsDetail("Imposte(60cm*60cm)"),
             ),
         ),
 )
 
 var LIST_GROUPED_ELEMENT_DATA_PLOMBERIE= arrayListOf(
-    GroupedElementsData(
+    GroupedElements(
         "Materiaux",
         arrayListOf(
-            ElementsDetailData("Cuve"),
-            ElementsDetailData("Lave-main"),
-            ElementsDetailData("Evier"),
-            ElementsDetailData("Bac à douche"),
-            ElementsDetailData("Chambre de visites  pour eaux vannes"),
-            ElementsDetailData("Chambre de visites pour eaux usées"),
-            ElementsDetailData("Réseau d'évacuation pour eau vannes"),
-            ElementsDetailData("Réseau d'évacuation pour eau usées"),
-            ElementsDetailData("Réseau d'adduction pour eau pluviales"),
-            ElementsDetailData("Réseaux d'adduction pour eau potable"),
-            ElementsDetailData("Vanne d'isolement pour eau potables"),
-            ElementsDetailData("Robinet équerre pour eaux potables"),
-            ElementsDetailData("Fosse sceptique"),
+            ElementsDetail("Cuve"),
+            ElementsDetail("Lave-main"),
+            ElementsDetail("Evier"),
+            ElementsDetail("Bac à douche"),
+            ElementsDetail("Chambre de visites  pour eaux vannes"),
+            ElementsDetail("Chambre de visites pour eaux usées"),
+            ElementsDetail("Réseau d'évacuation pour eau vannes"),
+            ElementsDetail("Réseau d'évacuation pour eau usées"),
+            ElementsDetail("Réseau d'adduction pour eau pluviales"),
+            ElementsDetail("Réseaux d'adduction pour eau potable"),
+            ElementsDetail("Vanne d'isolement pour eau potables"),
+            ElementsDetail("Robinet équerre pour eaux potables"),
+            ElementsDetail("Fosse sceptique"),
         ),
     ),
 )
 
 var LIST_COMPOSANT = arrayListOf(
-    ComposantData("Matériel", "Description", R.drawable.composant_materiel, null, materiels =LIST_MATERIEL_ELEMENTS),
-    ComposantData("Fondation", "Description", R.drawable.composant_fondation,LIST_GROUPED_ELEMENT_DATA_FONDATION),
-    ComposantData("Elevation", "Description", R.drawable.composant_elevation, LIST_GROUPED_ELEMENT_DATA_ELEVATION),
-    ComposantData("Toiture", "Description", R.drawable.composant_toiture, LIST_GROUPED_ELEMENT_DATA_TOITURE),
-    ComposantData("Finition", "Description", R.drawable.composant_finition, LIST_GROUPED_ELEMENT_DATA_FINITION),
-    ComposantData("Electricité", "Description", R.drawable.composant_electricite, LIST_GROUPED_ELEMENT_DATA_ELECTRICITE),
-    ComposantData("Menuiserie", "Description", R.drawable.composant_menuiserie, LIST_GROUPED_ELEMENT_DATA_MENUISERIE),
-    ComposantData("Plomberie", "Description", R.drawable.composant_plomberie, LIST_GROUPED_ELEMENT_DATA_PLOMBERIE)
+    Composant("Materiel", "Description", R.drawable.composant_materiel, null, LIST_MATERIEL),
+    Composant("Fondation", "Description", R.drawable.composant_fondation,LIST_GROUPED_ELEMENT_DATA_FONDATION),
+    Composant("Elevation", "Description", R.drawable.composant_elevation, LIST_GROUPED_ELEMENT_DATA_ELEVATION),
+    Composant("Toiture", "Description", R.drawable.composant_toiture, LIST_GROUPED_ELEMENT_DATA_TOITURE),
+    Composant("Finition", "Description", R.drawable.composant_finition, LIST_GROUPED_ELEMENT_DATA_FINITION),
+    Composant("Electricité", "Description", R.drawable.composant_electricite, LIST_GROUPED_ELEMENT_DATA_ELECTRICITE),
+    Composant("Menuiserie", "Description", R.drawable.composant_menuiserie, LIST_GROUPED_ELEMENT_DATA_MENUISERIE),
+    Composant("Plomberie", "Description", R.drawable.composant_plomberie, LIST_GROUPED_ELEMENT_DATA_PLOMBERIE)
 )
 
+var LIST_COMPOSANT1 = arrayListOf(
+    Composant("Materiel", "Description", R.drawable.composant_materiel, null, LIST_MATERIEL),
+    Composant("Fondation", "Description", R.drawable.composant_fondation,LIST_GROUPED_ELEMENT_DATA_FONDATION),
+    Composant("Elevation", "Description", R.drawable.composant_elevation, LIST_GROUPED_ELEMENT_DATA_ELEVATION),
+    Composant("Toiture", "Description", R.drawable.composant_toiture, LIST_GROUPED_ELEMENT_DATA_TOITURE),
+    Composant("Finition", "Description", R.drawable.composant_finition, LIST_GROUPED_ELEMENT_DATA_FINITION),
+    Composant("Electricité", "Description", R.drawable.composant_electricite, LIST_GROUPED_ELEMENT_DATA_ELECTRICITE),
+    Composant("Menuiserie", "Description", R.drawable.composant_menuiserie, LIST_GROUPED_ELEMENT_DATA_MENUISERIE),
+    Composant("Plomberie", "Description", R.drawable.composant_plomberie, LIST_GROUPED_ELEMENT_DATA_PLOMBERIE)
+)
+
+var LIST_COMPOSANT2 = arrayListOf(
+    Composant("Materiel", "Description", R.drawable.composant_materiel, null, LIST_MATERIEL),
+    Composant("Fondation", "Description", R.drawable.composant_fondation,LIST_GROUPED_ELEMENT_DATA_FONDATION),
+    Composant("Elevation", "Description", R.drawable.composant_elevation, LIST_GROUPED_ELEMENT_DATA_ELEVATION),
+    Composant("Toiture", "Description", R.drawable.composant_toiture, LIST_GROUPED_ELEMENT_DATA_TOITURE),
+    Composant("Finition", "Description", R.drawable.composant_finition, LIST_GROUPED_ELEMENT_DATA_FINITION),
+    Composant("Electricité", "Description", R.drawable.composant_electricite, LIST_GROUPED_ELEMENT_DATA_ELECTRICITE),
+    Composant("Menuiserie", "Description", R.drawable.composant_menuiserie, LIST_GROUPED_ELEMENT_DATA_MENUISERIE),
+    Composant("Plomberie", "Description", R.drawable.composant_plomberie, LIST_GROUPED_ELEMENT_DATA_PLOMBERIE)
+)
+
+var LIST_COMPOSANT3 = arrayListOf(
+    Composant("Materiel", "Description", R.drawable.composant_materiel, null, LIST_MATERIEL),
+    Composant("Fondation", "Description", R.drawable.composant_fondation,LIST_GROUPED_ELEMENT_DATA_FONDATION),
+    Composant("Elevation", "Description", R.drawable.composant_elevation, LIST_GROUPED_ELEMENT_DATA_ELEVATION),
+    Composant("Toiture", "Description", R.drawable.composant_toiture, LIST_GROUPED_ELEMENT_DATA_TOITURE),
+    Composant("Finition", "Description", R.drawable.composant_finition, LIST_GROUPED_ELEMENT_DATA_FINITION),
+    Composant("Electricité", "Description", R.drawable.composant_electricite, LIST_GROUPED_ELEMENT_DATA_ELECTRICITE),
+    Composant("Menuiserie", "Description", R.drawable.composant_menuiserie, LIST_GROUPED_ELEMENT_DATA_MENUISERIE),
+    Composant("Plomberie", "Description", R.drawable.composant_plomberie, LIST_GROUPED_ELEMENT_DATA_PLOMBERIE)
+)
 
 var LIST_PROJECTS = listOf(
-    ProjectData("Projet Maison DMC", LIST_COMPOSANT ),
-    ProjectData("Projet Maison Aime", LIST_COMPOSANT),
-    ProjectData("Projet Maison Joel", LIST_COMPOSANT),
-    ProjectData("Projet Maison Espe", LIST_COMPOSANT),
+    ProjectData("Projet Maison DMC", LIST_COMPOSANT),
+    ProjectData("Projet Maison Aime", LIST_COMPOSANT1),
+    ProjectData("Projet Maison Joel", LIST_COMPOSANT2),
 )

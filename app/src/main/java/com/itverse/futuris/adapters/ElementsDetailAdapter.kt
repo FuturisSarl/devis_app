@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.ElementsDetailData
+import com.itverse.futuris.ElementsDetail
 import com.itverse.futuris.R
 
-class ElementsDetailAdapter(val context: Context, private var details: ArrayList<ElementsDetailData>): RecyclerView.Adapter<ElementsDetailAdapter.ViewHolder>() {
+class ElementsDetailAdapter(val context: Context, private var details: ArrayList<ElementsDetail>): RecyclerView.Adapter<ElementsDetailAdapter.ViewHolder>() {
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

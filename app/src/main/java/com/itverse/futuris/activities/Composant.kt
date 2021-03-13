@@ -24,6 +24,7 @@ class Composant : AppCompatActivity() {
         if (projectSelected != -1){
             setContentView(R.layout.activity_composant)
             composant_list.layoutManager = GridLayoutManager(this, 2)
+
             composant_list.adapter =
                 ComposantRecyclerAdapter(
                     this,

@@ -26,6 +26,7 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
         init {
             itemView.setOnClickListener {
                 val intent = Intent(context, Composant::class.java)
+                println("Project Selected: $projectPosition")
                 intent.putExtra(EXTRA_PROJECT_SELECTED, projectPosition)
                 context.startActivity(intent)
             }

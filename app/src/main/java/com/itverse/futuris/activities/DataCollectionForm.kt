@@ -22,7 +22,7 @@ class DataCollectionForm : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         composantSelected = intent.getIntExtra(EXTRA_COMPOSANT_SELECTED, COMPOSANT_NOT_SELECTED)
-        println("Index of composant selected position: $composantSelected")
+
         projectSelected = intent.getIntExtra(EXTRA_PROJECT_SELECTED, PROJECT_NOT_SELECTED)
 
         if (composantSelected == 0){

@@ -10,16 +10,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="title">Title</string>
-
-    <string name="materiels">Matériels</string>
-    <string name="fondation">Fondation</string>
-    <string name="elevation">Elevation</string>
-    <string name="toiture">Toiture</string>
-    <string name="finition">Finition</string>
-    <string name="electricite">Electricité</string>
-    <string name="menuiserie">Menuiserie</string>
-    <string name="plomberie">Plomberie</string>
+    <string name="title">Titre</string>
+    <string name="start">Commencer</string>
     <string name="title_activity_project">Projet</string>
-
+    <string name="project_name">Nom du projet</string>
 </resources>

@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.GroupedElementsData
+import com.itverse.futuris.GroupedElements
 import com.itverse.futuris.R
 
 /**
  *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
  */
 class GroupedElementsRecyclerAdapter(
-    var context: Context, private  val elements: ArrayList<GroupedElementsData>?): RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
+    var context: Context, private  val elements: ArrayList<GroupedElements>?): RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
