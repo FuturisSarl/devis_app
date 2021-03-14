@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.itverse.futuris">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.itverse.futuris">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -8,10 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.Settings"
+            android:label="@string/title_activity_settings">
+        </activity>
         <activity android:name=".activities.DataCollectionForm">
         </activity>
-        <activity android:name=".activities.CreateNewProject" android:noHistory="true">
+        <activity
+            android:name=".activities.CreateNewProject"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".activities.ProjectActivity"
@@ -25,11 +35,7 @@
         </activity>
         <activity android:name=".activities.Composant">
         </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
     </application>
+
 
 </manifest>
