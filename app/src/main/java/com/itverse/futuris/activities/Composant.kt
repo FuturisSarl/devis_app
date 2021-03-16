@@ -23,7 +23,7 @@ class Composant : AppCompatActivity() {
             if (isGranted) {
                 generateExcelFileTest(this)
             } else {
-                Toast.makeText(this, "Write access to storage is requried to generate the Excel file",
+                Toast.makeText(this, "Write access to storage is required to generate the Excel file",
                     Toast.LENGTH_SHORT).show()
             }
         }

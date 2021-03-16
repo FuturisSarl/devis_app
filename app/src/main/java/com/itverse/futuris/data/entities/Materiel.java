@@ -1,21 +1,18 @@
 package com.itverse.futuris.data.entities;
 
-import android.graphics.Bitmap;
-
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-public class Material {
+@Entity(tableName = "materiel_table")
+public class Materiel {
     @PrimaryKey(autoGenerate = true)
     public int materiel_ID;
     public String materiel_name;
     public int materiel_quantity;
-    public Bitmap material_image;
 
-    public Material(int materiel_ID, String materiel_name,
-                    int materiel_quantity, Bitmap material_image) {
+    public Materiel(int materiel_ID, String materiel_name,
+                    int materiel_quantity) {
         this.materiel_ID = materiel_ID;
         this.materiel_name = materiel_name;
         this.materiel_quantity = materiel_quantity;
-        this.material_image = material_image;
     }
 }

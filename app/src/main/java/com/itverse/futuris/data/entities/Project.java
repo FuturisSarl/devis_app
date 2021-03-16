@@ -11,7 +11,7 @@ import static androidx.room.ForeignKey.CASCADE;
         {@ForeignKey(entity = Composant.class, parentColumns = "composant_name",
                 childColumns = "composant_ID", onDelete = CASCADE, onUpdate = CASCADE)})
 public class Project {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public String project_Name;
     public String composant_ID;
 

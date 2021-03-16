@@ -3,15 +3,17 @@ package com.itverse.futuris.data.entities;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "groupedElement_table", foreignKeys = {
-        @ForeignKey(entity = Elements.class, parentColumns = "element_name",
+        @ForeignKey(entity = Element.class, parentColumns = "element_name",
                 childColumns = "element_ID", onUpdate = CASCADE, onDelete = CASCADE)
 })
 public class GroupedElements {
-    //Attributes fields
+
+    @PrimaryKey(autoGenerate = true)
     public String groupedElement_name;
     public String element_ID;
 
