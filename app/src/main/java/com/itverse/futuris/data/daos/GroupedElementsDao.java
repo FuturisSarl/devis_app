@@ -14,6 +14,6 @@ public interface GroupedElementsDao {
     @Delete
     void deleteGroupedElement(GroupedElements groupedElement);
     @Query("SELECT * FROM groupedElement_table WHERE groupedElement_name = :groupedElementsName ")
-    LiveData<GroupedElements> getGroupedElement(GroupedElements groupedElementsName);
+    LiveData<GroupedElements> getGroupedElement(String groupedElementsName);
 
 }

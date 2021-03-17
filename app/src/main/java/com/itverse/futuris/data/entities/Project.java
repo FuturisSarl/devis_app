@@ -11,12 +11,14 @@ import static androidx.room.ForeignKey.CASCADE;
         {@ForeignKey(entity = Composant.class, parentColumns = "composant_name",
                 childColumns = "composant_ID", onDelete = CASCADE, onUpdate = CASCADE)})
 public class Project {
-    @PrimaryKey(autoGenerate = true)
     public String project_Name;
     public String composant_ID;
+    @PrimaryKey(autoGenerate = true)
+    public int id;
 
-    public Project(@NonNull String project_Name, @NonNull String composant_ID) {
+    public Project(@NonNull String project_Name, @NonNull String composant_ID, int id) {
         this.project_Name = project_Name;
         this.composant_ID = composant_ID;
+        this.id = id;
     }
 }

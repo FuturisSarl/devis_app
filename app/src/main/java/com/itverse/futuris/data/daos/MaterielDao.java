@@ -14,5 +14,5 @@ public interface MaterielDao {
     @Delete
     void deleteMateriel(Materiel materiel);
     @Query("SELECT * FROM materiel_table WHERE materiel_name = :materielName")
-    LiveData<com.itverse.futuris.Materiel> getMateriel(Materiel materielName);
+    LiveData<Materiel> getMateriel(String materielName);
 }
