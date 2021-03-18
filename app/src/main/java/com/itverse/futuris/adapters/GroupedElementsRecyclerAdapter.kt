@@ -21,7 +21,6 @@ class GroupedElementsRecyclerAdapter(
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val groupedElementTitle: TextView = itemView.findViewById(R.id.grouped_element_title)
         val groupedElementsList: RecyclerView = itemView.findViewById(R.id.grouped_elements_list)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,12 +32,12 @@ class GroupedElementsRecyclerAdapter(
         val element = elements?.get(position)
         holder.groupedElementTitle.text = element!!.title
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
-
         holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.details)
     }
 
     override fun getItemCount(): Int {
         return elements?.size ?: 0
     }
+
 
 }

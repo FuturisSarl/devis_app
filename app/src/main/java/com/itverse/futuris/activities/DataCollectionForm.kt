@@ -10,6 +10,7 @@ import com.itverse.futuris.adapters.MaterielRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 import kotlinx.android.synthetic.main.activity_data_collection_form.*
 
+
 /**
  * This module implements a DataCollection activity that uses click to increment or decrement a given material.
  * Events are handled on the adapter: MaterielRecyclerAdapter
@@ -36,10 +37,18 @@ class DataCollectionForm : AppCompatActivity() {
         else{
             setContentView(R.layout.activity_data_collection_form)
             grouped_form.layoutManager = LinearLayoutManager(this)
-            grouped_form.adapter =
-                GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].elements)
+            val adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].elements)
+            grouped_form.adapter = adapter
 
+            action_save.setOnClickListener {
+                //TODO: Save collected data from the Array to the DB
+                //
+                println("Saved")
+                }
+                /*while (items!=0){
+                    (grouped_form.adapter as GroupedElementsRecyclerAdapter).item
+                    items--
+                }*/
         }
-
     }
 }

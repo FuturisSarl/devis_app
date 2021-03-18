@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.ElementsDetail
 import com.itverse.futuris.R
@@ -14,7 +16,15 @@ class ElementsDetailAdapter(val context: Context, private var details: ArrayList
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val itemDetailLabel: TextView = itemView.findViewById(R.id.item_detail_label)
-        //val itemDetailInput: TextInputEditText = itemView.findViewById(R.id.item_detail_input)
+        var itemDetailInput: AppCompatEditText = itemView.findViewById(R.id.item_detail_input)
+        var elementPosition: Int = 0
+
+        init {
+            itemDetailInput.doAfterTextChanged {
+                println("Data is: ${details[elementPosition].value} | Text: ${this.itemDetailInput.text}")
+                details[elementPosition].value = this.itemDetailInput.text.toString().toInt()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,6 +35,9 @@ class ElementsDetailAdapter(val context: Context, private var details: ArrayList
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val detail = details[position]
         holder.itemDetailLabel.text = detail.name
+        if (detail.value != null)
+            holder.itemDetailInput.setText(detail.value.toString())
+        holder.elementPosition = position
     }
 
     override fun getItemCount(): Int {

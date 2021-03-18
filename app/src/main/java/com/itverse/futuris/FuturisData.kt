@@ -24,6 +24,6 @@ class GroupedElements(
 
 class ElementsDetail(
     var name: String,
-    var inputUnit: String? = null, //Won't display unit if null
-    var inputValue: Int? = null, //TODO: Handle Double? Use Any as type on this declaration? [null for value not set]
+    var unit: String? = null, //Won't display unit if null
+    var value: Int? = null, //TODO: Handle Double? Use Any as type on this declaration? [null for value not set]
 ){}
