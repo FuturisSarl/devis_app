@@ -37,7 +37,7 @@ class DataCollectionForm : AppCompatActivity() {
         else{
             setContentView(R.layout.activity_data_collection_form)
             grouped_form.layoutManager = LinearLayoutManager(this)
-            val adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].elements)
+            val adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].groupedElements)
             grouped_form.adapter = adapter
 
             action_save.setOnClickListener {
