@@ -30,9 +30,9 @@ class GroupedElementsRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val element = elements?.get(position)
-        holder.groupedElementTitle.text = element!!.title
+        holder.groupedElementTitle.text = element!!.name
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
-        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.details)
+        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.elements)
     }
 
     override fun getItemCount(): Int {

@@ -1,5 +1,6 @@
 package com.itverse.futuris.adapters
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.itverse.futuris.R
  * This module implements MaterielRecyclerAdapter which allows collecting data from clicking on the item to increment or decrement its quantity
  */
 
-class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList<Materiel>):
+class MaterielRecyclerAdapter(val context: Context, private val materiels: ArrayList<Materiel>):
     RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -27,11 +28,6 @@ class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList
         var elementPosition: Int = 0
 
         init {
-            //Increase the quantity of the material on click
-            /*DataManager.projects.forEach{
-                print(it.composants[0].materiels)
-            }
-             */
             itemView.setOnClickListener {
                 materiels[elementPosition].number++
                 notifyDataSetChanged()
@@ -52,9 +48,11 @@ class MaterielRecyclerAdapter(context: Context, private val materiels: ArrayList
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val element = materiels[position]
+        val resources: Resources = context.resources
+        val resourceId = resources.getIdentifier(element.imageResource, "drawable", context.packageName);
         holder.elementName.text = element.name
         holder.elementNumber.text = element.number.toString()
-        holder.elementImg.setImageResource(element.imageResource)
+        holder.elementImg.setImageResource(resourceId)
         holder.elementPosition = position
     }
 

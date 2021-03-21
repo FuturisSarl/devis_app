@@ -1,25 +1,44 @@
+
 {
-  "templateID": "template_1",
-  "materials": [
-    "Brouette",
-    "Equerre",
-    "Ficelle",
-    "Fut",
-    "Gamatte",
-    "Machette",
-    "Marteau-tenaille",
-    "Niveau d'eau",
-    "Pelle",
-    "Pioche",
-    "Scie",
-    "Tenaille",
-    "Truelle",
-    "Tyrolienne"
-  ],
-  "Composants": [
+  "name": "template_1",
+  "composants": [
+    {
+      "name": "Materiel",
+      "description": "Description",
+      "imageResource": "composant_materiel",
+      "materials": [
+        {"name":"Brouette",
+          "imageResource": "element_brouette"},
+        {"name": "Equerre",
+          "imageResource": "element_equerre"},
+        {"name": "Ficelle",
+          "imageResource": "element_ficelle"},
+        {"name": "Fut",
+          "imageResource": "element_fut"},
+        {"name": "Gamatte",
+          "imageResource": "element_gamatte"},
+        {"name": "Machette",
+          "imageResource": "element_machette"},
+        {"name": "Marteau-tenail",
+          "imageResource": "element_marteau_tenaille"},
+        {"name": "Niveau d'eau",
+          "imageResource": "element_niveau_eau"},
+        {"name": "Pelle",
+          "imageResource": "element_pelle"},
+        {"name": "Scie",
+          "imageResource": "element_scie"},
+        {"name": "Tenaille",
+          "imageResource": "element_tenaille"},
+        {"name": "Truelle",
+          "imageResource": "element_truelle"},
+        {"name": "Tyrolienne",
+          "imageResource": "element_tyrolienne"}
+      ]
+    },
     {
       "name": "Fondation",
       "description": "Description",
+      "imageResource": "composant_fondation",
       "groupedElements": [
         {
           "name": "Implantation",
@@ -67,6 +86,7 @@
     },
     {"name": "Elevation",
       "description": "description",
+      "imageResource": "composant_elevation",
       "groupedElements": [
         {
           "name": "Collones en B.A",
@@ -98,6 +118,7 @@
     },
     {"name": "Toiture",
       "description": "description",
+      "imageResource": "composant_toiture",
       "groupedElements": [
         {
           "name": "Couverture",
@@ -109,6 +130,7 @@
     },
     {"name": "Finition",
       "description": "description",
+      "imageResource": "composant_finition",
       "groupedElements": [
         {
           "name": "Carrelage",
@@ -138,6 +160,7 @@
     },
     {"name": "Electricité",
       "description": "description",
+      "imageResource": "composant_electricite",
       "groupedElements": [
         {
           "name": "Carrelage",
@@ -165,8 +188,10 @@
         }
       ]
     },
-    {"name": "Menuiserie",
+    {
+      "name": "Menuiserie",
       "description": "description",
+      "imageResource": "composant_menuiserie",
       "groupedElements": [
         {
           "name": "Type portes",
@@ -192,8 +217,10 @@
         }
       ]
     },
-    {"name": "Plomberie",
+    {
+      "name": "Plomberie",
       "description": "description",
+      "imageResource": "composant_plomberie",
       "groupedElements": [
         {
           "name": "Materiaux",

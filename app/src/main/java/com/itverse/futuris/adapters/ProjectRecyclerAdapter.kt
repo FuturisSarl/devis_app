@@ -12,6 +12,7 @@ import com.itverse.futuris.activities.Composant
 import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.ProjectData
 import com.itverse.futuris.R
+import com.itverse.futuris.utils.deserializer
 
 class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayList<ProjectData>):
     RecyclerView.Adapter<ProjectRecyclerAdapter.ViewHolder>() {

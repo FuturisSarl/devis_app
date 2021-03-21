@@ -2,6 +2,7 @@ package com.itverse.futuris.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,9 @@ class ComposantRecyclerAdapter(
         }
         else{
             val composant = composants[position]
-            holder.composantImg.setImageResource(composant.imageResource)
+            val resources: Resources = context.resources
+            val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
+            holder.composantImg.setImageResource(resourceId)
             holder.composantText.text = composant.name
             holder.composantSelected = position
         }

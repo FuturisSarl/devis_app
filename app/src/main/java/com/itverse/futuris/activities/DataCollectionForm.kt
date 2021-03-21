@@ -26,12 +26,15 @@ class DataCollectionForm : AppCompatActivity() {
 
         projectSelected = intent.getIntExtra(EXTRA_PROJECT_SELECTED, PROJECT_NOT_SELECTED)
 
+        //TODO: The condition should be the composant name to be material?
         if (composantSelected == 0){
             //Is material
             setContentView(R.layout.activity_composants_materiel)
             element_list.layoutManager = GridLayoutManager(this, 2)
+            println(
+                "Material selected: ${DataManager.projects[projectSelected].composants[composantSelected]}")
             element_list.adapter = MaterielRecyclerAdapter(
-                this, DataManager.projects[projectSelected].composants[composantSelected].materiels!!
+                this, DataManager.projects[projectSelected].composants[composantSelected].materials!!
             )
         }
         else{
@@ -42,7 +45,6 @@ class DataCollectionForm : AppCompatActivity() {
 
             action_save.setOnClickListener {
                 //TODO: Save collected data from the Array to the DB
-                //
                 println("Saved")
                 }
                 /*while (items!=0){

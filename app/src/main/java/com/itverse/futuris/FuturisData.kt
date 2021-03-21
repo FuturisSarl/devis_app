@@ -7,19 +7,19 @@ data class ProjectData(
 data class Composant(
     var name: String,
     var description: String,
-    var imageResource: Int,
-    var groupedElements: ArrayList<GroupedElements>?,
-    var materiels: ArrayList<Materiel>? = null
+    var imageResource: String,
+    var groupedElements: ArrayList<GroupedElements>? = null,
+    var materials: ArrayList<Materiel>? = null
 ) {}
 
 data class Materiel (
     var name: String,
-    var imageResource: Int,
+    var imageResource: String,
     var number: Int = 0){}
 
 data class GroupedElements(
-    val title: String,
-    var details: ArrayList<ElementsDetail>,
+    val name: String,
+    var elements: ArrayList<ElementsDetail>,
 ){}
 
 data class ElementsDetail(
