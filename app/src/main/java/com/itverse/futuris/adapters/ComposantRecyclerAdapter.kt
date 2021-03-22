@@ -31,7 +31,7 @@ class ComposantRecyclerAdapter(
 
         init {
             itemView.setOnClickListener{
-                var intent: Intent = Intent(context, DataCollectionForm::class.java)
+                var intent = Intent(context, DataCollectionForm::class.java)
                 intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
                 intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
                 context.startActivity(intent)
@@ -45,20 +45,12 @@ class ComposantRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position == 0){
-            //Load materials
-            holder.composantImg.setImageResource(R.drawable.composant_materiel)
-            holder.composantText.text = "Materiels"
-            holder.composantSelected = position
-        }
-        else{
-            val composant = composants[position]
-            val resources: Resources = context.resources
-            val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
-            holder.composantImg.setImageResource(resourceId)
-            holder.composantText.text = composant.name
-            holder.composantSelected = position
-        }
+        val composant = composants[position]
+        val resources: Resources = context.resources
+        val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
+        holder.composantImg.setImageResource(resourceId)
+        holder.composantText.text = composant.name
+        holder.composantSelected = position
     }
 
     override fun getItemCount() = composants.size

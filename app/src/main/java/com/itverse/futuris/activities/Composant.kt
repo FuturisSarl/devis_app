@@ -7,13 +7,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.itverse.futuris.*
 import com.itverse.futuris.adapters.ComposantRecyclerAdapter
+import com.itverse.futuris.utils.generateExcelFileTest
 import kotlinx.android.synthetic.main.activity_composant.*
-import java.util.jar.Manifest
+
 
 class Composant : AppCompatActivity() {
     private  var projectSelected = PROJECT_NOT_SELECTED
@@ -21,7 +21,10 @@ class Composant : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                generateExcelFileTest(this)
+                //TODO: Clean up the code  :)
+                generateExcelFileTest(this, projectSelected)
+                Toast.makeText(this, "Exportation terminé avec success",
+                    Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Write access to storage is required to generate the Excel file",
                     Toast.LENGTH_SHORT).show()
@@ -50,8 +53,9 @@ class Composant : AppCompatActivity() {
                     projectSelected
                 )
         }
-        else{}
-
+        else{
+            //TODO: Display something when no project is found
+        }
 
     }
 
@@ -78,7 +82,9 @@ class Composant : AppCompatActivity() {
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED -> {
                 println("Already has permission!")
-                generateExcelFileTest(this)
+                generateExcelFileTest(this, projectSelected)
+                Toast.makeText(this, "Exportation terminé avec success",
+                    Toast.LENGTH_SHORT).show()
             }
             shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
                 println("Running shouldShowRequestPermissionRationale condition")
