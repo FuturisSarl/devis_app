@@ -25,7 +25,7 @@ class ProjectActivity : AppCompatActivity() {
         projectViewModel = ViewModelProvider(this).get(ProjectViewModel::class.java)
         project_list.layoutManager = GridLayoutManager(this,2)
 
-        // TEST: insert test data in DB
+        // TEST: inserting test data in DB
         insertDataToDatabase()
         if (DataManager.projects.isEmpty())
             loadProjects(this)
