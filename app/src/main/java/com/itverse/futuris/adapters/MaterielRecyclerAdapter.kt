@@ -6,18 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.DataManager
-import com.itverse.futuris.Materiel
 
 import com.itverse.futuris.R
+import com.itverse.futuris.data.entities.Materiel
+
 
 /**
  * This module implements MaterielRecyclerAdapter which allows collecting data from clicking on the item to increment or decrement its quantity
  */
 
-class MaterielRecyclerAdapter(val context: Context, private val materiels: ArrayList<Materiel>):
-    RecyclerView.Adapter<MaterielRecyclerAdapter.ViewHolder>() {
+class MaterielRecyclerAdapter(val context: Context):
+    ListAdapter<Materiel, MaterielRecyclerAdapter.ViewHolder>(MATERIEL_COMPATATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -29,12 +31,14 @@ class MaterielRecyclerAdapter(val context: Context, private val materiels: Array
 
         init {
             itemView.setOnClickListener {
-                materiels[elementPosition].number++
+                //TODO: Increment number for this material. UI is listeninng to DB changes, so we shouldn't need to notifyDataSetChanges
+                //materiels[elementPosition].number++
                 notifyDataSetChanged()
             }
             //TODO: Review UX of this approach
             itemView.setOnLongClickListener {
-                materiels[elementPosition].number--
+                //TODO: Increment number for this material. UI is listeninng to DB changes, so we shouldn't need to notifyDataSetChanges
+                //materiels[elementPosition].number--
                 notifyDataSetChanged()
                 return@setOnLongClickListener true
             }
@@ -47,16 +51,25 @@ class MaterielRecyclerAdapter(val context: Context, private val materiels: Array
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val element = materiels[position]
+        val element = getItem(position)
         val resources: Resources = context.resources
         val resourceId = resources.getIdentifier(element.imageResource, "drawable", context.packageName);
         holder.elementName.text = element.name
-        holder.elementNumber.text = element.number.toString()
+        holder.elementNumber.text = element.quantity.toString()
         holder.elementImg.setImageResource(resourceId)
         holder.elementPosition = position
     }
 
-    override fun getItemCount() = materiels.size
+    companion object {
+        private val MATERIEL_COMPATATOR = object : DiffUtil.ItemCallback<Materiel>() {
+            override fun areItemsTheSame(oldItem: Materiel, newItem: Materiel): Boolean {
+                return oldItem.id == newItem.id
+            }
 
+            override fun areContentsTheSame(oldItem: Materiel, newItem: Materiel): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
+    }
 
 }

@@ -7,16 +7,25 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.itverse.futuris.*
 import com.itverse.futuris.adapters.ComposantRecyclerAdapter
+import com.itverse.futuris.mViewModels.ComposantViewModel
+import com.itverse.futuris.mViewModels.ComposantViewModelFactory
+import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
+import com.itverse.futuris.utils.PROJECT_NOT_SELECTED
 import com.itverse.futuris.utils.generateExcelFileTest
 import kotlinx.android.synthetic.main.activity_composant.*
 
 
-class Composant : AppCompatActivity() {
+class ComposantActivity : AppCompatActivity() {
     private  var projectSelected = PROJECT_NOT_SELECTED
+    private val composantViewModel: ComposantViewModel by viewModels {
+        ComposantViewModelFactory((application as FuturisApplication).composantRepository)
+    }
+
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
@@ -39,17 +48,21 @@ class Composant : AppCompatActivity() {
             EXTRA_PROJECT_SELECTED,
             PROJECT_NOT_SELECTED
         )
+
         println("Index of project selected position: $projectSelected")
         if (projectSelected != -1){
             setContentView(R.layout.activity_composant)
+            val adapter =  ComposantRecyclerAdapter(this)
+
             composant_list.layoutManager = GridLayoutManager(this, 2)
 
-            composant_list.adapter =
-                ComposantRecyclerAdapter(
-                    this,
-                    DataManager.projects[projectSelected].composants,
-                    projectSelected
-                )
+            composantViewModel.allProjectComposants(projectSelected).observe(this) { composants ->
+                // Update the cached copy of the project in the adapter.
+                composants.let { adapter.submitList(it) }
+            }
+
+            composant_list.adapter = adapter
+
         }
         else{
             //TODO: Display something when no project is found

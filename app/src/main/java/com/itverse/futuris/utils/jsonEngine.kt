@@ -3,7 +3,6 @@ import com.google.gson.Gson
 
 import java.util.ArrayList
 import com.google.gson.reflect.TypeToken
-import com.itverse.futuris.ProjectData
 import java.io.File
 
 import android.content.Context
@@ -34,7 +33,7 @@ fun getJsonDataFromAssetNoContext(filename: String): String? {
     return jsonString
 }
 
-
+/*
 fun serializer(model: ArrayList<ProjectData>) {
     val gson = Gson()
     val jsonString = gson.toJson(model)
@@ -57,3 +56,5 @@ fun createProjectFromTemplate(context: Context, template_name: String): ProjectD
 
     return projectJSON
 }
+
+ */

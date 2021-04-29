@@ -10,10 +10,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.activities.Composant
-import com.itverse.futuris.EXTRA_PROJECT_SELECTED
+import com.itverse.futuris.activities.ComposantActivity
 import com.itverse.futuris.R
 import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
 
 
 class ProjectRecyclerAdapter(val context: Context):
@@ -28,7 +28,7 @@ class ProjectRecyclerAdapter(val context: Context):
         var projectPosition: Int = 0
         init {
             itemView.setOnClickListener {
-                val intent = Intent(context, Composant::class.java)
+                val intent = Intent(context, ComposantActivity::class.java)
                 println("Project Selected: $projectPosition")
                 intent.putExtra(EXTRA_PROJECT_SELECTED, projectPosition)
                 context.startActivity(intent)
@@ -42,7 +42,7 @@ class ProjectRecyclerAdapter(val context: Context):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val project = getItem(position)
-        holder.projectTitle.text = project.project_name
+        holder.projectTitle.text = project.name
         holder.projectImage.setImageResource(R.drawable.ic_project)
         holder.projectPosition = position
     }
@@ -54,7 +54,7 @@ class ProjectRecyclerAdapter(val context: Context):
             }
 
             override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean {
-                return oldItem.project_name == newItem.project_name
+                return oldItem.name == newItem.name
             }
         }
     }

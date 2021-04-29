@@ -17,6 +17,6 @@ interface ElementsDao {
     @get:Query("SELECT * FROM element_table")
     val allElements: LiveData<List<Element?>?>?
 
-    @Query("SELECT * FROM element_table WHERE element_name = :elementName")
-    fun getElementByName(elementName: String?): LiveData<Element?>?
+    @Query("SELECT * FROM element_table WHERE name = :name")
+    fun getElementByName(name: String?): LiveData<Element?>?
 }

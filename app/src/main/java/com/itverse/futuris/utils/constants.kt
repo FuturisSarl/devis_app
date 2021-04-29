@@ -1,4 +1,4 @@
-package com.itverse.futuris
+package com.itverse.futuris.utils
 
 const val EXTRA_COMPOSANT_SELECTED = "EXTRA_COMPOSANT_SELECTED"
 const val EXTRA_PROJECT_SELECTED = "EXTRA_PROJECT_SELECTED"

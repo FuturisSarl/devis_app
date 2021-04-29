@@ -7,22 +7,28 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.doAfterTextChanged
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.ElementsDetail
 import com.itverse.futuris.R
+import com.itverse.futuris.data.entities.Element
+import com.itverse.futuris.data.entities.Project
 
-class ElementsDetailAdapter(val context: Context, private var details: ArrayList<ElementsDetail>): RecyclerView.Adapter<ElementsDetailAdapter.ViewHolder>() {
+class ElementsDetailAdapter(val context: Context):
+    ListAdapter< Element,ElementsDetailAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
         val itemDetailLabel: TextView = itemView.findViewById(R.id.item_detail_label)
         var itemDetailInput: AppCompatEditText = itemView.findViewById(R.id.item_detail_input)
         var elementPosition: Int = 0
 
         init {
+            val item = getItem(elementPosition)
             itemDetailInput.doAfterTextChanged {
-                println("Data is: ${details[elementPosition].value} | Text: ${this.itemDetailInput.text}")
-                details[elementPosition].value = this.itemDetailInput.text.toString().toInt()
+                println("Data is: ${item.value} | Text: ${this.itemDetailInput.text}")
+                item.value = this.itemDetailInput.text.toString().toInt().toString()
             }
         }
     }
@@ -33,15 +39,23 @@ class ElementsDetailAdapter(val context: Context, private var details: ArrayList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val detail = details[position]
+        val detail = getItem(position)
         holder.itemDetailLabel.text = detail.name
         if (detail.value != null)
             holder.itemDetailInput.setText(detail.value.toString())
         holder.elementPosition = position
     }
 
-    override fun getItemCount(): Int {
-        return  details.size
+    companion object {
+        private val ELEMENT_COMPARATOR = object : DiffUtil.ItemCallback<Element>() {
+            override fun areItemsTheSame(oldItem: Element, newItem: Element): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Element, newItem: Element): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
     }
 
 }

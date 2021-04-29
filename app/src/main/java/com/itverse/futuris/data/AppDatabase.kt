@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.itverse.futuris.data.daos.ProjectDao
+import com.itverse.futuris.data.daos.*
 import com.itverse.futuris.data.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,14 +13,17 @@ import kotlinx.coroutines.launch
 
 
 @Database(
-    //entities = [Composant::class, Element::class, GroupedElements::class, Materiel::class, Project::class],
-    entities = [Project::class],
-    version = 1,
+    entities = [Composant::class, Element::class, GroupedElements::class, Materiel::class, Project::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     //Defining DAOs that work with the Database
     abstract fun projectDao(): ProjectDao
+    abstract fun composantDao(): ComposantDao
+    /*abstract fun elementsDao(): ElementsDao
+    abstract fun groupedElementsDao(): GroupedElementsDao
+    abstract fun materielDao(): MaterielDao*/
 
     companion object {
         @Volatile
@@ -60,7 +63,7 @@ abstract class AppDatabase : RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.projectDao())
+                        populateDatabase(database.projectDao(), database.composantDao())
                     }
                 }
             }
@@ -68,9 +71,10 @@ abstract class AppDatabase : RoomDatabase() {
 
         /**
          * Populate the database in a new coroutine.
-         * If you want to start with more words, just add them.
+         * Load test Data on dev
+         * TODO: only load production data on production
          */
-        suspend fun populateDatabase(projectDao: ProjectDao) {
+        suspend fun populateDatabase(projectDao: ProjectDao, composantDao: ComposantDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             projectDao.deleteAll()
@@ -81,6 +85,18 @@ abstract class AppDatabase : RoomDatabase() {
 
             project = Project("Project B", 2)
             projectDao.insert(project)
+
+            var composant = Composant(1, 1, "Composant 1", "Composant Description", "composant_materiel")
+            composantDao.insert(composant)
+
+            composant = Composant(2, 1, "Composant 2", "Composant Description", "composant_fondation")
+            composantDao.insert(composant)
+
+            composant = Composant(3, 2, "Composant 3", "Composant Description", "composant_materiel")
+            composantDao.insert(composant)
+
+            composant = Composant(4, 2, "Composant 4", "Composant Description", "composant_fondation")
+            composantDao.insert(composant)
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
-import com.itverse.futuris.data.AppDatabase
 import com.itverse.futuris.data.entities.Project
 import com.itverse.futuris.data.repositories.ProjectRepository
 import kotlinx.coroutines.launch

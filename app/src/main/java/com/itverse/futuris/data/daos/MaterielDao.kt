@@ -14,6 +14,6 @@ interface MaterielDao {
     @Delete
     fun deleteMateriel(materiel: Materiel?)
 
-    @Query("SELECT * FROM materiel_table WHERE materiel_name = :materielName")
-    fun getMateriel(materielName: String?): LiveData<Materiel?>?
+    @Query("SELECT * FROM materiel_table WHERE name = :name")
+    fun getMateriel(name: String?): LiveData<Materiel?>?
 }

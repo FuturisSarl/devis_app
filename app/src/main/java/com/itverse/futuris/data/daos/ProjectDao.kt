@@ -17,7 +17,7 @@ interface ProjectDao {
     @Query("DELETE FROM project_table")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM project_table WHERE project_name = :projectName")
+    @Query("SELECT * FROM project_table WHERE name = :projectName")
     fun get(projectName: String?): Project
     // The flow always holds/caches latest version of data. Notifies its observers when the
     // data has changed.

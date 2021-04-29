@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.GroupedElements
 import com.itverse.futuris.R
+import com.itverse.futuris.data.entities.GroupedElements
 
 /**
  *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
  */
-class GroupedElementsRecyclerAdapter(
-    var context: Context, private  val elements: ArrayList<GroupedElements>?): RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
+class GroupedElementsRecyclerAdapter(var context: Context):
+    ListAdapter<GroupedElements, GroupedElementsRecyclerAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -29,15 +31,23 @@ class GroupedElementsRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val element = elements?.get(position)
+        val element = getItem(position)
         holder.groupedElementTitle.text = element!!.name
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
-        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.elements)
-    }
-
-    override fun getItemCount(): Int {
-        return elements?.size ?: 0
+        //TODO: Link to live data for Elements
+        //holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.)
     }
 
 
+    companion object {
+        private val ELEMENT_COMPARATOR = object : DiffUtil.ItemCallback<GroupedElements>() {
+            override fun areItemsTheSame(oldItem: GroupedElements, newItem: GroupedElements): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: GroupedElements, newItem: GroupedElements): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
+    }
 }

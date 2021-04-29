@@ -7,20 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.Composant
-import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
-import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.R
 import com.itverse.futuris.activities.DataCollectionForm
+import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
 
-class ComposantRecyclerAdapter(
-    private val context: Context,
-    private val composants: ArrayList<Composant>,
-    private val projectSelected: Int
-):
-    RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
+class ComposantRecyclerAdapter(val context: Context):
+    ListAdapter<Composant, ComposantRecyclerAdapter.ViewHolder>(COMPOSANT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -33,7 +30,8 @@ class ComposantRecyclerAdapter(
             itemView.setOnClickListener{
                 var intent = Intent(context, DataCollectionForm::class.java)
                 intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
-                intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
+                // TODO: find a way to select the right material and groupedElement based on the project
+                //intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
                 context.startActivity(intent)
             }
         }
@@ -45,7 +43,7 @@ class ComposantRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val composant = composants[position]
+        val composant = getItem(position)
         val resources: Resources = context.resources
         val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
         holder.composantImg.setImageResource(resourceId)
@@ -53,6 +51,15 @@ class ComposantRecyclerAdapter(
         holder.composantSelected = position
     }
 
-    override fun getItemCount() = composants.size
+    companion object {
+        private val COMPOSANT_COMPARATOR = object : DiffUtil.ItemCallback<Composant>() {
+            override fun areItemsTheSame(oldItem: Composant, newItem: Composant): Boolean {
+                return oldItem.id == newItem.id
+            }
 
+            override fun areContentsTheSame(oldItem: Composant, newItem: Composant): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
+    }
 }

@@ -21,16 +21,11 @@ class ProjectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
-        //setSupportActionBar(findViewById(R.id.toolbar))
         val adapter = ProjectRecyclerAdapter(this)
         project_list.layoutManager = GridLayoutManager(this,2)
 
-        // Add an observer on the LiveData returned by getAlphabetizedWords.
-        // The onChanged() method fires when the observed data changes and the activity is
-        // in the foreground.
-
         projectViewModel.allProjects.observe(this) { projects ->
-            // Update the cached copy of the words in the adapter.
+            // Update the cached copy of the project in the adapter.
             projects.let { adapter.submitList(it) }
         }
 

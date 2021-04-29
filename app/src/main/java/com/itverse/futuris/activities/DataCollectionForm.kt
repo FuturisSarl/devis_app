@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.itverse.futuris.*
 import com.itverse.futuris.adapters.GroupedElementsRecyclerAdapter
 import com.itverse.futuris.adapters.MaterielRecyclerAdapter
+import com.itverse.futuris.utils.COMPOSANT_NOT_SELECTED
+import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
+import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
+import com.itverse.futuris.utils.PROJECT_NOT_SELECTED
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 import kotlinx.android.synthetic.main.activity_data_collection_form.*
 
@@ -31,17 +35,18 @@ class DataCollectionForm : AppCompatActivity() {
             //Is material
             setContentView(R.layout.activity_composants_materiel)
             element_list.layoutManager = GridLayoutManager(this, 2)
-            println(
-                "Material selected: ${DataManager.projects[projectSelected].composants[composantSelected]}")
-            element_list.adapter = MaterielRecyclerAdapter(
+
+            /*element_list.adapter = MaterielRecyclerAdapter(
                 this, DataManager.projects[projectSelected].composants[composantSelected].materials!!
             )
+
+             */
         }
         else{
             setContentView(R.layout.activity_data_collection_form)
             grouped_form.layoutManager = LinearLayoutManager(this)
-            val adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].groupedElements)
-            grouped_form.adapter = adapter
+            //val adapter = GroupedElementsRecyclerAdapter(this, DataManager.projects[projectSelected].composants[composantSelected].groupedElements)
+            //grouped_form.adapter = adapter
 
             action_save.setOnClickListener {
                 //TODO: Save collected data from the Array to the DB

@@ -1,22 +1,14 @@
 package com.itverse.futuris.data.entities
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
 
-@Entity(
-    tableName = "groupedElement_table",
-    foreignKeys = [ForeignKey(
-        entity = Element::class,
-        parentColumns = arrayOf("element_name"),
-        childColumns = arrayOf("element_ID"),
-        onUpdate = ForeignKey.CASCADE,
-        onDelete = ForeignKey.CASCADE
-    )],
-    indices = [Index(value = ["groupedElement_name"], unique = true)]
-)
+@Entity(tableName = "groupedElement_table")
 data class GroupedElements(
     @field:ColumnInfo
-    var groupedElement_name: String,
-    var element_ID: String,
+    var name: String,
+    var elementID: String,
     @field:PrimaryKey(autoGenerate = true)
     var id: Int
 )

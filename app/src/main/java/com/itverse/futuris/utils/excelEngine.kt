@@ -3,7 +3,6 @@ package com.itverse.futuris.utils
 import android.content.Context
 import android.os.Environment
 import android.widget.Toast
-import com.itverse.futuris.DataManager
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.xssf.usermodel.XSSFFont
 
@@ -19,11 +18,12 @@ import java.io.FileOutputStream
  * Generates an excel file using data of project with id `projectID`
  * Return: true on success, false on failure
  */
+
 fun generateExcelFileTest(context:Context, projectId: Int): Boolean {
 
     //TODO: put worksheet styling on a different function/module
 
-    val project = DataManager.projects[projectId]
+    /*val project = DataManager.projects[projectId]
     val timestamp = System.currentTimeMillis()
 
     val workbook: Workbook = XSSFWorkbook()
@@ -78,8 +78,11 @@ fun generateExcelFileTest(context:Context, projectId: Int): Boolean {
     workbook.write(outputStream)
     workbook.close()
 
+
+     */
     return true
 }
+
 
 fun styleWorksheet(workbook: Workbook){
     val headerStyle = workbook.createCellStyle()

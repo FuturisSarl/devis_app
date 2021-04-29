@@ -14,6 +14,6 @@ interface GroupedElementsDao {
     @Delete
     fun deleteGroupedElement(groupedElement: GroupedElements?)
 
-    @Query("SELECT * FROM groupedElement_table WHERE groupedElement_name = :groupedElementsName ")
-    fun getGroupedElement(groupedElementsName: String?): LiveData<GroupedElements?>?
+    @Query("SELECT * FROM groupedElement_table WHERE name = :name ")
+    fun getGroupedElement(name: String?): LiveData<GroupedElements?>?
 }
