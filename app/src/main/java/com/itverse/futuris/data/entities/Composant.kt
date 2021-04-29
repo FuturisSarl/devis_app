@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey
     )],
     indices = [Index(value = ["composant_name"], unique = true)]
 )
-class Composant(
+data class Composant(
     var composant_name: String,
     var composant_description: String,
     var groupedElement_ID: String,

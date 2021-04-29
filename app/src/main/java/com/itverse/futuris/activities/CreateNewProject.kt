@@ -14,7 +14,6 @@ class CreateNewProject : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_project)
-        val database = AppDatabase.getDatabase(this)
 
         new_project.setOnClickListener{
             //Creating a new project loads data from a project template JSON file

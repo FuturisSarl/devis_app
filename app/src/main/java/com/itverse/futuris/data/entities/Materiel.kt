@@ -5,7 +5,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "materiel_table", indices = [Index(value = ["materiel_ID"], unique = true)])
-class Materiel(
+data class Materiel(
     var materiel_ID: Int,
     var materiel_name: String,
     var materiel_quantity: Int,

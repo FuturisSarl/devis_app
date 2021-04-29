@@ -6,20 +6,24 @@ import androidx.lifecycle.LiveData
 import com.itverse.futuris.data.AppDatabase.Companion.getDatabase
 import com.itverse.futuris.data.daos.ProjectDao
 import com.itverse.futuris.data.entities.Project
+import kotlinx.coroutines.flow.Flow
 
-class ProjectRepository internal constructor(application: Application?) {
-    private val mProjectDao: ProjectDao?
-    var allProjects: LiveData<List<Project?>?>?
+/**
+ * Abstracted Repository as promoted by the Architecture Guide.
+ * https://developer.android.com/topic/libraries/architecture/guide.html
+ */
+class ProjectRepository (private val projectDao: ProjectDao) {
 
-    init {
-        val database = getDatabase(application!!)
-        mProjectDao = database!!.mProjectDao()
-        allProjects = mProjectDao!!.getAllProjects()
-    }
+    // Room executes all queries on a separate thread.
+    // Observed Flow will notify the observer when the data has changed.
+    val allProjects: Flow<List<Project>> = projectDao.getAll()
 
+    // By default Room runs suspend queries off the main thread, therefore, we don't need to
+    // implement anything else to ensure we're not doing long running database work
+    // off the main thread.
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(project: Project) {
-        mProjectDao?.insertProject(project)
+        projectDao.insert(project)
     }
 }

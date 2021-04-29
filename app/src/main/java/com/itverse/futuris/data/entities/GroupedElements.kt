@@ -13,7 +13,7 @@ import androidx.room.*
     )],
     indices = [Index(value = ["groupedElement_name"], unique = true)]
 )
-class GroupedElements(
+data class GroupedElements(
     @field:ColumnInfo
     var groupedElement_name: String,
     var element_ID: String,

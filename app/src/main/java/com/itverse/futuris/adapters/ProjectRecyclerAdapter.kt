@@ -7,15 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.activities.Composant
 import com.itverse.futuris.EXTRA_PROJECT_SELECTED
-import com.itverse.futuris.ProjectData
 import com.itverse.futuris.R
-import com.itverse.futuris.utils.deserializer
+import com.itverse.futuris.data.entities.Project
 
-class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayList<ProjectData>):
-    RecyclerView.Adapter<ProjectRecyclerAdapter.ViewHolder>() {
+
+class ProjectRecyclerAdapter(val context: Context):
+    ListAdapter<Project, ProjectRecyclerAdapter.ViewHolder>(PROJECT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -39,13 +41,21 @@ class ProjectRecyclerAdapter(val context: Context, private val projects: ArrayLi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val project = projects[position]
-        holder.projectTitle.text = project.name
+        val project = getItem(position)
+        holder.projectTitle.text = project.project_name
         holder.projectImage.setImageResource(R.drawable.ic_project)
         holder.projectPosition = position
     }
 
-    override fun getItemCount(): Int {
-        return projects.size
+    companion object {
+        private val PROJECT_COMPARATOR = object : DiffUtil.ItemCallback<Project>() {
+            override fun areItemsTheSame(oldItem: Project, newItem: Project): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean {
+                return oldItem.project_name == newItem.project_name
+            }
+        }
     }
 }

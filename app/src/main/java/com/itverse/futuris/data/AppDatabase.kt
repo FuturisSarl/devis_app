@@ -7,61 +7,80 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.itverse.futuris.data.daos.ProjectDao
 import com.itverse.futuris.data.entities.*
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @Database(
-    entities = [Composant::class, Element::class, GroupedElements::class, Materiel::class, Project::class],
+    //entities = [Composant::class, Element::class, GroupedElements::class, Materiel::class, Project::class],
+    entities = [Project::class],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     //Defining DAOs that work with the Database
-    abstract fun mProjectDao(): ProjectDao?
+    abstract fun projectDao(): ProjectDao
 
     companion object {
+        @Volatile
         private var INSTANCE: AppDatabase? = null
-        private const val NUMBER_OF_THREADS = 4
-        val databaseWriteExecutor: ExecutorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS)
 
-        @JvmStatic
-        fun getDatabase(context: Context): AppDatabase? {
-            if (INSTANCE == null) {
-                synchronized(AppDatabase::class.java) {
-                    if (INSTANCE == null) {
-                        INSTANCE = Room.databaseBuilder(
-                            context.applicationContext,
-                            AppDatabase::class.java, "devis_app_database"
-                        )
-                            .fallbackToDestructiveMigration()
-                            .build()
+        fun getDatabase(
+            context: Context,
+            scope: CoroutineScope
+        ): AppDatabase {
+            // if the INSTANCE is not null, then return it,
+            // if it is, then create the database
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "devis_app_database"
+                )
+                    // Wipes and rebuilds instead of migrating if no Migration object.
+                    // TODO: Consider migrations
+                    .fallbackToDestructiveMigration()
+                    .addCallback(AppDatabaseCallback(scope))
+                    .build()
+                INSTANCE = instance
+                instance
+            }
+        }
+
+        private class AppDatabaseCallback(
+            private val scope: CoroutineScope
+        ) : RoomDatabase.Callback() {
+            /**
+             * Override the onCreate method to populate the database.
+             */
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                // TODO: If you want to keep the data through app restarts,
+                // comment out the following line.
+                INSTANCE?.let { database ->
+                    scope.launch(Dispatchers.IO) {
+                        populateDatabase(database.projectDao())
                     }
                 }
             }
-            return INSTANCE
         }
 
         /**
-         * Override the onCreate method to populate the database.
-         * For this sample, we clear the database every time it is created.
+         * Populate the database in a new coroutine.
+         * If you want to start with more words, just add them.
          */
-        private val sRoomDatabaseCallback: Callback = object : Callback() {
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-                databaseWriteExecutor.execute {
+        suspend fun populateDatabase(projectDao: ProjectDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            projectDao.deleteAll()
+            println("DB: prepopulate DB")
 
-                    // Populate the database in the background.
-                    // If you want to start with more words, just add them.
-                    println("DB: prepopulate DB")
-                    val dao: ProjectDao? = INSTANCE?.mProjectDao()
-                    //dao.deleteAll()
-                    var project: Project = Project("Hello", "composant1", 1)
-                    dao?.insertProject(project)
-                    project = Project("World", "composant2", 2)
-                    dao?.insertProject(project)
-                }
-            }
+            var project = Project("Project A", 1)
+            projectDao.insert(project)
+
+            project = Project("Project B", 2)
+            projectDao.insert(project)
         }
     }
 }

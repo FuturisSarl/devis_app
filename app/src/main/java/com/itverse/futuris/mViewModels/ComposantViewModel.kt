@@ -1,4 +1,4 @@
-package com.itverse.futuris.viewModels
+package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.ViewModel
 
