@@ -2,6 +2,7 @@ package com.itverse.futuris.data.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.itverse.futuris.data.entities.Composant
 import com.itverse.futuris.data.entities.Project
 import kotlinx.coroutines.flow.Flow
 
@@ -10,6 +11,9 @@ interface ProjectDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(project: Project?)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertProjectWithComposants(project: Project, composants: List<Composant>)
 
     @Delete
     fun delete(project: Project?)

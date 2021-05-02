@@ -21,7 +21,7 @@ class ComposantViewModel(private val repository: ComposantRepository): ViewModel
 
 class ComposantViewModelFactory(private val repository: ComposantRepository): ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProjectViewModel::class.java)){
+        if (modelClass.isAssignableFrom(ComposantViewModel::class.java)){
             @Suppress("UNCHECKED_CAST")
             return ComposantViewModel(repository) as T
         }

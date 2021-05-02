@@ -49,7 +49,6 @@ class ComposantActivity : AppCompatActivity() {
             PROJECT_NOT_SELECTED
         )
 
-        println("Index of project selected position: $projectSelected")
         if (projectSelected != -1){
             setContentView(R.layout.activity_composant)
             val adapter =  ComposantRecyclerAdapter(this)

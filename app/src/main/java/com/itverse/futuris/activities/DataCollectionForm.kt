@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itverse.futuris.*
-import com.itverse.futuris.adapters.GroupedElementsRecyclerAdapter
-import com.itverse.futuris.adapters.MaterielRecyclerAdapter
 import com.itverse.futuris.utils.COMPOSANT_NOT_SELECTED
 import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
 import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED

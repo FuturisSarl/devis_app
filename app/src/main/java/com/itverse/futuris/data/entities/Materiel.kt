@@ -9,6 +9,7 @@ data class Materiel(
     var name: String,
     var quantity: Int,
     var imageResource: String,
+    var composantId: Int,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int
+    var id: Int = 0
 )

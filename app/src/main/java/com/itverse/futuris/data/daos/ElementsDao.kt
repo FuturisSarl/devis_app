@@ -1,12 +1,10 @@
 package com.itverse.futuris.data.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.itverse.futuris.data.entities.Element
 
+@Dao
 interface ElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertElement(element: Element?)

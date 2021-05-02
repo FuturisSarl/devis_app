@@ -8,7 +8,7 @@ import androidx.room.ColumnInfo
 data class GroupedElements(
     @field:ColumnInfo
     var name: String,
-    var elementID: String,
+    var composantId: Int,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int
+    var id: Int = 0
 )

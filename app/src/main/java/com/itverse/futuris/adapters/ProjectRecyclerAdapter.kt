@@ -15,7 +15,6 @@ import com.itverse.futuris.R
 import com.itverse.futuris.data.entities.Project
 import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
 
-
 class ProjectRecyclerAdapter(val context: Context):
     ListAdapter<Project, ProjectRecyclerAdapter.ViewHolder>(PROJECT_COMPARATOR) {
 
@@ -25,12 +24,13 @@ class ProjectRecyclerAdapter(val context: Context):
 
         val projectTitle: TextView = itemView.findViewById(R.id.projectTitle)
         val projectImage: ImageView = itemView.findViewById(R.id.projectImage)
-        var projectPosition: Int = 0
+
+        var projectId: Int = 0
         init {
             itemView.setOnClickListener {
                 val intent = Intent(context, ComposantActivity::class.java)
-                println("Project Selected: $projectPosition")
-                intent.putExtra(EXTRA_PROJECT_SELECTED, projectPosition)
+                println("Project Selected: $projectId")
+                intent.putExtra(EXTRA_PROJECT_SELECTED, projectId)
                 context.startActivity(intent)
             }
         }
@@ -44,7 +44,7 @@ class ProjectRecyclerAdapter(val context: Context):
         val project = getItem(position)
         holder.projectTitle.text = project.name
         holder.projectImage.setImageResource(R.drawable.ic_project)
-        holder.projectPosition = position
+        holder.projectId = project.id
     }
 
     companion object {
