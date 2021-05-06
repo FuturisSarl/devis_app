@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.itverse.futuris.data.daos.*
 import com.itverse.futuris.data.entities.*
+import com.itverse.futuris.utils.PRE_POPULATE_DATABASE
 import com.itverse.futuris.utils.createProjectFromTemplate
 //import com.itverse.futuris.utils.PROJECT_TEMPLATE_NAME
 import kotlinx.coroutines.CoroutineScope
@@ -28,6 +29,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun materielDao(): MaterielDao
 
     companion object {
+
+        var TEST_MODE = false
+
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
@@ -38,17 +42,32 @@ abstract class AppDatabase : RoomDatabase() {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+                var instance : AppDatabase
+
+                if (TEST_MODE){
+                instance = Room.inMemoryDatabaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java,
-                    "devis_app_database"
+                    AppDatabase::class.java
                 )
                     // Wipes and rebuilds instead of migrating if no Migration object.
                     // TODO: Consider migrations
                     .fallbackToDestructiveMigration()
                     .addCallback(AppDatabaseCallback(scope, context))
                     .build()
-                INSTANCE = instance
+                INSTANCE = instance }
+                else{
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDatabase::class.java,
+                        "devis_app_database"
+                    )
+                        // Wipes and rebuilds instead of migrating if no Migration object.
+                        // TODO: Consider migrations
+                        .fallbackToDestructiveMigration()
+                        .addCallback(AppDatabaseCallback(scope, context))
+                        .build()
+                    INSTANCE = instance
+                }
                 instance
             }
         }
@@ -84,7 +103,8 @@ abstract class AppDatabase : RoomDatabase() {
          * Load test Data on dev
          * TODO: only load production data on production
          */
-        suspend fun populateDatabase(
+
+        fun populateDatabase(
             context: Context,
             projectDao: ProjectDao,
             composantDao: ComposantDao,
@@ -93,6 +113,10 @@ abstract class AppDatabase : RoomDatabase() {
         ) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
+
+            if (!PRE_POPULATE_DATABASE)
+                return
+
             projectDao.deleteAll()
 
             //TODO: Move template_1.json to constants: It's returning an error when importing, weird :)
@@ -100,6 +124,8 @@ abstract class AppDatabase : RoomDatabase() {
             createProjectFromTemplate(context, "template_1.json", "Project A", 1, projectDao, composantDao, groupedElementsDao, materielDao )
             createProjectFromTemplate(context, "template_1.json", "Project B", 2, projectDao, composantDao, groupedElementsDao, materielDao )
             createProjectFromTemplate(context, "template_1.json", "Project C", 3, projectDao, composantDao, groupedElementsDao, materielDao )
+
+
 
         }
     }

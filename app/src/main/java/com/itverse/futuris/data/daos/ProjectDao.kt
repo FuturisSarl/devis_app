@@ -10,16 +10,16 @@ import kotlinx.coroutines.flow.Flow
 interface ProjectDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(project: Project?)
+    fun insert(project: Project?)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertProjectWithComposants(project: Project, composants: List<Composant>)
+    fun insertProjectWithComposants(project: Project, composants: List<Composant>)
 
     @Delete
     fun delete(project: Project?)
 
     @Query("DELETE FROM project_table")
-    suspend fun deleteAll()
+    fun deleteAll()
 
     @Query("SELECT * FROM project_table WHERE name = :projectName")
     fun get(projectName: String?): Project
@@ -27,5 +27,10 @@ interface ProjectDao {
     // data has changed.
     @Query("SELECT * FROM project_table")
     fun getAll(): Flow<List<Project>>
+
+    @Query("SELECT * FROM project_table")
+    fun getAllList(): List<Project>
+
+
 
 }

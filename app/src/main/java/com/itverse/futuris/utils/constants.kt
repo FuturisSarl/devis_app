@@ -10,3 +10,5 @@ const val NEW_PROJECT_NOT_CREATED = -1
 
 //TODO: Make this dynamic
 const val PROJECT_TEMPLATE_NAME = "template_1.json"
+
+const val PRE_POPULATE_DATABASE = true
