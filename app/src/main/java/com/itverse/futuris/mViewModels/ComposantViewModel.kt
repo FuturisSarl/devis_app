@@ -9,7 +9,7 @@ import java.lang.IllegalArgumentException
 
 class ComposantViewModel(private val repository: ComposantRepository): ViewModel()  {
 
-    fun allProjectComposants(projectId: Int): LiveData<List<Composant>> {
+    fun allProjectComposants(projectId: Long): LiveData<List<Composant>> {
         return repository.allProjectComposants(projectId).asLiveData()
     }
 

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ComposantDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(composant: Composant)
+    fun insert(composant: Composant): Long
 
     @Delete
     fun delete(composant: Composant)
@@ -16,7 +16,7 @@ interface ComposantDao {
     // Returns all composants of project with id `projectId`
     @Transaction
     @Query("SELECT * FROM composant_table WHERE projectId = :projectId")
-    fun getAllFromProject(projectId: Int): Flow<List<Composant>>
+    fun getAllFromProject(projectId: Long): Flow<List<Composant>>
 
     //TODO: remove this query as it's not really useful :)
     @Query("SELECT * FROM composant_table")

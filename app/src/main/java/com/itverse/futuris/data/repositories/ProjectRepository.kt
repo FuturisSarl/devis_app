@@ -1,9 +1,6 @@
 package com.itverse.futuris.data.repositories
 
-import android.app.Application
 import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
-import com.itverse.futuris.data.AppDatabase.Companion.getDatabase
 import com.itverse.futuris.data.daos.ProjectDao
 import com.itverse.futuris.data.entities.Project
 import kotlinx.coroutines.flow.Flow

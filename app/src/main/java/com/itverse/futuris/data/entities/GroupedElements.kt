@@ -6,9 +6,9 @@ import androidx.room.ColumnInfo
 
 @Entity(tableName = "groupedElement_table")
 data class GroupedElements(
+    var composantId: Long,
     @field:ColumnInfo
     var name: String,
-    var composantId: Int,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
 )

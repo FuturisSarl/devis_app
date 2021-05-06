@@ -3,10 +3,7 @@ package com.itverse.futuris.data
 import android.content.Context
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
-import com.itverse.futuris.data.daos.ComposantDao
-import com.itverse.futuris.data.daos.GroupedElementsDao
-import com.itverse.futuris.data.daos.MaterielDao
-import com.itverse.futuris.data.daos.ProjectDao
+import com.itverse.futuris.data.daos.*
 import com.itverse.futuris.utils.createProjectFromTemplate
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -31,7 +28,8 @@ class AppDatabaseTest {
             appDatabase.projectDao(),
             appDatabase.composantDao(),
             appDatabase.groupedElementsDao(),
-            appDatabase.materielDao())
+            appDatabase.materielDao(),
+            appDatabase.elementsDao())
     }
 
     @After
@@ -50,20 +48,25 @@ class AppDatabaseTest {
      * Load test Data on dev
      * TODO: only load production data on production
      */
-    fun populateDatabase(
+    private fun populateDatabase(
         context: Context,
         projectDao: ProjectDao,
         composantDao: ComposantDao,
         groupedElementsDao: GroupedElementsDao,
-        materielDao: MaterielDao
+        materielDao: MaterielDao,
+        elementsDao: ElementsDao
     ) {
-
 
         //TODO: Move template_1.json to constants: It's returning an error when importing, weird :)
         //TODO: Get project ID generated when creating the project, and use it to create composants
-        createProjectFromTemplate(context, "template_1.json", "Project A", 1, projectDao, composantDao, groupedElementsDao, materielDao )
-        createProjectFromTemplate(context, "template_1.json", "Project B", 2, projectDao, composantDao, groupedElementsDao, materielDao )
-        createProjectFromTemplate(context, "template_1.json", "Project C", 3, projectDao, composantDao, groupedElementsDao, materielDao )
+        createProjectFromTemplate(context, "template_1.json", "Project A", 1, projectDao,
+            composantDao, groupedElementsDao, materielDao, elementsDao )
+
+        createProjectFromTemplate(context, "template_1.json", "Project B", 2, projectDao,
+            composantDao, groupedElementsDao, materielDao, elementsDao)
+
+        createProjectFromTemplate(context, "template_1.json", "Project C", 3, projectDao,
+            composantDao, groupedElementsDao, materielDao, elementsDao )
 
     }
 }

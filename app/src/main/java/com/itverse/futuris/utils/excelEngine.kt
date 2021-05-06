@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  * Return: true on success, false on failure
  */
 
-fun generateExcelFileTest(context:Context, projectId: Int): Boolean {
+fun generateExcelFileTest(context:Context, projectId: Long): Boolean {
 
     //TODO: put worksheet styling on a different function/module
 

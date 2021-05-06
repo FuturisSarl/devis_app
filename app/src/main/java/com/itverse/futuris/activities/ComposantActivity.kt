@@ -44,12 +44,12 @@ class ComposantActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         
         //setSupportActionBar(findViewById(R.id.composant_toolbar))
-        projectSelected = intent.getIntExtra(
+        projectSelected = intent.getLongExtra(
             EXTRA_PROJECT_SELECTED,
             PROJECT_NOT_SELECTED
         )
 
-        if (projectSelected != -1){
+        if (!projectSelected.equals(-1)){
             setContentView(R.layout.activity_composant)
             val adapter =  ComposantRecyclerAdapter(this)
 

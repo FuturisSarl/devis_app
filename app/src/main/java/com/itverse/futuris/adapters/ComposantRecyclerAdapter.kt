@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.R
 import com.itverse.futuris.activities.DataCollectionForm
 import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.utils.EXTRA_COMPOSANT_NAME
 import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
+import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
 
 class ComposantRecyclerAdapter(val context: Context):
     ListAdapter<Composant, ComposantRecyclerAdapter.ViewHolder>(COMPOSANT_COMPARATOR) {
@@ -24,14 +26,13 @@ class ComposantRecyclerAdapter(val context: Context):
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val composantImg: ImageView = itemView.findViewById(R.id.composantImg)
         val composantText: TextView = itemView.findViewById(R.id.composantText)
-        var composantSelected = 0
+        var composantSelected: Long = 0
 
         init {
             itemView.setOnClickListener{
                 var intent = Intent(context, DataCollectionForm::class.java)
                 intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
-                // TODO: find a way to select the right material and groupedElement based on the project
-                //intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
+                intent.putExtra(EXTRA_COMPOSANT_NAME, composantText.text)
                 context.startActivity(intent)
             }
         }
@@ -48,7 +49,7 @@ class ComposantRecyclerAdapter(val context: Context):
         val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
         holder.composantImg.setImageResource(resourceId)
         holder.composantText.text = composant.name
-        holder.composantSelected = position
+        holder.composantSelected = composant.id
     }
 
     companion object {

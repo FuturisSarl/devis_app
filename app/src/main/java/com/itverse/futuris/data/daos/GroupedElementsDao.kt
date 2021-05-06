@@ -7,11 +7,11 @@ import com.itverse.futuris.data.entities.GroupedElements
 @Dao
 interface GroupedElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertGroupedElement(groupedElement: GroupedElements?)
+    fun insert(groupedElement: GroupedElements?): Long
 
     @Delete
-    fun deleteGroupedElement(groupedElement: GroupedElements?)
+    fun delete(groupedElement: GroupedElements?)
 
     @Query("SELECT * FROM groupedElement_table WHERE name = :name ")
-    fun getGroupedElement(name: String?): LiveData<GroupedElements?>?
+    fun get(name: String?): LiveData<GroupedElements?>?
 }

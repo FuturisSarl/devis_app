@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "element_table")
 data class Element(
+    var GroupedElementId: Long,
     var name: String,
     var unit: String,
-    var value: String,
-    var GroupedElementId: Int,
+    var value: String? = null,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
 )

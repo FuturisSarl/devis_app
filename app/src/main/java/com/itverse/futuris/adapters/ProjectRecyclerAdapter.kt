@@ -2,6 +2,7 @@ package com.itverse.futuris.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,11 +26,12 @@ class ProjectRecyclerAdapter(val context: Context):
         val projectTitle: TextView = itemView.findViewById(R.id.projectTitle)
         val projectImage: ImageView = itemView.findViewById(R.id.projectImage)
 
-        var projectId: Int = 0
+        var projectId: Long = 0
         init {
             itemView.setOnClickListener {
+                Log.i("Project", "Project Selected: $projectId")
+
                 val intent = Intent(context, ComposantActivity::class.java)
-                println("Project Selected: $projectId")
                 intent.putExtra(EXTRA_PROJECT_SELECTED, projectId)
                 context.startActivity(intent)
             }

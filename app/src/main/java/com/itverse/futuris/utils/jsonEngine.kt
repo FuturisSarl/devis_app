@@ -2,23 +2,22 @@ package com.itverse.futuris.utils
 
 import android.content.Context
 import com.google.gson.Gson
-import com.itverse.futuris.data.daos.ComposantDao
-import com.itverse.futuris.data.daos.GroupedElementsDao
-import com.itverse.futuris.data.daos.MaterielDao
-import com.itverse.futuris.data.daos.ProjectDao
-import com.itverse.futuris.data.entities.Composant
-import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.daos.*
+import com.itverse.futuris.data.entities.*
 import java.io.IOException
 
 //TODO: Create similar function to create multiple projects. Use case: create project from an online backup
-fun createProjectFromTemplate(context: Context,
-                                      template_name: String,
-                                      projectName: String,
-                                      projectId: Int,
-                                      projectDao: ProjectDao,
-                                      composantDao: ComposantDao,
-                                      groupedElementsDao: GroupedElementsDao,
-                                      materielDao: MaterielDao)
+fun createProjectFromTemplate(
+    context: Context,
+    template_name: String,
+    projectName: String,
+    projectId: Long,
+    projectDao: ProjectDao,
+    composantDao: ComposantDao,
+    groupedElementsDao: GroupedElementsDao,
+    materielDao: MaterielDao,
+    elementsDao: ElementsDao
+)
 {
 
     val inputString = getJsonDataFromAsset(context, template_name)
@@ -26,12 +25,35 @@ fun createProjectFromTemplate(context: Context,
     val gson = Gson()
     val map = gson.fromJson(inputString, MutableMap::class.java)
     var project = Project(projectName)
+    projectDao.insert(project)
 
-    //TODO: create entries for GroupedElements and Materiel. Would need the id of composant created to set it on the composant foreign key
-    val composants: List<Composant> =
-        (map["composants"]!! as ArrayList<MutableMap<String, String>>).map { Composant(projectId, it["name"]!!, it["description"]!!, it["imageResource"]!!) }
+    var materiel: Materiel
+    var groupedElementId: Long
+    var composant: Composant
+    var composantId: Long
 
-    projectDao.insertProjectWithComposants(project, composants)
+    //TODO: Make this imbrication a recursive call, to be more concise and easy to read
+    (map["composants"]!! as ArrayList<MutableMap<String, String>>).forEach {
+
+        composant = Composant(projectId, it["name"]!!,  it["description"]!!, it["imageResource"]!!)
+        composantId = composantDao.insert(composant)
+        if (it["materials"] != null){
+            (it["materials"]!! as ArrayList<MutableMap<String,String>>).forEach { materiel ->
+                materielDao.insert(Materiel(composantId, materiel["name"]!!,materiel["imageResource"]!!))
+            }
+        }
+        else if(it["groupedElements"] != null) {
+            (it["groupedElements"]!! as ArrayList<MutableMap<String,String>>).forEach { groupedElement ->
+                groupedElementId = groupedElementsDao.insert(GroupedElements(composantId, groupedElement["name"]!!))
+                if (groupedElement["elements"] != null){
+                    (groupedElement["elements"]!! as ArrayList<MutableMap<String,String>>).forEach{ element ->
+                        elementsDao.insert(Element(groupedElementId, element["name"]!!,element["unit"]!!))
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 fun getJsonDataFromAsset(context: Context, fileName: String): String? {

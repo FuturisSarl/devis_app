@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class ComposantRepository (private val composantDao: ComposantDao){
 
-    fun allProjectComposants(projectId: Int): Flow<List<Composant>> {
+    fun allProjectComposants(projectId: Long): Flow<List<Composant>> {
         return composantDao.getAllFromProject(projectId)
     }
 

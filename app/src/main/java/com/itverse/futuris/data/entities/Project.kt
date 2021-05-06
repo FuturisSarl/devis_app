@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Project(
     var name: String,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
     )

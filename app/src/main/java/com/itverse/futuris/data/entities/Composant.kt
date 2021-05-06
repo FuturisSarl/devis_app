@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "composant_table")
 data class Composant(
-    var projectId: Int,
+    var projectId: Long,
     var name: String,
     var description: String,
     var imageResource: String,
     @field:PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
 )

@@ -7,10 +7,10 @@ import com.itverse.futuris.data.entities.Element
 @Dao
 interface ElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertElement(element: Element?)
+    fun insert(element: Element?)
 
     @Delete
-    fun deleteElement(element: Element?)
+    fun delete(element: Element?)
 
     @get:Query("SELECT * FROM element_table")
     val allElements: LiveData<List<Element?>?>?

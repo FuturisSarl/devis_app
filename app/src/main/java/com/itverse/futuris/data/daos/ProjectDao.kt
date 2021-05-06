@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface ProjectDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(project: Project?)
+    fun insert(project: Project?): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertProjectWithComposants(project: Project, composants: List<Composant>)

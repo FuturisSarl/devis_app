@@ -90,7 +90,8 @@ abstract class AppDatabase : RoomDatabase() {
                             database.projectDao(),
                             database.composantDao(),
                             database.groupedElementsDao(),
-                            database.materielDao()
+                            database.materielDao(),
+                            database.elementsDao()
                         )
 
                     }
@@ -109,7 +110,8 @@ abstract class AppDatabase : RoomDatabase() {
             projectDao: ProjectDao,
             composantDao: ComposantDao,
             groupedElementsDao: GroupedElementsDao,
-            materielDao: MaterielDao
+            materielDao: MaterielDao,
+            elementsDao: ElementsDao
         ) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
@@ -121,9 +123,14 @@ abstract class AppDatabase : RoomDatabase() {
 
             //TODO: Move template_1.json to constants: It's returning an error when importing, weird :)
             //TODO: Get project ID generated when creating the project, and use it to create composants
-            createProjectFromTemplate(context, "template_1.json", "Project A", 1, projectDao, composantDao, groupedElementsDao, materielDao )
-            createProjectFromTemplate(context, "template_1.json", "Project B", 2, projectDao, composantDao, groupedElementsDao, materielDao )
-            createProjectFromTemplate(context, "template_1.json", "Project C", 3, projectDao, composantDao, groupedElementsDao, materielDao )
+            createProjectFromTemplate(context, "template_1.json", "Project A", 1,
+                projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
+
+            createProjectFromTemplate(context, "template_1.json", "Project B", 2,
+                projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
+
+            createProjectFromTemplate(context, "template_1.json", "Project C", 3,
+                projectDao, composantDao, groupedElementsDao, materielDao,elementsDao )
 
 
 
