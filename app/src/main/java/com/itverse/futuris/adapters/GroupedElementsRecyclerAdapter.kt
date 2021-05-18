@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.R
 import com.itverse.futuris.data.entities.GroupedElements
+import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
 
 /**
  *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
  */
 class GroupedElementsRecyclerAdapter(var context: Context):
-    ListAdapter<GroupedElements, GroupedElementsRecyclerAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
+    ListAdapter<GroupedElementsWithElements, GroupedElementsRecyclerAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -31,22 +32,22 @@ class GroupedElementsRecyclerAdapter(var context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val element = getItem(position)
-        holder.groupedElementTitle.text = element!!.name
+        val item = getItem(position)
+        holder.groupedElementTitle.text = item.groupedElement.name
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
         //TODO: Link to live data for Elements
-        //holder.groupedElementsList.adapter = ElementsDetailAdapter(context, element.)
+        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, item.elements)
     }
 
 
     companion object {
-        private val ELEMENT_COMPARATOR = object : DiffUtil.ItemCallback<GroupedElements>() {
-            override fun areItemsTheSame(oldItem: GroupedElements, newItem: GroupedElements): Boolean {
-                return oldItem.id == newItem.id
+        private val ELEMENT_COMPARATOR = object : DiffUtil.ItemCallback<GroupedElementsWithElements>() {
+            override fun areItemsTheSame(oldItem: GroupedElementsWithElements, newItem: GroupedElementsWithElements): Boolean {
+                return oldItem.groupedElement.id == newItem.groupedElement.id
             }
 
-            override fun areContentsTheSame(oldItem: GroupedElements, newItem: GroupedElements): Boolean {
-                return oldItem.name == newItem.name
+            override fun areContentsTheSame(oldItem: GroupedElementsWithElements, newItem: GroupedElementsWithElements): Boolean {
+                return oldItem.groupedElement.name == newItem.groupedElement.name
             }
         }
     }

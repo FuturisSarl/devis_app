@@ -55,7 +55,7 @@ class ComposantActivity : AppCompatActivity() {
 
             composant_list.layoutManager = GridLayoutManager(this, 2)
 
-            composantViewModel.allProjectComposants(projectSelected).observe(this) { composants ->
+            composantViewModel.allComposantsFrom(projectSelected).observe(this) { composants ->
                 // Update the cached copy of the project in the adapter.
                 composants.let { adapter.submitList(it) }
             }

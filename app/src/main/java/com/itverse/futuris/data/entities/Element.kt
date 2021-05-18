@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "element_table")
 data class Element(
-    var GroupedElementId: Long,
+    var groupedElementId: Long,
     var name: String,
     var unit: String,
     var value: String? = null,

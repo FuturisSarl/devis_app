@@ -16,7 +16,7 @@ class CreateNewProject : AppCompatActivity() {
 
         new_project.setOnClickListener{
             //Creating a new project loads data from a project template JSON file
-            val projectName = project_name.text.toString()
+            //val projectName = project_name.text.toString()
             //val project = createProjectFromTemplate(this, PROJECT_TEMPLATE_NAME)
 
             /*if (project != null) {

@@ -10,7 +10,7 @@ import java.lang.IllegalArgumentException
 
 class MaterielViewModel (private val repository: MaterielRepository): ViewModel(){
 
-    fun allMateriels (composantId: Long): LiveData<List<Materiel>> {
+    fun allMaterielsFrom (composantId: Long): LiveData<List<Materiel>> {
         return repository.allMateriels(composantId).asLiveData()
     }
 
