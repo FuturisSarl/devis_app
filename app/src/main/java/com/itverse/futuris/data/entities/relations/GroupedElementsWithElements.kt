@@ -10,7 +10,7 @@ data class GroupedElementsWithElements(
     val groupedElement: GroupedElements,
     @Relation(
         parentColumn = "id",
-        entityColumn = "GroupedElementId"
+        entityColumn = "groupedElementId"
     )
     val elements: List<Element>
 )

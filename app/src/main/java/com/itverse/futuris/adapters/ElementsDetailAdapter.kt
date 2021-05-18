@@ -7,15 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.doAfterTextChanged
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.R
 import com.itverse.futuris.data.entities.Element
-import com.itverse.futuris.data.entities.Project
 
-class ElementsDetailAdapter(val context: Context):
-    ListAdapter< Element,ElementsDetailAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
+class ElementsDetailAdapter(val context: Context, private val elements: List<Element>): RecyclerView.Adapter<ElementsDetailAdapter.ViewHolder>() {
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -25,7 +21,7 @@ class ElementsDetailAdapter(val context: Context):
         var elementPosition: Int = 0
 
         init {
-            val item = getItem(elementPosition)
+            val item = elements[elementPosition]
             itemDetailInput.doAfterTextChanged {
                 println("Data is: ${item.value} | Text: ${this.itemDetailInput.text}")
                 item.value = this.itemDetailInput.text.toString().toInt().toString()
@@ -39,23 +35,15 @@ class ElementsDetailAdapter(val context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val detail = getItem(position)
+        val detail = elements[position]
         holder.itemDetailLabel.text = detail.name
         if (detail.value != null)
             holder.itemDetailInput.setText(detail.value.toString())
         holder.elementPosition = position
     }
 
-    companion object {
-        private val ELEMENT_COMPARATOR = object : DiffUtil.ItemCallback<Element>() {
-            override fun areItemsTheSame(oldItem: Element, newItem: Element): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Element, newItem: Element): Boolean {
-                return oldItem.name == newItem.name
-            }
-        }
+    override fun getItemCount(): Int {
+        return  elements.size
     }
 
 }

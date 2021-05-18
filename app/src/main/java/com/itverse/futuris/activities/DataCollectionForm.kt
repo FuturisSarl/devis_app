@@ -8,15 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.itverse.futuris.*
 import com.itverse.futuris.adapters.GroupedElementsRecyclerAdapter
 import com.itverse.futuris.adapters.MaterielRecyclerAdapter
-import com.itverse.futuris.adapters.ProjectRecyclerAdapter
-import com.itverse.futuris.mViewModels.MaterielViewModel
-import com.itverse.futuris.mViewModels.MaterielViewModelFactory
-import com.itverse.futuris.mViewModels.ProjectViewModel
-import com.itverse.futuris.mViewModels.ProjectViewModelFactory
+import com.itverse.futuris.mViewModels.*
 import com.itverse.futuris.utils.*
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 import kotlinx.android.synthetic.main.activity_data_collection_form.*
-import kotlinx.android.synthetic.main.content_activity_project.*
 
 
 /**
@@ -32,6 +27,10 @@ class DataCollectionForm : AppCompatActivity() {
         MaterielViewModelFactory((application as FuturisApplication).materielRepository)
     }
 
+    private val groupedElementsViewModel: GroupedElementsViewModel by viewModels {
+        GroupedElementsViewModelFactory((application as FuturisApplication).groupedElementsWithElementsRepository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         composantSelected = intent.getLongExtra(EXTRA_COMPOSANT_SELECTED, COMPOSANT_NOT_SELECTED)
@@ -43,9 +42,8 @@ class DataCollectionForm : AppCompatActivity() {
             setContentView(R.layout.activity_composants_materiel)
             val adapter = MaterielRecyclerAdapter(this)
             element_list.layoutManager = GridLayoutManager(this, 2)
-            materielViewModel.allMateriels(composantSelected).observe(this){
-                    materiels ->
-                materiels.let { adapter.submitList(it) }
+            materielViewModel.allMaterielsFrom(composantSelected).observe(this){
+                    it.let { adapter.submitList(it) }
             }
 
             element_list.adapter = adapter
@@ -56,9 +54,11 @@ class DataCollectionForm : AppCompatActivity() {
             val adapter = GroupedElementsRecyclerAdapter(this)
             grouped_form.layoutManager = LinearLayoutManager(this)
 
-            //TODO: setup viewModel here
+            groupedElementsViewModel.allGroupedElementsFrom(composantSelected).observe(this){
+                element ->
+                element.let { adapter.submitList(it) }
+            }
             grouped_form.adapter = adapter
-
             action_save.setOnClickListener {
                 //TODO: Save collected data from the Array to the DB
                 println("Saved")

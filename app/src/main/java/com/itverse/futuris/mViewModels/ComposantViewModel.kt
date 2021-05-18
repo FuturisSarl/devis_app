@@ -9,8 +9,8 @@ import java.lang.IllegalArgumentException
 
 class ComposantViewModel(private val repository: ComposantRepository): ViewModel()  {
 
-    fun allProjectComposants(projectId: Long): LiveData<List<Composant>> {
-        return repository.allProjectComposants(projectId).asLiveData()
+    fun allComposantsFrom(projectId: Long): LiveData<List<Composant>> {
+        return repository.allComposantsFrom(projectId).asLiveData()
     }
 
     fun insert(composant: Composant) = viewModelScope.launch {
