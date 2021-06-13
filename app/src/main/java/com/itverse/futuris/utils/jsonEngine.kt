@@ -7,7 +7,7 @@ import com.itverse.futuris.data.entities.*
 import java.io.IOException
 
 //TODO: Create similar function to create multiple projects. Use case: create project from an online backup
-fun createProjectFromTemplate(
+suspend fun createProjectFromTemplate(
     context: Context,
     template_name: String,
     projectName: String,

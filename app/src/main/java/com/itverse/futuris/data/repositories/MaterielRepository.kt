@@ -11,9 +11,15 @@ class MaterielRepository(private val marielDao: MaterielDao) {
         return marielDao.getAllFrom(composantId)
     }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
     suspend fun insert(materiel: Materiel) {
-        marielDao.insert(materiel)
+        return marielDao.insert(materiel)
+    }
+
+    suspend fun increment(materielId: Long) {
+        marielDao.increment(materielId)
+    }
+
+    suspend fun decrement(materielId: Long) {
+        marielDao.decrement(materielId)
     }
 }

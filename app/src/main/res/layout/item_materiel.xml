@@ -23,8 +23,6 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:onClick="increment"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.473"
@@ -38,7 +36,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/number_of_element"
-                android:onClick="increment"
                 android:text="TextView"
                 app:layout_constraintBottom_toTopOf="@+id/elementImg"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
-                android:onClick="increment"
 
                 app:layout_constraintEnd_toEndOf="@+id/elementImg"
                 app:layout_constraintStart_toStartOf="@+id/elementImg"

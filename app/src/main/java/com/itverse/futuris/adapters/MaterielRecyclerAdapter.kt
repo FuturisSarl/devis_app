@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.itverse.futuris.R
 import com.itverse.futuris.data.entities.Materiel
+import com.itverse.futuris.mViewModels.MaterielViewModel
 
 
 /**
  * This module implements MaterielRecyclerAdapter which allows collecting data from clicking on the item to increment or decrement its quantity
  */
 
-class MaterielRecyclerAdapter(val context: Context):
+class MaterielRecyclerAdapter(val context: Context, val materielViewModel: MaterielViewModel):
     ListAdapter<Materiel, MaterielRecyclerAdapter.ViewHolder>(MATERIEL_COMPATATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -28,17 +29,16 @@ class MaterielRecyclerAdapter(val context: Context):
         val elementName: TextView = itemView.findViewById(R.id.elementName)
         val elementNumber: TextView = itemView.findViewById(R.id.elementNumber)
         var elementPosition: Int = 0
+        var elementId: Long = 0
 
         init {
             itemView.setOnClickListener {
-                //TODO: Increment number for this material. UI is listeninng to DB changes, so we shouldn't need to notifyDataSetChanges
-                //materiels[elementPosition].number++
+                materielViewModel.increment(elementId)
                 notifyDataSetChanged()
             }
             //TODO: Review UX of this approach
             itemView.setOnLongClickListener {
-                //TODO: Increment number for this material. UI is listeninng to DB changes, so we shouldn't need to notifyDataSetChanges
-                //materiels[elementPosition].number--
+                materielViewModel.decrement(elementId)
                 notifyDataSetChanged()
                 return@setOnLongClickListener true
             }
@@ -58,6 +58,7 @@ class MaterielRecyclerAdapter(val context: Context):
         holder.elementNumber.text = element.quantity.toString()
         holder.elementImg.setImageResource(resourceId)
         holder.elementPosition = position
+        holder.elementId = element.id
     }
 
     companion object {

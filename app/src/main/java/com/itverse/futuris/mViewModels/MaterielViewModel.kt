@@ -17,6 +17,14 @@ class MaterielViewModel (private val repository: MaterielRepository): ViewModel(
     fun insert(materiel: Materiel) = viewModelScope.launch {
         repository.insert(materiel)
     }
+
+    fun increment(materielId: Long) = viewModelScope.launch{
+        repository.increment(materielId)
+    }
+
+    fun decrement(materielId: Long) = viewModelScope.launch{
+        repository.decrement(materielId)
+    }
 }
 
 
