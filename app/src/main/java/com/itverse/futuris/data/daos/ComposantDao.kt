@@ -1,6 +1,5 @@
 package com.itverse.futuris.data.daos
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.itverse.futuris.data.entities.Composant
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ComposantDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(composant: Composant): Long
+    suspend fun insert(composant: Composant): Long
 
     @Delete
     fun delete(composant: Composant)

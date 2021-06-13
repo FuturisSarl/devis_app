@@ -9,13 +9,16 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(element: Element)
+    suspend fun insert(element: Element)
 
     @Delete
-    fun delete(element: Element)
+    suspend fun delete(element: Element)
 
     @get:Query("SELECT * FROM element_table")
     val allElements: LiveData<List<Element>>
+
+    @Query("UPDATE element_table SET value = :value WHERE id = :elementId")
+    suspend fun updateQuantity(elementId: Long, value: Int): Int
 
     @Query("SELECT * FROM element_table WHERE name = :name")
     fun getElementByName(name: String): LiveData<Element>

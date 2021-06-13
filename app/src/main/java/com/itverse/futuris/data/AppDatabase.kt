@@ -24,7 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
     //Defining DAOs that work with the Database
     abstract fun projectDao(): ProjectDao
     abstract fun composantDao(): ComposantDao
-    abstract fun elementsDao(): ElementsDao
+    abstract fun elementDao(): ElementsDao
     abstract fun groupedElementsDao(): GroupedElementsDao
     abstract fun materielDao(): MaterielDao
 
@@ -42,7 +42,7 @@ abstract class AppDatabase : RoomDatabase() {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
-                var instance : AppDatabase
+                val instance : AppDatabase
 
                 if (TEST_MODE){
                 instance = Room.inMemoryDatabaseBuilder(
@@ -91,7 +91,7 @@ abstract class AppDatabase : RoomDatabase() {
                             database.composantDao(),
                             database.groupedElementsDao(),
                             database.materielDao(),
-                            database.elementsDao()
+                            database.elementDao()
                         )
 
                     }

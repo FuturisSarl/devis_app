@@ -2,10 +2,7 @@ package com.itverse.futuris
 
 import android.app.Application
 import com.itverse.futuris.data.AppDatabase
-import com.itverse.futuris.data.repositories.ComposantRepository
-import com.itverse.futuris.data.repositories.GroupedElementsWithElementsRepository
-import com.itverse.futuris.data.repositories.MaterielRepository
-import com.itverse.futuris.data.repositories.ProjectRepository
+import com.itverse.futuris.data.repositories.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
@@ -20,4 +17,5 @@ class FuturisApplication : Application() {
     val composantRepository by lazy { ComposantRepository(database.composantDao()) }
     val groupedElementsWithElementsRepository by lazy { GroupedElementsWithElementsRepository(database.groupedElementsDao()) }
     val materielRepository by lazy { MaterielRepository(database.materielDao()) }
+    val elementRepository by lazy { ElementRepository(database.elementDao()) }
 }

@@ -15,11 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
     >
-
-        <activity
-            android:name=".activities.Settings"
-            android:label="@string/title_activity_settings">
-        </activity>
         <activity android:name=".activities.DataCollectionForm">
         </activity>
         <activity

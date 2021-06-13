@@ -1,22 +1,25 @@
 package com.itverse.futuris.adapters
 
 import android.content.Context
+import android.util.ArrayMap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itverse.futuris.R
-import com.itverse.futuris.data.entities.GroupedElements
 import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
+import com.itverse.futuris.mViewModels.GroupedElementsViewModel
 
 /**
  *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
  */
-class GroupedElementsRecyclerAdapter(var context: Context):
+class GroupedElementsRecyclerAdapter(var context: Context, private var inMemoryElementChanges: HashMap<Long, Int>):
     ListAdapter<GroupedElementsWithElements, GroupedElementsRecyclerAdapter.ViewHolder>(ELEMENT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -35,8 +38,7 @@ class GroupedElementsRecyclerAdapter(var context: Context):
         val item = getItem(position)
         holder.groupedElementTitle.text = item.groupedElement.name
         holder.groupedElementsList.layoutManager = LinearLayoutManager(context)
-        //TODO: Link to live data for Elements
-        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, item.elements)
+        holder.groupedElementsList.adapter = ElementsDetailAdapter(context, item.elements, inMemoryElementChanges)
     }
 
 

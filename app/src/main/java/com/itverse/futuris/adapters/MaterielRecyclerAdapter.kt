@@ -53,7 +53,7 @@ class MaterielRecyclerAdapter(val context: Context, val materielViewModel: Mater
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val element = getItem(position)
         val resources: Resources = context.resources
-        val resourceId = resources.getIdentifier(element.imageResource, "drawable", context.packageName);
+        val resourceId = resources.getIdentifier(element.imageResource, "drawable", context.packageName)
         holder.elementName.text = element.name
         holder.elementNumber.text = element.quantity.toString()
         holder.elementImg.setImageResource(resourceId)

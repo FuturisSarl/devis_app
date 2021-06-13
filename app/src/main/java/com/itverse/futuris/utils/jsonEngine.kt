@@ -24,10 +24,9 @@ suspend fun createProjectFromTemplate(
 
     val gson = Gson()
     val map = gson.fromJson(inputString, MutableMap::class.java)
-    var project = Project(projectName)
+    val project = Project(projectName)
     projectDao.insert(project)
 
-    var materiel: Materiel
     var groupedElementId: Long
     var composant: Composant
     var composantId: Long
@@ -47,7 +46,7 @@ suspend fun createProjectFromTemplate(
                 groupedElementId = groupedElementsDao.insert(GroupedElements(composantId, groupedElement["name"]!!))
                 if (groupedElement["elements"] != null){
                     (groupedElement["elements"]!! as ArrayList<MutableMap<String,String>>).forEach{ element ->
-                        elementsDao.insert(Element(groupedElementId, element["name"]!!,element["unit"]!!))
+                        elementsDao.insert(Element(groupedElementId, element["name"]!!,element["unit"]!!, 0))
                     }
                 }
             }

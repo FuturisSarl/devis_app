@@ -1,9 +1,7 @@
 package com.itverse.futuris.data.daos
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.itverse.futuris.data.entities.Materiel
-import com.itverse.futuris.data.entities.Project
 import kotlinx.coroutines.flow.Flow
 
 @Dao

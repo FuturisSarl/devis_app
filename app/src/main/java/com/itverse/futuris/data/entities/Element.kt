@@ -8,7 +8,7 @@ data class Element(
     var groupedElementId: Long,
     var name: String,
     var unit: String,
-    var value: String? = null,
+    var value: Int,
     @field:PrimaryKey(autoGenerate = true)
     var id: Long = 0
 )

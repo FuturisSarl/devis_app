@@ -16,7 +16,6 @@ import com.itverse.futuris.activities.DataCollectionForm
 import com.itverse.futuris.data.entities.Composant
 import com.itverse.futuris.utils.EXTRA_COMPOSANT_NAME
 import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
-import com.itverse.futuris.utils.EXTRA_PROJECT_SELECTED
 
 class ComposantRecyclerAdapter(val context: Context):
     ListAdapter<Composant, ComposantRecyclerAdapter.ViewHolder>(COMPOSANT_COMPARATOR) {
@@ -30,7 +29,7 @@ class ComposantRecyclerAdapter(val context: Context):
 
         init {
             itemView.setOnClickListener{
-                var intent = Intent(context, DataCollectionForm::class.java)
+                val intent = Intent(context, DataCollectionForm::class.java)
                 intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
                 intent.putExtra(EXTRA_COMPOSANT_NAME, composantText.text)
                 context.startActivity(intent)
@@ -46,7 +45,7 @@ class ComposantRecyclerAdapter(val context: Context):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val composant = getItem(position)
         val resources: Resources = context.resources
-        val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
+        val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName)
         holder.composantImg.setImageResource(resourceId)
         holder.composantText.text = composant.name
         holder.composantSelected = composant.id

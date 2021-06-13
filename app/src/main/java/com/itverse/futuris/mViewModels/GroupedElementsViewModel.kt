@@ -12,11 +12,6 @@ class GroupedElementsViewModel(private val repository: GroupedElementsWithElemen
     fun allGroupedElementsFrom(composantId: Long): LiveData<List<GroupedElementsWithElements>> {
         return repository.allComposantsWithElementsFrom(composantId).asLiveData()
     }
-
-    // TODO: Implement data collection (Insert features)
-    //fun insert(composant: Composant) = viewModelScope.launch {
-    //    repository.insert(composant)
-    //}
 }
 
 
