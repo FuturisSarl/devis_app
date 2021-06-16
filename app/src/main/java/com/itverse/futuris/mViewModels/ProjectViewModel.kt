@@ -14,12 +14,14 @@ class ProjectViewModel (private val repository: ProjectRepository): ViewModel(){
     // - Repository is completely separated from the UI through the ViewModel.
     val allProjects: LiveData<List<Project>> = repository.allProjects.asLiveData()
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
-    fun insert(project: Project) = viewModelScope.launch {
-        repository.insert(project)
+
+    suspend fun insert(project: Project): Long {
+        return repository.insert(project)
     }
+
+    /*fun insert(project: Project) = viewModelScope.launch {
+        repository.insert(project)
+    }*/
 }
 
 

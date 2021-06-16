@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(element: Element)
+    suspend fun insert(element: Element): Long
 
     @Delete
     suspend fun delete(element: Element)

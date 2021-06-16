@@ -15,12 +15,7 @@ class ProjectRepository (private val projectDao: ProjectDao) {
     // Observed Flow will notify the observer when the data has changed.
     val allProjects: Flow<List<Project>> = projectDao.getAll()
 
-    // By default Room runs suspend queries off the main thread, therefore, we don't need to
-    // implement anything else to ensure we're not doing long running database work
-    // off the main thread.
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insert(project: Project) {
-        projectDao.insert(project)
+    suspend fun insert(project: Project): Long {
+        return projectDao.insert(project)
     }
 }

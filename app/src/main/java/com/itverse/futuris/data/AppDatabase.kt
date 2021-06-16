@@ -123,13 +123,13 @@ abstract class AppDatabase : RoomDatabase() {
 
             //TODO: Move template_1.json to constants: It's returning an error when importing, weird :)
             //TODO: Get project ID generated when creating the project, and use it to create composants
-            createProjectFromTemplate(context, "template_1.json", "Project A", 1,
+            createProjectFromTemplate(context, "Project A", 1,
                 projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
 
-            createProjectFromTemplate(context, "template_1.json", "Project B", 2,
+            createProjectFromTemplate(context, "template_1.json", 2,
                 projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
 
-            createProjectFromTemplate(context, "template_1.json", "Project C", 3,
+            createProjectFromTemplate(context, "Project C", 3,
                 projectDao, composantDao, groupedElementsDao, materielDao,elementsDao )
 
 

@@ -11,7 +11,7 @@ class MaterielRepository(private val marielDao: MaterielDao) {
         return marielDao.getAllFrom(composantId)
     }
 
-    suspend fun insert(materiel: Materiel) {
+    suspend fun insert(materiel: Materiel): Long {
         return marielDao.insert(materiel)
     }
 

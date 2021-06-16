@@ -2,9 +2,7 @@ package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
 import com.itverse.futuris.data.entities.Materiel
-import com.itverse.futuris.data.entities.Project
 import com.itverse.futuris.data.repositories.MaterielRepository
-import com.itverse.futuris.data.repositories.ProjectRepository
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
@@ -14,9 +12,16 @@ class MaterielViewModel (private val repository: MaterielRepository): ViewModel(
         return repository.allMateriels(composantId).asLiveData()
     }
 
-    fun insert(materiel: Materiel) = viewModelScope.launch {
+    suspend fun insert(materiel: Materiel): Long {
+        return repository.insert(materiel)
+    }
+
+    /*fun insert(materiel: Materiel) = viewModelScope.launch {
         repository.insert(materiel)
     }
+
+     */
+
 
     fun increment(materielId: Long) = viewModelScope.launch{
         repository.increment(materielId)

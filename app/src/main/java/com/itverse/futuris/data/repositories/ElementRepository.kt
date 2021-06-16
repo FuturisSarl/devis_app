@@ -16,8 +16,8 @@ class ElementRepository (private val elementsDao: ElementsDao){
     //    return elementsDao.getAllFrom(groupedElement)
     //}
 
-    suspend fun insert(element: Element) {
-        elementsDao.insert(element)
+    suspend fun insert(element: Element): Long {
+        return elementsDao.insert(element)
     }
 
     suspend fun update(elementId: Long, value: Int) {

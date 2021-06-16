@@ -2,6 +2,7 @@ package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
 import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.data.entities.Project
 import com.itverse.futuris.data.repositories.ComposantRepository
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
@@ -13,9 +14,12 @@ class ComposantViewModel(private val repository: ComposantRepository): ViewModel
         return repository.allComposantsFrom(projectId).asLiveData()
     }
 
-    fun insert(composant: Composant) = viewModelScope.launch {
-        repository.insert(composant)
+    suspend fun insert(composant: Composant): Long {
+        return repository.insert(composant)
     }
+    /*fun insert(composant: Composant) = viewModelScope.launch {
+        repository.insert(composant)
+    }*/
 }
 
 

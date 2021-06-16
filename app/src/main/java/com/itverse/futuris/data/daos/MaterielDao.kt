@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MaterielDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(materiel: Materiel)
+    suspend fun insert(materiel: Materiel): Long
 
     @Delete
     suspend fun delete(materiel: Materiel)

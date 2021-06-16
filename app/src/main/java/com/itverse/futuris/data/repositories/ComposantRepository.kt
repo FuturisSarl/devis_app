@@ -11,9 +11,7 @@ class ComposantRepository (private val composantDao: ComposantDao){
         return composantDao.getAllFromProject(projectId)
     }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insert(composant: Composant) {
-        composantDao.insert(composant)
+    suspend fun insert(composant: Composant): Long {
+        return composantDao.insert(composant)
     }
 }
