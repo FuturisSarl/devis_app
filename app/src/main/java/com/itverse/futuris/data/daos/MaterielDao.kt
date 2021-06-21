@@ -22,7 +22,10 @@ interface MaterielDao {
     suspend fun decrement(materielId: Long): Int
 
     @Query("SELECT * FROM materiel_table WHERE composantId = :composantId")
-    fun getAllFrom(composantId: Long): Flow<List<Materiel>>
+    fun getAllMaterielsFrom(composantId: Long): Flow<List<Materiel>>
+
+    @Query("SELECT * FROM materiel_table WHERE composantId = :composantId")
+    fun getAllMaterielsFrom_(composantId: Long): List<Materiel>
 
     @Query("SELECT * FROM materiel_table WHERE composantId = :composantId")
     suspend fun getAllListFrom(composantId: Long): List<Materiel>

@@ -3,6 +3,7 @@ package com.itverse.futuris.data.repositories
 import androidx.annotation.WorkerThread
 import com.itverse.futuris.data.daos.ProjectDao
 import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.entities.relations.ProjectWithComposants
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -17,5 +18,9 @@ class ProjectRepository (private val projectDao: ProjectDao) {
 
     suspend fun insert(project: Project): Long {
         return projectDao.insert(project)
+    }
+
+    suspend fun get(projectId: Long): Project{
+        return projectDao.get(projectId)
     }
 }

@@ -9,7 +9,11 @@ import java.lang.IllegalArgumentException
 class MaterielViewModel (private val repository: MaterielRepository): ViewModel(){
 
     fun allMaterielsFrom (composantId: Long): LiveData<List<Materiel>> {
-        return repository.allMateriels(composantId).asLiveData()
+        return repository.allMaterielsFrom(composantId).asLiveData()
+    }
+
+    fun allMaterielsFrom_ (composantId: Long): List<Materiel> {
+        return repository.allMaterielsFrom_(composantId)
     }
 
     suspend fun insert(materiel: Materiel): Long {

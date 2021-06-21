@@ -12,6 +12,10 @@ class GroupedElementsWithElementsRepository (private val groupedElementsDao: Gro
         return groupedElementsDao.getAllWithElementsFrom(composantId)
     }
 
+    fun allComposantsWithElementsFrom_(composantId: Long): List<GroupedElementsWithElements> {
+        return groupedElementsDao.getAllWithElementsFrom_(composantId)
+    }
+
     suspend fun insert(groupedElement: GroupedElements): Long {
         return groupedElementsDao.insert(groupedElement)
     }

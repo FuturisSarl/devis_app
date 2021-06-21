@@ -2,16 +2,20 @@ package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
 import com.itverse.futuris.data.entities.Composant
-import com.itverse.futuris.data.entities.Project
 import com.itverse.futuris.data.repositories.ComposantRepository
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import java.lang.IllegalArgumentException
 
 
 class ComposantViewModel(private val repository: ComposantRepository): ViewModel()  {
 
-    fun allComposantsFrom(projectId: Long): LiveData<List<Composant>> {
-        return repository.allComposantsFrom(projectId).asLiveData()
+    suspend fun allComposantsFrom(projectId: Long): Flow<List<Composant>> {
+        return repository.allComposantsFromProject(projectId)
+    }
+
+    suspend fun allComposantsFrom_(projectId: Long): List<Composant> {
+        return repository.allComposantsFromProject_(projectId)
     }
 
     suspend fun insert(composant: Composant): Long {

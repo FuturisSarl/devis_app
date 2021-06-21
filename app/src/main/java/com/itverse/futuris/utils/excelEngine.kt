@@ -1,6 +1,16 @@
 package com.itverse.futuris.utils
 
 import android.content.Context
+import android.util.Log
+import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.data.entities.Materiel
+import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
+import com.itverse.futuris.mViewModels.ComposantViewModel
+import com.itverse.futuris.mViewModels.GroupedElementsViewModel
+import com.itverse.futuris.mViewModels.MaterielViewModel
+import com.itverse.futuris.mViewModels.ProjectViewModel
+import kotlinx.coroutines.flow.*
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.xssf.usermodel.XSSFFont
 
@@ -12,11 +22,27 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  * Return: true on success, false on failure
  */
 
-fun generateExcelFileTest(context:Context, projectId: Long): Boolean {
+suspend fun generateExcelFileTest(
+    context:Context,
+    project: Project,
+    composants: List<Composant>,
+    groupedElements: ArrayList<List<GroupedElementsWithElements>>,
+    materiel: List<Materiel>
+): Boolean {
 
     //TODO: put worksheet styling on a different function/module
 
-    /*val project = DataManager.projects[projectId]
+    //var materiels = materielViewModel.allMaterielsFrom(project.id)
+    //Log.i("export", "Materiels: $materiels")
+
+    // TODO: Loop over grouped elements
+    //      If composant is materiel, fetch material and add on the spreadsheet
+    //      IF composant is a grouped element, fatch it and save on spreadsheet
+
+    //var materiels = materielViewModel.allMaterielsFrom(composantId)
+
+    //var elements = groupedElementsViewModel.allGroupedElementsFrom(composantId)
+    /*
     val timestamp = System.currentTimeMillis()
 
     val workbook: Workbook = XSSFWorkbook()

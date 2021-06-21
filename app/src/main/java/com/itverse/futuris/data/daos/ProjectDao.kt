@@ -3,6 +3,7 @@ package com.itverse.futuris.data.daos
 import androidx.room.*
 import com.itverse.futuris.data.entities.Composant
 import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.entities.relations.ProjectWithComposants
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,13 +18,12 @@ interface ProjectDao {
     @Delete
     suspend fun delete(project: Project?)
 
+    @Query("SELECT * FROM project_table WHERE id = :projectId")
+    suspend fun get(projectId: Long): Project
+
     @Query("DELETE FROM project_table")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM project_table WHERE name = :projectName")
-    suspend fun get(projectName: String?): Project
-    // The flow always holds/caches latest version of data. Notifies its observers when the
-    // data has changed.
     @Query("SELECT * FROM project_table")
     fun getAll(): Flow<List<Project>>
 

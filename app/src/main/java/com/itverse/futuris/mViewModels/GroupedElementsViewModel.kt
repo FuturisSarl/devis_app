@@ -5,6 +5,7 @@ import com.itverse.futuris.data.entities.Composant
 import com.itverse.futuris.data.entities.GroupedElements
 import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
 import com.itverse.futuris.data.repositories.GroupedElementsWithElementsRepository
+import kotlinx.coroutines.flow.Flow
 import java.lang.IllegalArgumentException
 
 
@@ -13,6 +14,10 @@ class GroupedElementsViewModel(private val repository: GroupedElementsWithElemen
 
     fun allGroupedElementsFrom(composantId: Long): LiveData<List<GroupedElementsWithElements>> {
         return repository.allComposantsWithElementsFrom(composantId).asLiveData()
+    }
+
+    fun allGroupedElementsFrom_(composantId: Long): List<GroupedElementsWithElements> {
+        return repository.allComposantsWithElementsFrom_(composantId)
     }
 
     suspend fun insert(groupedElements: GroupedElements): Long {

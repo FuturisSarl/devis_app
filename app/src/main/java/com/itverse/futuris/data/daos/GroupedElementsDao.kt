@@ -28,4 +28,10 @@ interface GroupedElementsDao {
     @Query("SELECT * FROM groupedElement_table WHERE composantId = :composantId")
     fun getAllWithElementsFrom(composantId: Long): Flow<List<GroupedElementsWithElements>>
 
+    //TODO: refactoring: remove the need of having duplicate function, one Flow and one without Flow. Curretly use to
+    // bypass the need of implementing async calls when exporting a project to an excel file
+    @Transaction
+    @Query("SELECT * FROM groupedElement_table WHERE composantId = :composantId")
+    fun getAllWithElementsFrom_(composantId: Long): List<GroupedElementsWithElements>
+
 }

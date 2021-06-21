@@ -12,10 +12,13 @@ interface ComposantDao {
     @Delete
     fun delete(composant: Composant)
 
-    // Returns all composants of project with id `projectId`
     @Transaction
     @Query("SELECT * FROM composant_table WHERE projectId = :projectId")
-    fun getAllFromProject(projectId: Long): Flow<List<Composant>>
+    fun getAllComposantsFromProject(projectId: Long): Flow<List<Composant>>
+
+    @Transaction
+    @Query("SELECT * FROM composant_table WHERE projectId = :projectId")
+    suspend fun getAllComposantsFromProject_(projectId: Long): List<Composant>
 
     //TODO: remove this query as it's not really useful :)
     @Query("SELECT * FROM composant_table")

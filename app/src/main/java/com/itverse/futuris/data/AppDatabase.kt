@@ -9,7 +9,6 @@ import com.itverse.futuris.data.daos.*
 import com.itverse.futuris.data.entities.*
 import com.itverse.futuris.utils.PRE_POPULATE_DATABASE
 import com.itverse.futuris.utils.createProjectFromTemplate
-//import com.itverse.futuris.utils.PROJECT_TEMPLATE_NAME
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -63,7 +62,7 @@ abstract class AppDatabase : RoomDatabase() {
                     )
                         // Wipes and rebuilds instead of migrating if no Migration object.
                         // TODO: Consider migrations
-                        .fallbackToDestructiveMigration()
+                        .fallbackToDestructiveMigration() // TODO: Shouldn't allow main thread queries. Make use of coroutine and async calls for DB queries
                         .addCallback(AppDatabaseCallback(scope, context))
                         .build()
                     INSTANCE = instance
@@ -123,16 +122,8 @@ abstract class AppDatabase : RoomDatabase() {
 
             //TODO: Move template_1.json to constants: It's returning an error when importing, weird :)
             //TODO: Get project ID generated when creating the project, and use it to create composants
-            createProjectFromTemplate(context, "Project A", 1,
+            createProjectFromTemplate(context, "Test project A", 1,
                 projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
-
-            createProjectFromTemplate(context, "template_1.json", 2,
-                projectDao, composantDao, groupedElementsDao, materielDao, elementsDao)
-
-            createProjectFromTemplate(context, "Project C", 3,
-                projectDao, composantDao, groupedElementsDao, materielDao,elementsDao )
-
-
 
         }
     }
