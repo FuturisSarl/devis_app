@@ -10,7 +10,7 @@ class MaterielRepository(private val marielDao: MaterielDao) {
         return marielDao.getAllMaterielsFrom(composantId)
     }
 
-    fun allMaterielsFrom_ (composantId: Long): List<Materiel> {
+    suspend fun allMaterielsFrom_ (composantId: Long): List<Materiel> {
         return marielDao.getAllMaterielsFrom_(composantId)
     }
 

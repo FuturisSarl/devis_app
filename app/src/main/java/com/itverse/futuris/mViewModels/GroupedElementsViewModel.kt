@@ -16,7 +16,7 @@ class GroupedElementsViewModel(private val repository: GroupedElementsWithElemen
         return repository.allComposantsWithElementsFrom(composantId).asLiveData()
     }
 
-    fun allGroupedElementsFrom_(composantId: Long): List<GroupedElementsWithElements> {
+    suspend fun allGroupedElementsFrom_(composantId: Long): List<GroupedElementsWithElements> {
         return repository.allComposantsWithElementsFrom_(composantId)
     }
 

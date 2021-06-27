@@ -32,6 +32,6 @@ interface GroupedElementsDao {
     // bypass the need of implementing async calls when exporting a project to an excel file
     @Transaction
     @Query("SELECT * FROM groupedElement_table WHERE composantId = :composantId")
-    fun getAllWithElementsFrom_(composantId: Long): List<GroupedElementsWithElements>
+    suspend fun getAllWithElementsFrom_(composantId: Long): List<GroupedElementsWithElements>
 
 }

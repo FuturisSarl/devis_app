@@ -3,7 +3,6 @@ package com.itverse.futuris.data.daos
 import androidx.room.*
 import com.itverse.futuris.data.entities.Composant
 import com.itverse.futuris.data.entities.Project
-import com.itverse.futuris.data.entities.relations.ProjectWithComposants
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -28,7 +27,7 @@ interface ProjectDao {
     fun getAll(): Flow<List<Project>>
 
     @Query("SELECT * FROM project_table")
-    suspend fun getAllList(): List<Project>
+    fun getAllList(): List<Project>
 
 
 

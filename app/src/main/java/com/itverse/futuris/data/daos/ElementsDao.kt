@@ -20,6 +20,6 @@ interface ElementsDao {
     @Query("UPDATE element_table SET value = :value WHERE id = :elementId")
     suspend fun updateQuantity(elementId: Long, value: Int): Int
 
-    @Query("SELECT * FROM element_table WHERE name = :name")
-    fun getElementByName(name: String): LiveData<Element>
+    //@Query("SELECT * FROM element_table WHERE name = :name")
+    //suspend fun getElementByName(name: String): LiveData<Element>
 }

@@ -10,7 +10,7 @@ interface ComposantDao {
     suspend fun insert(composant: Composant): Long
 
     @Delete
-    fun delete(composant: Composant)
+    suspend fun delete(composant: Composant)
 
     @Transaction
     @Query("SELECT * FROM composant_table WHERE projectId = :projectId")
@@ -20,7 +20,4 @@ interface ComposantDao {
     @Query("SELECT * FROM composant_table WHERE projectId = :projectId")
     suspend fun getAllComposantsFromProject_(projectId: Long): List<Composant>
 
-    //TODO: remove this query as it's not really useful :)
-    @Query("SELECT * FROM composant_table")
-    fun getAll(): Flow<List<Composant>>
 }

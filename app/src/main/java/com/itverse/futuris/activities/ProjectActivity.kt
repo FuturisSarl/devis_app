@@ -39,8 +39,6 @@ class ProjectActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        //val newProject: Int = intent.getIntExtra(EXTRA_NEW_PROJECT_CREATED, NEW_PROJECT_NOT_CREATED)
-
         //TODO: Only notify data change when a new project is created
         project_list.adapter?.notifyDataSetChanged()
     }

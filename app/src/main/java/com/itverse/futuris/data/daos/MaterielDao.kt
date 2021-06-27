@@ -25,7 +25,7 @@ interface MaterielDao {
     fun getAllMaterielsFrom(composantId: Long): Flow<List<Materiel>>
 
     @Query("SELECT * FROM materiel_table WHERE composantId = :composantId")
-    fun getAllMaterielsFrom_(composantId: Long): List<Materiel>
+    suspend fun getAllMaterielsFrom_(composantId: Long): List<Materiel>
 
     @Query("SELECT * FROM materiel_table WHERE composantId = :composantId")
     suspend fun getAllListFrom(composantId: Long): List<Materiel>

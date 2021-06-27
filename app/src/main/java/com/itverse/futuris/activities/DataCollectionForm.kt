@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itverse.futuris.*
@@ -13,6 +14,7 @@ import com.itverse.futuris.mViewModels.*
 import com.itverse.futuris.utils.*
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 import kotlinx.android.synthetic.main.activity_data_collection_form.*
+import kotlinx.coroutines.launch
 
 
 /**
@@ -45,43 +47,47 @@ class DataCollectionForm : AppCompatActivity() {
 
         //TODO: The condition should be the composant name to be material?
         // Material has a different UI to allow faster input of data
-        if (composantName == "Materiel"){
-            setContentView(R.layout.activity_composants_materiel)
-            val adapter = MaterielRecyclerAdapter(this, materielViewModel)
-            element_list.layoutManager = GridLayoutManager(this, 2)
-            materielViewModel.allMaterielsFrom(composantSelected).observe(this){
+        val context = this
+        lifecycleScope.launch{
+            if (composantName == "Materiel"){
+                setContentView(R.layout.activity_composants_materiel)
+                val adapter = MaterielRecyclerAdapter(context, materielViewModel)
+                element_list.layoutManager = GridLayoutManager(context, 2)
+                materielViewModel.allMaterielsFrom(composantSelected).observe(context){
                     it.let { adapter.submitList(it) }
-            }
-
-            element_list.adapter = adapter
-
-        }
-        else{
-            setContentView(R.layout.activity_data_collection_form)
-            val adapter = GroupedElementsRecyclerAdapter(this, inMemoryElementChanges)
-            grouped_form.layoutManager = LinearLayoutManager(this)
-
-            groupedElementsViewModel.allGroupedElementsFrom(composantSelected).observe(this){
-                element ->
-                element.let { adapter.submitList(it) }
-            }
-
-            grouped_form.adapter = adapter
-            action_save.setOnClickListener {
-                /*TODO:
-                       1. Get composant that have changed from inMemoryElementChanges
-                       2. Update the inputs that changed on the database
-                       3. Notify changes
-                     */
-                inMemoryElementChanges.entries.forEach {
-                    if (it.key != 0.toLong())
-                        elementViewModel.update(it.key, it.value)
-
-                    Log.i("save", "inMemoryComposantChanges: ${it.key} : ${it.value}")
                 }
 
+                element_list.adapter = adapter
+
+            }
+            else{
+                setContentView(R.layout.activity_data_collection_form)
+                val adapter = GroupedElementsRecyclerAdapter(context, inMemoryElementChanges)
+                grouped_form.layoutManager = LinearLayoutManager(context)
+
+                groupedElementsViewModel.allGroupedElementsFrom(composantSelected).observe(context){
+                        element ->
+                    element.let { adapter.submitList(it) }
                 }
+
+                grouped_form.adapter = adapter
+                action_save.setOnClickListener {
+                    /*TODO:
+                           1. Get composant that have changed from inMemoryElementChanges
+                           2. Update the inputs that changed on the database
+                           3. Notify changes
+                         */
+                    inMemoryElementChanges.entries.forEach {
+                        if (it.key != 0.toLong())
+                            elementViewModel.update(it.key, it.value)
+
+                        Log.i("save", "inMemoryComposantChanges: ${it.key} : ${it.value}")
+                    }
+
+                }
+            }
         }
+
 
     }
 }

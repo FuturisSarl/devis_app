@@ -1,9 +1,7 @@
 package com.itverse.futuris.data.repositories
 
-import androidx.annotation.WorkerThread
 import com.itverse.futuris.data.daos.ProjectDao
 import com.itverse.futuris.data.entities.Project
-import com.itverse.futuris.data.entities.relations.ProjectWithComposants
 import kotlinx.coroutines.flow.Flow
 
 /**
