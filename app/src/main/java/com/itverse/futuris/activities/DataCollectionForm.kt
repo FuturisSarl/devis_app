@@ -40,7 +40,7 @@ class DataCollectionForm : AppCompatActivity() {
         if (composantName == "Materiel"){
             //Is material
             setContentView(R.layout.activity_composants_materiel)
-            val adapter = MaterielRecyclerAdapter(this)
+            val adapter = MaterielRecyclerAdapter(this, materielViewModel)
             element_list.layoutManager = GridLayoutManager(this, 2)
             materielViewModel.allMaterielsFrom(composantSelected).observe(this){
                     it.let { adapter.submitList(it) }

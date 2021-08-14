@@ -105,7 +105,7 @@ abstract class AppDatabase : RoomDatabase() {
          * TODO: only load production data on production
          */
 
-        fun populateDatabase(
+        suspend fun populateDatabase(
             context: Context,
             projectDao: ProjectDao,
             composantDao: ComposantDao,
