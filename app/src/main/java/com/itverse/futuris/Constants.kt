@@ -7,6 +7,7 @@ const val EXTRA_NEW_PROJECT_CREATED = "EXTRA_NEW_PROJECT_CREATED" //Used to noti
 const val COMPOSANT_NOT_SELECTED = -1
 const val PROJECT_NOT_SELECTED = -1
 const val NEW_PROJECT_NOT_CREATED = -1
+const val IS_FIRST_TIME = true
 
 //TODO: Make this dynamic
 const val PROJECT_TEMPLATE_NAME = "template_1.json"

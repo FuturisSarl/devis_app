@@ -1,13 +1,9 @@
 package com.itverse.futuris
 
 import android.content.Context
-import android.content.pm.PackageManager
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import android.os.Environment
-import androidx.core.app.ActivityCompat
+import android.widget.Toast
 import com.itverse.futuris.utils.createProjectFromTemplate
-import java.util.jar.Manifest
 
 
 object DataManager {

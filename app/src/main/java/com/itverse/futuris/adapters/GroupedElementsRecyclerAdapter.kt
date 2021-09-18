@@ -14,11 +14,12 @@ import com.itverse.futuris.R
  *This module implements GroupedElementsRecyclerAdapter which allows displaying grouped data input
  */
 class GroupedElementsRecyclerAdapter(
-    var context: Context, private  val elements: ArrayList<GroupedElements>?): RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
+    var context: Context, private val elements: ArrayList<GroupedElements>?
+) : RecyclerView.Adapter<GroupedElementsRecyclerAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val groupedElementTitle: TextView = itemView.findViewById(R.id.grouped_element_title)
         val groupedElementsList: RecyclerView = itemView.findViewById(R.id.grouped_elements_list)
     }

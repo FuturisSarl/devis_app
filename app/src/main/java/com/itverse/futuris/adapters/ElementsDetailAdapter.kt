@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import com.itverse.futuris.ElementsDetail
 import com.itverse.futuris.R
 
@@ -16,13 +17,14 @@ class ElementsDetailAdapter(val context: Context, private var details: ArrayList
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val itemDetailLabel: TextView = itemView.findViewById(R.id.item_detail_label)
-        var itemDetailInput: AppCompatEditText = itemView.findViewById(R.id.item_detail_input)
+        var itemDetailInput: TextInputEditText = itemView.findViewById(R.id.item_detail_input)
         var elementPosition: Int = 0
 
         init {
             itemDetailInput.doAfterTextChanged {
-                println("Data is: ${details[elementPosition].value} | Text: ${this.itemDetailInput.text}")
-                details[elementPosition].value = this.itemDetailInput.text.toString().toInt()
+                println("Data is: ${details[elementPosition].value} | Text: ${this.itemDetailInput.text?.toString()}")
+                if (itemDetailInput.text.toString() != "")
+                    details[elementPosition].value = this.itemDetailInput.text.toString().toInt()
             }
         }
     }

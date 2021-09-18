@@ -6,10 +6,6 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.itverse.futuris.data.daos.ComposantDao;
-import com.itverse.futuris.data.daos.ElementsDao;
-import com.itverse.futuris.data.daos.GroupedElementsDao;
-import com.itverse.futuris.data.daos.MaterielDao;
 import com.itverse.futuris.data.daos.ProjectDao;
 import com.itverse.futuris.data.entities.Composant;
 import com.itverse.futuris.data.entities.Element;

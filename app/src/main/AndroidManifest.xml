@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.itverse.futuris">
+    package="com.itverse.futuris">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -21,12 +20,13 @@
         </activity>
         <activity
             android:name=".activities.CreateNewProject"
+            android:label="@string/new_project_screen"
             android:noHistory="true">
         </activity>
         <activity
             android:name=".activities.ProjectActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.General">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

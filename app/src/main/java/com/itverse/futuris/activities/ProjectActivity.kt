@@ -1,15 +1,14 @@
 package com.itverse.futuris.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.itverse.futuris.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.itverse.futuris.DataManager
+import com.itverse.futuris.R
 import com.itverse.futuris.adapters.ProjectRecyclerAdapter
-import com.itverse.futuris.utils.createProjectFromTemplate
+import com.itverse.futuris.loadProjects
 import kotlinx.android.synthetic.main.content_activity_project.*
 
 class ProjectActivity : AppCompatActivity() {
@@ -18,10 +17,11 @@ class ProjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
         //setSupportActionBar(findViewById(R.id.toolbar))
-
-        project_list.layoutManager = GridLayoutManager(this,2)
-
-        loadProjects(this)
+        project_list.layoutManager = GridLayoutManager(this, 2)
+        val isFirstTime = true
+        if (DataManager.projects.isEmpty()) {
+            loadProjects(this)
+        }
 
         project_list.adapter =
             ProjectRecyclerAdapter(

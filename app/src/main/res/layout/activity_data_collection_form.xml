@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,26 +8,36 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/linearLayout"
-                                                           android:layout_width="match_parent"
-                                                           android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/grouped_form"
-                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="48dp"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" tools:listitem="@layout/item_grouped_elements">
-            </androidx.recyclerview.widget.RecyclerView>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/item_grouped_elements" />
+
             <Button
                 android:id="@+id/action_save"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/save"
                 app:layout_constraintEnd_toEndOf="@+id/grouped_form"
-                app:layout_constraintStart_toStartOf="@+id/grouped_form" app:layout_constraintTop_toBottomOf="@+id/grouped_form"/>
+                app:layout_constraintStart_toStartOf="@+id/grouped_form"
+                app:layout_constraintTop_toBottomOf="@+id/grouped_form" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
