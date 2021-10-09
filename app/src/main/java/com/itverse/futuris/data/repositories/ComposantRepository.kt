@@ -7,13 +7,15 @@ import kotlinx.coroutines.flow.Flow
 
 class ComposantRepository (private val composantDao: ComposantDao){
 
-    fun allComposantsFrom(projectId: Long): Flow<List<Composant>> {
-        return composantDao.getAllFromProject(projectId)
+    fun allComposantsFromProject(projectId: Long): Flow<List<Composant>> {
+        return composantDao.getAllComposantsFromProject(projectId)
     }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insert(composant: Composant) {
-        composantDao.insert(composant)
+    suspend fun allComposantsFromProject_(projectId: Long): List<Composant> {
+        return composantDao.getAllComposantsFromProject_(projectId)
+    }
+
+    suspend fun insert(composant: Composant): Long {
+        return composantDao.insert(composant)
     }
 }

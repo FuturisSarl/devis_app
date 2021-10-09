@@ -3,18 +3,16 @@ package com.itverse.futuris.data.daos
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.itverse.futuris.data.entities.GroupedElements
-import com.itverse.futuris.data.entities.Materiel
-import com.itverse.futuris.data.entities.relations.ComposantWithGroupedElements
 import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GroupedElementsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(groupedElement: GroupedElements?): Long
+    suspend fun insert(groupedElement: GroupedElements?): Long
 
     @Delete
-    fun delete(groupedElement: GroupedElements?)
+    suspend fun delete(groupedElement: GroupedElements?)
 
     // TODO: Is this query important?
     // get an grouped element for a given name
@@ -29,5 +27,11 @@ interface GroupedElementsDao {
     @Transaction
     @Query("SELECT * FROM groupedElement_table WHERE composantId = :composantId")
     fun getAllWithElementsFrom(composantId: Long): Flow<List<GroupedElementsWithElements>>
+
+    //TODO: refactoring: remove the need of having duplicate function, one Flow and one without Flow. Curretly use to
+    // bypass the need of implementing async calls when exporting a project to an excel file
+    @Transaction
+    @Query("SELECT * FROM groupedElement_table WHERE composantId = :composantId")
+    suspend fun getAllWithElementsFrom_(composantId: Long): List<GroupedElementsWithElements>
 
 }

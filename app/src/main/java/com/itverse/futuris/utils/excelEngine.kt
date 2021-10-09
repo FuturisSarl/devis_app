@@ -1,23 +1,30 @@
 package com.itverse.futuris.utils
 
 import android.content.Context
+import android.net.Uri
+import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.data.entities.Materiel
+import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.xssf.usermodel.XSSFFont
-
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-
 
 /**
  * Generates an excel file using data of project with id `projectID`
  * Return: true on success, false on failure
  */
 
-fun generateExcelFileTest(context:Context, projectId: Long): Boolean {
+fun generateExcelFileTest(
+    context:Context,
+    project: Project,
+    composants: List<Composant>,
+    groupedElements: ArrayList<List<GroupedElementsWithElements>>,
+    materiel: List<Materiel>,
+    uri: Uri
+): Boolean {
 
     //TODO: put worksheet styling on a different function/module
-
-    /*val project = DataManager.projects[projectId]
-    val timestamp = System.currentTimeMillis()
 
     val workbook: Workbook = XSSFWorkbook()
 
@@ -25,54 +32,35 @@ fun generateExcelFileTest(context:Context, projectId: Long): Boolean {
 
     val header: Row = sheet.createRow(0)
 
-    var headerCell: Cell = header.createCell(0)
+    val headerCell: Cell = header.createCell(0)
     headerCell.setCellValue("Materials")
     
     var rowIndex = 1
-    var name: Cell
-    var value: Cell
-    var row: Row 
-    project.composants.forEachIndexed { index, composant ->
+    var row: Row
 
-        if(composant.groupedElements != null){
-            composant.groupedElements!!.forEach {
-                row = sheet.createRow(rowIndex)
-                name = row.createCell(0)
-                name.setCellValue(it.name)
-                rowIndex++
-                it.elements.forEach{ element ->
-                    row = sheet.createRow(rowIndex)
-                    name = row.createCell(0)
-                    name.setCellValue(element.name)
+    // Add project header
+    row = sheet.createRow(rowIndex)
+    rowIndex++
+    row.createCell(0).setCellValue("Project: ")
+    row.createCell(1).setCellValue(project.name)
 
-                    value = row.createCell(1)
-                    value.setCellValue(element.value.toString())
-                    rowIndex++
-                }
-            }
-        }
-        else if(composant.materials != null){
-            composant.materials!!.forEach{
-                row = sheet.createRow(rowIndex)
-                name = row.createCell(0)
-                name.setCellValue(it.name)
-                
-                value = row.createCell(1)
-                value.setCellValue(it.number.toString())
-                rowIndex++
-            }
-        }
+    row = sheet.createRow(rowIndex)
+    rowIndex++
+    row.createCell(0).setCellValue("Materiels ")
+
+    //Add Materials
+    materiel.forEachIndexed{ i, m ->
+        row = sheet.createRow(rowIndex)
+        row.createCell(0).setCellValue(m.name)
+        row.createCell(1).setCellValue(m.quantity.toDouble())
+        rowIndex++
     }
 
-    val path: File? = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
-    val file = File(path, "Devis-${project.name}-${timestamp}.xlsx")
+    val outputStream = context.contentResolver.openOutputStream(uri)
 
-    val outputStream = FileOutputStream(file)
     workbook.write(outputStream)
     workbook.close()
 
-
-     */
     return true
 }
 

@@ -1,8 +1,11 @@
 package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
+import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.data.entities.GroupedElements
 import com.itverse.futuris.data.entities.relations.GroupedElementsWithElements
 import com.itverse.futuris.data.repositories.GroupedElementsWithElementsRepository
+import kotlinx.coroutines.flow.Flow
 import java.lang.IllegalArgumentException
 
 
@@ -13,10 +16,13 @@ class GroupedElementsViewModel(private val repository: GroupedElementsWithElemen
         return repository.allComposantsWithElementsFrom(composantId).asLiveData()
     }
 
-    // TODO: Implement data collection (Insert features)
-    //fun insert(composant: Composant) = viewModelScope.launch {
-    //    repository.insert(composant)
-    //}
+    suspend fun allGroupedElementsFrom_(composantId: Long): List<GroupedElementsWithElements> {
+        return repository.allComposantsWithElementsFrom_(composantId)
+    }
+
+    suspend fun insert(groupedElements: GroupedElements): Long {
+        return repository.insert(groupedElements)
+    }
 }
 
 

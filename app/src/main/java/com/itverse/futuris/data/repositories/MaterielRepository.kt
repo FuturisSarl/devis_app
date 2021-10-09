@@ -1,17 +1,20 @@
 package com.itverse.futuris.data.repositories
 
-import androidx.annotation.WorkerThread
 import com.itverse.futuris.data.daos.MaterielDao
 import com.itverse.futuris.data.entities.Materiel
 import kotlinx.coroutines.flow.Flow
 
 class MaterielRepository(private val marielDao: MaterielDao) {
 
-    fun allMateriels (composantId: Long): Flow<List<Materiel>> {
-        return marielDao.getAllFrom(composantId)
+    fun allMaterielsFrom (composantId: Long): Flow<List<Materiel>> {
+        return marielDao.getAllMaterielsFrom(composantId)
     }
 
-    suspend fun insert(materiel: Materiel) {
+    suspend fun allMaterielsFrom_ (composantId: Long): List<Materiel> {
+        return marielDao.getAllMaterielsFrom_(composantId)
+    }
+
+    suspend fun insert(materiel: Materiel): Long {
         return marielDao.insert(materiel)
     }
 

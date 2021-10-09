@@ -2,7 +2,9 @@ package com.itverse.futuris.mViewModels
 
 import androidx.lifecycle.*
 import com.itverse.futuris.data.entities.Project
+import com.itverse.futuris.data.entities.relations.ProjectWithComposants
 import com.itverse.futuris.data.repositories.ProjectRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
@@ -14,12 +16,13 @@ class ProjectViewModel (private val repository: ProjectRepository): ViewModel(){
     // - Repository is completely separated from the UI through the ViewModel.
     val allProjects: LiveData<List<Project>> = repository.allProjects.asLiveData()
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
-    fun insert(project: Project) = viewModelScope.launch {
-        repository.insert(project)
+    suspend fun get(projectId: Long): Project {
+        return repository.get(projectId)
     }
+    suspend fun insert(project: Project): Long {
+        return repository.insert(project)
+    }
+
 }
 
 
