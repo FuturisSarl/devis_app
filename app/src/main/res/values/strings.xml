@@ -16,6 +16,7 @@
     <string name="title_activity_project">Projet</string>
     <string name="project_name">Nom du projet</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="number_of_element">0</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

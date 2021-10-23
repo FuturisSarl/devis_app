@@ -2,14 +2,19 @@ package com.itverse.futuris.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itverse.futuris.*
 import com.itverse.futuris.adapters.GroupedElementsRecyclerAdapter
 import com.itverse.futuris.adapters.MaterielRecyclerAdapter
+import com.itverse.futuris.mViewModels.*
+import com.itverse.futuris.utils.*
 import kotlinx.android.synthetic.main.activity_composants_materiel.*
 import kotlinx.android.synthetic.main.activity_data_collection_form.*
+import kotlinx.coroutines.launch
 
 
 /**
@@ -18,45 +23,71 @@ import kotlinx.android.synthetic.main.activity_data_collection_form.*
  */
 
 class DataCollectionForm : AppCompatActivity() {
-    private var composantSelected = COMPOSANT_NOT_SELECTED
-    private var projectSelected = PROJECT_NOT_SELECTED
+    private  var composantSelected = COMPOSANT_NOT_SELECTED
+    private lateinit var composantName: String
+    // Hashmap <ElementId, Element Quantity value>
+    private val inMemoryElementChanges: HashMap<Long, Int> = HashMap()
+
+    private val materielViewModel: MaterielViewModel by viewModels {
+        MaterielViewModelFactory((application as FuturisApplication).materielRepository)
+    }
+
+    private val groupedElementsViewModel: GroupedElementsViewModel by viewModels {
+        GroupedElementsViewModelFactory((application as FuturisApplication).groupedElementsWithElementsRepository)
+    }
+
+    private val elementViewModel: ElementViewModel by viewModels {
+        ElementViewModelFactory((application as FuturisApplication).elementRepository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        composantSelected = intent.getIntExtra(EXTRA_COMPOSANT_SELECTED, COMPOSANT_NOT_SELECTED)
-
-        projectSelected = intent.getIntExtra(EXTRA_PROJECT_SELECTED, PROJECT_NOT_SELECTED)
+        composantSelected = intent.getLongExtra(EXTRA_COMPOSANT_SELECTED, COMPOSANT_NOT_SELECTED)
+        composantName = intent.getStringExtra(EXTRA_COMPOSANT_NAME)!!
 
         //TODO: The condition should be the composant name to be material?
-        if (composantSelected == 0) {
-            //Is material
-            setContentView(R.layout.activity_composants_materiel)
-            element_list.layoutManager = GridLayoutManager(this, 2)
-            println(
-                "Material selected: ${DataManager.projects[projectSelected].composants[composantSelected]}"
-            )
-            element_list.adapter = MaterielRecyclerAdapter(
-                this,
-                DataManager.projects[projectSelected].composants[composantSelected].materials!!
-            )
-        } else {
-            setContentView(R.layout.activity_data_collection_form)
-            grouped_form.layoutManager = LinearLayoutManager(this)
-            val adapter = GroupedElementsRecyclerAdapter(
-                this,
-                DataManager.projects[projectSelected].composants[composantSelected].groupedElements
-            )
-            grouped_form.adapter = adapter
+        // Material has a different UI to allow faster input of data
+        val context = this
+        lifecycleScope.launch{
+            if (composantName == "Materiel"){
+                setContentView(R.layout.activity_composants_materiel)
+                val adapter = MaterielRecyclerAdapter(context, materielViewModel)
+                element_list.layoutManager = GridLayoutManager(context, 2)
+                materielViewModel.allMaterielsFrom(composantSelected).observe(context){
+                    it.let { adapter.submitList(it) }
+                }
 
-            action_save.setOnClickListener {
-                //TODO: Save collected data from the Array to the DB
-                Toast.makeText(this, "Save", Toast.LENGTH_SHORT).show()
-                finish()
+                element_list.adapter = adapter
+
             }
-            /*while (items!=0){
-                (grouped_form.adapter as GroupedElementsRecyclerAdapter).item
-                items--
-            }*/
+            else{
+                setContentView(R.layout.activity_data_collection_form)
+                val adapter = GroupedElementsRecyclerAdapter(context, inMemoryElementChanges)
+                grouped_form.layoutManager = LinearLayoutManager(context)
+
+                groupedElementsViewModel.allGroupedElementsFrom(composantSelected).observe(context){
+                        element ->
+                    element.let { adapter.submitList(it) }
+                }
+
+                grouped_form.adapter = adapter
+                action_save.setOnClickListener {
+                    /*TODO:
+                           1. Get composant that have changed from inMemoryElementChanges
+                           2. Update the inputs that changed on the database
+                           3. Notify changes
+                         */
+                    inMemoryElementChanges.entries.forEach {
+                        if (it.key != 0.toLong())
+                            elementViewModel.update(it.key, it.value)
+
+                        Log.i("save", "inMemoryComposantChanges: ${it.key} : ${it.value}")
+                    }
+
+                }
+            }
         }
+
+
     }
 }

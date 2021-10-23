@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/activity_composant.xml" value="0.15307971014492755" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/activity_composants_materiel.xml" value="0.15307971014492755" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/activity_create_new_project.xml" value="0.25407608695652173" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/activity_data_collection_form.xml" value="0.264" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/activity_project.xml" value="0.259375" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/item_composant.xml" value="0.25407608695652173" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/item_element_details.xml" value="0.1" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/item_elements_details_test.xml" value="0.259375" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/layout/item_grouped_elements.xml" value="0.25407608695652173" />
-        <entry key="..\:/Users/detekpinssounonm/AndroidStudioProjects/devis_app/app/src/main/res/menu/composants.xml" value="0.259375" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="true" project-jdk-name="15" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

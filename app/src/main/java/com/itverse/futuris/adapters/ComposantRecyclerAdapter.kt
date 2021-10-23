@@ -7,33 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.itverse.futuris.Composant
-import com.itverse.futuris.EXTRA_COMPOSANT_SELECTED
-import com.itverse.futuris.EXTRA_PROJECT_SELECTED
 import com.itverse.futuris.R
 import com.itverse.futuris.activities.DataCollectionForm
+import com.itverse.futuris.data.entities.Composant
+import com.itverse.futuris.utils.EXTRA_COMPOSANT_NAME
+import com.itverse.futuris.utils.EXTRA_COMPOSANT_SELECTED
 
-class ComposantRecyclerAdapter(
-    private val context: Context,
-    private val composants: ArrayList<Composant>,
-    private val projectSelected: Int
-):
-    RecyclerView.Adapter<ComposantRecyclerAdapter.ViewHolder>() {
+class ComposantRecyclerAdapter(val context: Context):
+    ListAdapter<Composant, ComposantRecyclerAdapter.ViewHolder>(COMPOSANT_COMPARATOR) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val composantImg: ImageView = itemView.findViewById(R.id.composantImg)
         val composantText: TextView = itemView.findViewById(R.id.composantText)
-        var composantSelected = 0
+        var composantSelected: Long = 0
 
         init {
             itemView.setOnClickListener{
-                var intent: Intent = Intent(context, DataCollectionForm::class.java)
+                val intent = Intent(context, DataCollectionForm::class.java)
                 intent.putExtra(EXTRA_COMPOSANT_SELECTED, composantSelected)
-                intent.putExtra(EXTRA_PROJECT_SELECTED, projectSelected)
+                intent.putExtra(EXTRA_COMPOSANT_NAME, composantText.text)
                 context.startActivity(intent)
             }
         }
@@ -45,22 +43,23 @@ class ComposantRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position == 0){
-            //Load materials
-            holder.composantImg.setImageResource(R.drawable.composant_materiel)
-            holder.composantText.text = "Materiels"
-            holder.composantSelected = position
-        }
-        else{
-            val composant = composants[position]
-            val resources: Resources = context.resources
-            val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName);
-            holder.composantImg.setImageResource(resourceId)
-            holder.composantText.text = composant.name
-            holder.composantSelected = position
-        }
+        val composant = getItem(position)
+        val resources: Resources = context.resources
+        val resourceId = resources.getIdentifier(composant.imageResource, "drawable", context.packageName)
+        holder.composantImg.setImageResource(resourceId)
+        holder.composantText.text = composant.name
+        holder.composantSelected = composant.id
     }
 
-    override fun getItemCount() = composants.size
+    companion object {
+        private val COMPOSANT_COMPARATOR = object : DiffUtil.ItemCallback<Composant>() {
+            override fun areItemsTheSame(oldItem: Composant, newItem: Composant): Boolean {
+                return oldItem.id == newItem.id
+            }
 
+            override fun areContentsTheSame(oldItem: Composant, newItem: Composant): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
+    }
 }
